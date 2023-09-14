@@ -37,7 +37,7 @@ const Navigation = () => {
       name: 'Accueil',
       icon: (
         <svg
-          width='100%'
+          width='30px'
           height='100%'
           viewBox='0 0 61 60'
           fill='none'

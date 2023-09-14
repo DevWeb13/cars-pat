@@ -24,6 +24,7 @@ input[type='reset'] {
   -webkit-appearance: none; /* Supprimer le style par défaut dans WebKit */
   -moz-appearance: none; /* Supprimer le style par défaut dans Firefox */
   appearance: none; /* Supprimer le style par défaut dans les navigateurs qui le supportent */
+  text-decoration: none;
 }
 
 @font-face {
