@@ -16,7 +16,7 @@ const customStyles = {
 
   content: {
     display: 'flex',
-    flexDirection: 'row' as 'row',
+    flexDirection: 'column' as 'column',
     justifyContent: 'center',
     border: '2px solid #ff8739',
     padding: 0,
