@@ -8,6 +8,7 @@
 
 /* Reset pour les boutons */
 button,
+a,
 input[type='button'],
 input[type='submit'],
 input[type='reset'] {
@@ -30,13 +31,34 @@ input[type='reset'] {
   src: url('/fonts/birdsOfParadise.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.ttf') format('truetype');
+}
+
 :root {
   --primary-color: #ff8739;
   --secondary-color: #1d1d1d;
+  --secondary-color-light: rgba(30, 30, 30, 0.75);
   --tertiary-color: #fdfdfd;
   --backgroundHeader: rgba(29, 29, 29, 0.75);
+
+  --titre-576px: 3rem;
+  --sousTitre-576px: 1.5rem;
+  --text-576px: 0.875rem;
 }
 
 h1 {
   font-family: 'BirdsOfParadise', sans-serif;
+}
+
+#main {
+  background: var(--tertiary-color);
+  height: 100vh;
+}
+
+@media (min-width: 992px) {
+  .ReactModal__Overlay {
+    display: none;
+  }
 }

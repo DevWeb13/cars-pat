@@ -1,3 +1,4 @@
+import { ActiveLinkProvider } from '@/contexts/ActiveLinkContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -17,10 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='fr'>
+    <html
+      lang='fr'
+      suppressHydrationWarning={true}>
       <body className={inter.className}>
-        <Header />
-        {children}
+        <ActiveLinkProvider>
+          <Header />
+          {children}
+        </ActiveLinkProvider>
       </body>
     </html>
   );
