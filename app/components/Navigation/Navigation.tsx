@@ -239,6 +239,7 @@ const Navigation = () => {
           id='navMobile'>
           {sections.map((section) => (
             <Link
+              href='/'
               key={section.id}
               to={section.id}
               smooth={true}
@@ -283,6 +284,7 @@ const Navigation = () => {
         id='navDesktop'>
         {sections.map((section) => (
           <Link
+            href={`/#${section.id}`}
             key={section.id}
             to={section.id}
             smooth={true}
