@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 import { useActiveLink } from '../../../contexts/ActiveLinkContext';
 import styles from './navigation.module.css';
@@ -7,27 +6,9 @@ import Modal from 'react-modal';
 import { Link } from 'react-scroll';
 import UseAnimations from 'react-useanimations';
 import menu2 from 'react-useanimations/lib/menu2';
+import { customStyles } from './Navigation';
 
-const customStyles = {
-  overlay: {
-    top: 60,
-    overflow: 'auto',
-  },
-
-  content: {
-    display: 'flex',
-    flexDirection: 'row' as 'row',
-    justifyContent: 'center',
-    border: '2px solid #ff8739',
-    padding: 0,
-    overflow: 'hidden',
-    inset: '8%',
-  },
-};
-
-Modal.setAppElement('#main');
-
-const Navigation = () => {
+export const Navigation = () => {
   const { activeLink } = useActiveLink();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -304,5 +285,3 @@ const Navigation = () => {
     </>
   );
 };
-
-export default Navigation;
