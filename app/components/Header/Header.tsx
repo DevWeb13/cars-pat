@@ -5,7 +5,7 @@ import styles from './header.module.css';
 import Navigation from '../Navigation/Navigation';
 
 const Header = () => {
-  const headerContentRef = useRef(null);
+  const headerContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
