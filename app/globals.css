@@ -42,7 +42,7 @@ input[type='reset'] {
   --secondary-color: #1d1d1d;
   --secondary-color-light: rgba(30, 30, 30, 0.75);
   --tertiary-color: #fdfdfd;
-  --backgroundHeader: rgba(29, 29, 29, 0.75);
+  --backgroundHeader: rgba(29, 29, 29, 0.8);
 
   --titre-576px: 3rem;
   --sousTitre-576px: 1.5rem;
