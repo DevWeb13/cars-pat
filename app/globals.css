@@ -40,9 +40,9 @@ input[type='reset'] {
 :root {
   --primary-color: #ff8739;
   --secondary-color: #1d1d1d;
-  --secondary-color-light: rgba(30, 30, 30, 0.75);
+  --secondary-color-light: rgba(30, 30, 30, 0.86);
   --tertiary-color: #fdfdfd;
-  --backgroundHeader: rgba(29, 29, 29, 0.8);
+  --backgroundHeader: rgba(29, 29, 29, 0.86);
 
   --titre-576px: 3rem;
   --sousTitre-576px: 1.5rem;
