@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useMemo,
+} from 'react';
 
 interface ActiveLinkContextProps {
   activeLink: string | null;
@@ -30,8 +36,11 @@ export const ActiveLinkProvider: React.FC<ActiveLinkProviderProps> = ({
 }) => {
   const [activeLink, setActiveLink] = useState<string>('home');
 
+  // Utilisez useMemo pour mémoriser l'objet
+  const value = useMemo(() => ({ activeLink, setActiveLink }), [activeLink]);
+
   return (
-    <ActiveLinkContext.Provider value={{ activeLink, setActiveLink }}>
+    <ActiveLinkContext.Provider value={value}>
       {children}
     </ActiveLinkContext.Provider>
   );
