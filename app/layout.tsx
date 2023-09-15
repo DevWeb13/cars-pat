@@ -2,6 +2,7 @@ import { ActiveLinkProvider } from '@/contexts/ActiveLinkContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import PreHeader from './components/PreHeader/PreHeader';
 import Header from './components/Header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,6 +24,7 @@ export default function RootLayout({
       suppressHydrationWarning={true}>
       <body className={inter.className}>
         <ActiveLinkProvider>
+          <PreHeader />
           <Header />
           {children}
         </ActiveLinkProvider>

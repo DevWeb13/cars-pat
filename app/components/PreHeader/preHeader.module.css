@@ -1,0 +1,21 @@
+.preHeader {
+  display: flex;
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  font-size: var(--textFooter-576px);
+  justify-content: flex-end;
+  padding: 3px 4%;
+  gap: 5%;
+}
+
+.preHeaderLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-wrap: nowrap;
+}
+
+.preHeaderLinkSvg {
+  min-width: 18px;
+}

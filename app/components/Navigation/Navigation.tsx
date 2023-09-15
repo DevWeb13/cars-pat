@@ -243,7 +243,7 @@ const Navigation = () => {
               key={section.id}
               to={section.id}
               smooth={true}
-              offset={-60}
+              offset={section.id === 'home' ? -84 : -60}
               duration={500}
               onClick={() => setIsOpen(false)}
               className={
@@ -288,7 +288,7 @@ const Navigation = () => {
             key={section.id}
             to={section.id}
             smooth={true}
-            offset={-60}
+            offset={section.id === 'home' ? -84 : -60}
             duration={500}
             onClick={() => setIsOpen(false)}
             className={

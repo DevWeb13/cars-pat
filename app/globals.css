@@ -47,6 +47,18 @@ input[type='reset'] {
   --titre-576px: 3rem;
   --sousTitre-576px: 1.5rem;
   --text-576px: 0.875rem;
+  --textFooter-576px: 0.625rem;
+
+  --preHeaderHeight: 1.5rem;
+  --headerHeight: 3.75rem;
+}
+
+.headerContentFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 h1 {
@@ -55,7 +67,6 @@ h1 {
 
 #main {
   background: var(--tertiary-color);
-  height: 100vh;
 }
 
 @media (min-width: 992px) {
