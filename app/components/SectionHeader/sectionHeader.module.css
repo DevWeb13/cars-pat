@@ -1,0 +1,35 @@
+.sectionHeader {
+  background-image: url('/assets/lineBottom.svg');
+  background-size: cover; /* ou d'autres valeurs comme contain, auto, etc. */
+  background-repeat: no-repeat;
+  height: fit-content;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: 'BirdsOfParadise', sans-serif;
+  font-weight: 100;
+  font-size: var(--titre-576px);
+  text-shadow: 1px 1px var(--tertiary-color);
+  /* z-index: 1; */
+}
+
+@media (min-width: 576px) {
+  .sectionTitle {
+    font-size: var(--titre-768px);
+  }
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: var(--titre-992px);
+  }
+}
+
+@media (min-width: 992px) {
+  .sectionTitle {
+    font-size: var(--titre-1200px);
+  }
+}

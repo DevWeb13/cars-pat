@@ -12,6 +12,7 @@ const customStyles = {
   overlay: {
     top: 60,
     overflow: 'auto',
+    zIndex: 500,
   },
 
   content: {

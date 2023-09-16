@@ -45,9 +45,15 @@ input[type='reset'] {
   --backgroundHeader: rgba(29, 29, 29, 0.86);
 
   --titre-576px: 3rem;
-  --sousTitre-576px: 1.5rem;
+  --sousTitre-576px: 1.2rem;
   --text-576px: 0.875rem;
   --textFooter-576px: 0.625rem;
+
+  --titre-768px: 4rem;
+
+  --titre-992px: 6rem;
+
+  --titre-1200px: 8rem;
 
   --preHeaderHeight: 1.5rem;
   --headerHeight: 3.75rem;
