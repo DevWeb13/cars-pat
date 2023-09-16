@@ -14,14 +14,32 @@ const images = [
   {
     original: 'https://picsum.photos/id/1018/1000/600/',
     thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    originalHeight: 600,
+    originalWidth: 1000,
+    thumbnailHeight: 150,
+    thumbnailWidth: 250,
+    originalAlt: 'test',
+    thumbnailAlt: 'test',
   },
   {
     original: 'https://picsum.photos/id/1015/1000/600/',
     thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    originalHeight: 600,
+    originalWidth: 1000,
+    thumbnailHeight: 150,
+    thumbnailWidth: 250,
+    originalAlt: 'test',
+    thumbnailAlt: 'test',
   },
   {
     original: 'https://picsum.photos/id/1019/1000/600/',
     thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    originalHeight: 600,
+    originalWidth: 1000,
+    thumbnailHeight: 150,
+    thumbnailWidth: 250,
+    originalAlt: 'test',
+    thumbnailAlt: 'test',
   },
 ];
 
