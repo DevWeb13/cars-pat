@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
   const { title, text, icon } = cardData;
   const [isExpanded, setIsExpanded] = useState(false);
   const [height, setHeight] = useState('120px');
-  const cardRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (cardRef.current) {
