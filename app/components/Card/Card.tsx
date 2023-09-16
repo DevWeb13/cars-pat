@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './card.module.css';
+import ImageGallery from 'react-image-gallery';
 
 interface CardProps {
   cardData: {
@@ -9,16 +10,37 @@ interface CardProps {
   };
 }
 
+const images = [
+  {
+    original: 'https://picsum.photos/id/1018/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1018/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1015/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1015/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1019/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1019/250/150/',
+  },
+];
+
 const Card: React.FC<CardProps> = ({ cardData }) => {
   const { title, text, icon } = cardData;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [height, setHeight] = useState('120px');
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [textHeight, setTextHeight] = useState('120px');
+  const [imageGalleryHeight, setImageGalleryHeight] = useState('0px');
+  const cardTextRef = useRef<HTMLDivElement>(null);
+  const imageGalleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (cardRef.current) {
-      const scrollHeight = `${cardRef.current.scrollHeight}px`;
-      setHeight(isExpanded ? scrollHeight : '120px');
+    if (cardTextRef.current && imageGalleryRef.current) {
+      const scrollTextHeight = `${cardTextRef.current.scrollHeight}px`;
+      setTextHeight(isExpanded ? scrollTextHeight : '120px');
+      setTimeout(() => {
+        const scrollImageGalleryHeight = `${imageGalleryRef.current?.scrollHeight}px`;
+        setImageGalleryHeight(isExpanded ? scrollImageGalleryHeight : '0px');
+      }, 300);
     }
   }, [isExpanded]);
 
@@ -32,13 +54,16 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
           <h3 className={styles.cardTitleText}>{title}</h3>
         </div>
         <div
-          ref={cardRef}
+          ref={cardTextRef}
           className={`${styles.cardText} ${
             isExpanded ? styles.cardTextExpanded : ''
           }`}
-          style={{ height }}>
+          style={{
+            height: textHeight,
+          }}>
           {text}
         </div>
+
         <div className={styles.seeAllWrapper}>
           <p className={styles.textFooter}>
             {isExpanded ? 'Voir moins' : 'Voir plus'}
@@ -51,6 +76,23 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
             }></div>
         </div>
       </button>
+      <div
+        className={`${styles.imageGallery} ${
+          isExpanded ? styles.imageGalleryExpanded : ''
+        }`}
+        style={{
+          height: imageGalleryHeight,
+        }}
+        ref={imageGalleryRef}>
+        <ImageGallery
+          items={images}
+          autoPlay
+          showPlayButton={false}
+          showFullscreenButton={false}
+          showNav={false}
+          showThumbnails={false}
+        />
+      </div>
     </article>
   );
 };

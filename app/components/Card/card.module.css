@@ -3,13 +3,15 @@
   flex-direction: column;
   border: 1.5px solid var(--primary-color);
   text-wrap: balance;
+  padding: 30px 20px;
+  gap: 10px;
 }
 
 .cardButton {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 30px 20px;
+
   height: 100%;
   width: 100%;
   text-align: left;
@@ -79,4 +81,13 @@
 
 .arrowReverse {
   transform: rotateX(180deg);
+}
+
+.imageGallery {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.imageGalleryExpanded {
+  transition: all 0.3s ease-in-out;
 }
