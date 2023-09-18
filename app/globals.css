@@ -91,3 +91,7 @@ h1 {
     display: none;
   }
 }
+
+.image-gallery-slide .image-gallery-image {
+  width: 99%;
+}

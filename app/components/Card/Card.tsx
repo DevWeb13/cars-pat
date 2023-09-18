@@ -10,34 +10,42 @@ interface CardProps {
   };
 }
 
+// https://i.ibb.co/ZHxbpW8/porsche-Rouge-Avec-Fond.jpg
+// https://i.ibb.co/q79qRhL/Porsche-Grise.jpg
+// https://i.ibb.co/qNwrL0J/porsche-Bleu-removebg-preview.png
+// https://i.ibb.co/ZgYG3hY/porsche-Bleu.jpg
+// https://i.ibb.co/DV81Fh4/porsche.png
+// https://i.ibb.co/phrv6Vs/mustang.png
+// https://i.ibb.co/4Mfc4vQ/Harley-removebg-preview.png
+// https://i.ibb.co/ydgpNxJ/Harley.jpg
 const images = [
   {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-
-    originalWidth: 1500,
-    thumbnailHeight: 1500,
-    thumbnailWidth: 1500,
+    original: 'https://i.ibb.co/ZHxbpW8/porsche-Rouge-Avec-Fond.jpg',
+    thumbnail: 'https://i.ibb.co/ZHxbpW8/porsche-Rouge-Avec-Fond.jpg',
+    originalHeight: 250,
+    originalWidth: 400,
+    thumbnailHeight: 200,
+    thumbnailWidth: 200,
     originalAlt: 'test',
     thumbnailAlt: 'test',
   },
   {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-
-    originalWidth: 1500,
-    thumbnailHeight: 1500,
-    thumbnailWidth: 1500,
+    original: 'https://i.ibb.co/q79qRhL/Porsche-Grise.jpg',
+    thumbnail: 'https://i.ibb.co/q79qRhL/Porsche-Grise.jpg',
+    originalHeight: 250,
+    originalWidth: 400,
+    thumbnailHeight: 200,
+    thumbnailWidth: 200,
     originalAlt: 'test',
     thumbnailAlt: 'test',
   },
   {
     original: 'https://picsum.photos/id/1019/1000/600/',
     thumbnail: 'https://picsum.photos/id/1019/250/150/',
-
-    originalWidth: 1500,
-    thumbnailHeight: 1500,
-    thumbnailWidth: 1500,
+    originalHeight: 250,
+    originalWidth: 400,
+    thumbnailHeight: 200,
+    thumbnailWidth: 200,
     originalAlt: 'test',
     thumbnailAlt: 'test',
   },
@@ -48,7 +56,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [textHeightInitial, setTextHeightInitial] = useState('');
   const [textHeight, setTextHeight] = useState('auto');
-  const [imageGalleryHeight, setImageGalleryHeight] = useState('0px');
+  const [imageDisplay, setImageDisplay] = useState(false);
   const cardTextRef = useRef<HTMLDivElement>(null);
   const imageGalleryRef = useRef<HTMLDivElement>(null);
 
@@ -65,10 +73,11 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
       console.log(cardTextRef);
       const textHeightExpanded = `${cardTextRef.current.scrollHeight}px`;
       setTextHeight(isExpanded ? textHeightExpanded : textHeightInitial);
-      setTimeout(() => {
-        const scrollImageGalleryHeight = `${imageGalleryRef.current?.scrollHeight}px`;
-        setImageGalleryHeight(isExpanded ? scrollImageGalleryHeight : '0px');
-      }, 300);
+      isExpanded
+        ? setTimeout(() => {
+            setImageDisplay(isExpanded);
+          }, 300)
+        : setImageDisplay(isExpanded);
     }
   }, [isExpanded, textHeightInitial]);
 
@@ -108,18 +117,17 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
         className={`${styles.imageGallery} ${
           isExpanded ? styles.imageGalleryExpanded : ''
         }`}
-        style={{
-          height: imageGalleryHeight,
-        }}
         ref={imageGalleryRef}>
-        <ImageGallery
-          items={images}
-          autoPlay
-          showPlayButton={false}
-          showFullscreenButton={false}
-          showNav={false}
-          showThumbnails={false}
-        />
+        {imageDisplay && (
+          <ImageGallery
+            items={images}
+            autoPlay
+            showPlayButton={false}
+            showFullscreenButton={false}
+            showNav={false}
+            showThumbnails={false}
+          />
+        )}
       </div>
     </article>
   );
