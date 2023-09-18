@@ -55,8 +55,8 @@ const Gallery = () => {
                 thumbnailAlt: vehicleActive,
                 originalHeight: 500,
                 originalWidth: 750,
-                thumbnailHeight: 100,
-                thumbnailWidth: 75,
+                thumbnailHeight: 70,
+                thumbnailWidth: 150,
               };
             }) || []
           }
