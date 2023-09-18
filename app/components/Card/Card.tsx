@@ -46,21 +46,31 @@ const images = [
 const Card: React.FC<CardProps> = ({ cardData }) => {
   const { title, text, icon } = cardData;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [textHeight, setTextHeight] = useState('120px');
+  const [textHeightInitial, setTextHeightInitial] = useState('');
+  const [textHeight, setTextHeight] = useState('auto');
   const [imageGalleryHeight, setImageGalleryHeight] = useState('0px');
   const cardTextRef = useRef<HTMLDivElement>(null);
   const imageGalleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (cardTextRef.current) {
+      const textHeightInit = `${cardTextRef.current.clientHeight}px`;
+      setTextHeightInitial(textHeightInit);
+      setTextHeight(textHeightInit);
+    }
+  }, []);
+
+  useEffect(() => {
     if (cardTextRef.current && imageGalleryRef.current) {
-      const scrollTextHeight = `${cardTextRef.current.scrollHeight}px`;
-      setTextHeight(isExpanded ? scrollTextHeight : '120px');
+      console.log(cardTextRef);
+      const textHeightExpanded = `${cardTextRef.current.scrollHeight}px`;
+      setTextHeight(isExpanded ? textHeightExpanded : textHeightInitial);
       setTimeout(() => {
         const scrollImageGalleryHeight = `${imageGalleryRef.current?.scrollHeight}px`;
         setImageGalleryHeight(isExpanded ? scrollImageGalleryHeight : '0px');
       }, 300);
     }
-  }, [isExpanded]);
+  }, [isExpanded, textHeightInitial]);
 
   return (
     <article className={styles.card}>

@@ -1,18 +1,18 @@
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   border: 1.5px solid var(--primary-color);
   text-wrap: balance;
-  padding: 30px 20px;
+  padding: 20px;
   gap: 10px;
+  height: fit-content;
 }
 
 .cardButton {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  height: 100%;
   width: 100%;
   text-align: left;
 }
@@ -47,12 +47,21 @@
   width: 30px;
 }
 
+.cardTitleText {
+  display: flex;
+
+  font-size: var(--sousTitre-576px);
+  min-height: 48px;
+  align-items: center;
+}
+
 .cardText {
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  font-size: var(--text-576px);
 }
 
 .cardTextExpanded {
@@ -90,4 +99,110 @@
 
 .imageGalleryExpanded {
   transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 576px) {
+  .card {
+    padding: 25px;
+    max-width: 48%;
+  }
+  .cardTitleIcon {
+    min-width: 35px;
+  }
+
+  .cardTitleText {
+    font-size: var(--sous-titre-768px);
+  }
+
+  .cardText {
+    font-size: var(--text-768px);
+  }
+
+  .seeAllWrapper {
+    font-size: var(--textFooter-768px);
+  }
+
+  .arrow {
+    width: 30px;
+    height: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 25px;
+    max-width: 48%;
+  }
+  .cardTitleIcon {
+    min-width: 35px;
+  }
+
+  .cardTitleText {
+    font-size: var(--sous-titre-992px);
+  }
+
+  .cardText {
+    font-size: var(--text-992px);
+  }
+
+  .seeAllWrapper {
+    font-size: var(--textFooter-992px);
+  }
+
+  .arrow {
+    width: 30px;
+    height: 13px;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    padding: 30px;
+  }
+  .cardTitleIcon {
+    min-width: 40px;
+  }
+
+  .cardTitleText {
+    font-size: var(--sous-titre-1200px);
+  }
+
+  .cardText {
+    font-size: var(--text-1200px);
+  }
+
+  .seeAllWrapper {
+    font-size: var(--textFooter-1200px);
+  }
+
+  .arrow {
+    width: 30px;
+    height: 13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    max-width: 30%;
+  }
+  .cardTitleIcon {
+    min-width: 45px;
+  }
+
+  .cardTitleText {
+    font-size: var(--sous-titre-1200px);
+  }
+
+  .cardText {
+    font-size: var(--text-1200px);
+  }
+
+  .seeAllWrapper {
+    font-size: var(--textFooter-1200px);
+  }
+
+  .arrow {
+    width: 30px;
+    height: 13px;
+  }
 }

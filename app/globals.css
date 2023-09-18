@@ -52,10 +52,19 @@ input[type='reset'] {
   --textFooter-576px: 0.625rem;
 
   --titre-768px: 4rem;
+  --sous-titre-768px: 1.3rem;
+  --text-768px: 15px;
+  --textFooter-768px: 0.6875rem;
 
   --titre-992px: 6rem;
+  --sous-titre-992px: 1.3rem;
+  --text-992px: 1rem;
+  --textFooter-992px: 0.75rem;
 
-  --titre-1200px: 8rem;
+  --titre-1200px: 7rem;
+  --sous-titre-1200px: 1.4rem;
+  --text-1200px: 1.125rem;
+  --textFooter-1200px: 0.8125rem;
 
   --preHeaderHeight: 1.5rem;
   --headerHeight: 3.75rem;

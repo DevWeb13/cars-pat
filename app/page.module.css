@@ -8,7 +8,52 @@
 
 .sectionContent {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0 10px;
   gap: 10px;
+}
+
+@media (min-width: 576px) {
+  .section,
+  .sectionContent {
+    gap: 15px;
+  }
+
+  .sectionContent {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .section,
+  .sectionContent {
+    gap: 20px;
+  }
+
+  .sectionContent {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .section,
+  .sectionContent {
+    gap: 30px;
+  }
+
+  .sectionContent {
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section,
+  .sectionContent {
+    gap: 40px;
+  }
+
+  .sectionContent {
+    padding: 0 40px;
+  }
 }
