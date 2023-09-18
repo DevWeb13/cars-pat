@@ -20,8 +20,6 @@
 .cardTitle {
   display: flex;
   gap: 0.9375rem;
-  font-family: 'Inter', sans-serif;
-  font-size: var(--sousTitre-576px);
 }
 .portiere {
   background-image: url('/assets/portiere.svg');
@@ -50,7 +48,6 @@
 .cardTitleText {
   display: flex;
 
-  font-size: var(--sousTitre-576px);
   min-height: 48px;
   align-items: center;
 }

@@ -70,16 +70,88 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
+.titre {
+  font-size: var(--titre-576px);
+  font-family: 'BirdsOfParadise', sans-serif;
+}
+.sousTitre {
+  font-size: var(--sousTitre-576px);
+  font-family: 'Inter', sans-serif;
+}
+.text {
+  font-size: var(--text-576px);
+  font-family: 'Inter', sans-serif;
+}
+.textBold {
+  font-size: var(--text-576px);
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+.textFooter {
+  font-size: var(--textFooter-576px);
+  font-family: 'Inter', sans-serif;
+}
+@media (min-width: 576px) {
+  .titre {
+    font-size: var(--titre-768px);
+  }
+  .sousTitre {
+    font-size: var(--sous-titre-768px);
+  }
+  .text {
+    font-size: var(--text-768px);
+  }
+  .textBold {
+    font-size: var(--text-768px);
+    font-weight: bold;
+  }
+  .textFooter {
+    font-size: var(--textFooter-768px);
+  }
+}
+@media (min-width: 768px) {
+  .titre {
+    font-size: var(--titre-992px);
+  }
+  .sousTitre {
+    font-size: var(--sous-titre-992px);
+  }
+  .text {
+    font-size: var(--text-992px);
+  }
+  .textBold {
+    font-size: var(--text-992px);
+    font-weight: bold;
+  }
+  .textFooter {
+    font-size: var(--textFooter-992px);
+  }
+}
+@media (min-width: 992px) {
+  .titre {
+    font-size: var(--titre-1200px);
+  }
+  .sousTitre {
+    font-size: var(--sous-titre-1200px);
+  }
+  .text {
+    font-size: var(--text-1200px);
+  }
+  .textBold {
+    font-size: var(--text-1200px);
+    font-weight: bold;
+  }
+  .textFooter {
+    font-size: var(--textFooter-1200px);
+  }
+}
+
 .headerContentFixed {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   transition: all 0.3s ease-in-out;
-}
-
-h1 {
-  font-family: 'BirdsOfParadise', sans-serif;
 }
 
 #main {
@@ -94,4 +166,5 @@ h1 {
 
 .image-gallery-slide .image-gallery-image {
   width: 99%;
+  max-height: 90vh;
 }

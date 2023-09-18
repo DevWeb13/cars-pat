@@ -88,11 +88,11 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
         onClick={() => setIsExpanded(!isExpanded)}>
         <div className={styles.cardTitle}>
           <div className={styles.cardTitleIcon + ' ' + styles[icon]}></div>
-          <h3 className={styles.cardTitleText}>{title}</h3>
+          <h3 className={`${styles.cardTitleText} sousTitre`}>{title}</h3>
         </div>
         <div
           ref={cardTextRef}
-          className={`${styles.cardText} ${
+          className={`${styles.cardText} text ${
             isExpanded ? styles.cardTextExpanded : ''
           }`}
           style={{
@@ -102,7 +102,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
         </div>
 
         <div className={styles.seeAllWrapper}>
-          <p className={styles.textFooter}>
+          <p className={`${styles.textFooter} textFooter`}>
             {isExpanded ? 'Voir moins' : 'Voir plus'}
           </p>
           <div
