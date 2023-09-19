@@ -70,7 +70,7 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
-.h1 {
+h1 {
   font-family: 'Birds of Paradise', sans-serif;
 }
 .titre {
