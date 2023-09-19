@@ -1,13 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import styles from './page.module.css';
 import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
