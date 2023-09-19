@@ -8,9 +8,9 @@ import RadioButtons from '../RadioButtons/RadioButtons';
 const Gallery = () => {
   const [vehicleActive, setVehicleActive] = useState('peugeot504');
 
-  const [galleryHeight, setGalleryHeight] = useState(0);
+  const [galleryWidth, setGalleryWidth] = useState(0);
 
-  const imageGalleryRef = useRef<ImageGallery>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const fetchPhotos = async (vehicleName: string) => {
     try {
@@ -25,48 +25,60 @@ const Gallery = () => {
     }
   };
 
-  const { isLoading, error, data, isFetching, isPreviousData } = useQuery(
+  const { status, data } = useQuery(
     ['photos', vehicleActive], // Include vehicleActive in the query key
     () => fetchPhotos(vehicleActive)
   );
 
+  useEffect(() => {
+    if (galleryRef.current) {
+      setGalleryWidth(galleryRef.current.offsetWidth * 0.8);
+    }
+  }, [galleryRef]);
+
   return (
-    <div className={styles.gallery}>
+    <div
+      className={styles.gallery}
+      ref={galleryRef}>
       <RadioButtons
         vehicleActive={vehicleActive}
         setVehicleActive={setVehicleActive}
       />
 
-      {isLoading ? (
-        <div
-          className={styles.spinner}
-          style={{ minHeight: galleryHeight }}>
-          Loading...
-        </div>
-      ) : (
-        <ImageGallery
-          ref={imageGalleryRef}
-          items={
-            data?.map((photo) => {
-              return {
-                original: `assets/photos/${vehicleActive}/${photo}`,
-                thumbnail: `assets/photos/${vehicleActive}/${photo}`,
-                originalAlt: vehicleActive,
-                thumbnailAlt: vehicleActive,
-                originalHeight: 500,
-                originalWidth: 750,
-                thumbnailHeight: 70,
-                thumbnailWidth: 150,
-              };
-            }) || []
-          }
-          showBullets={true}
-          autoPlay={true}
-          slideInterval={5000}
-          slideDuration={1000}
-          lazyLoad={true}
-        />
-      )}
+      {status === 'error' && <p>error</p>}
+
+      <ImageGallery
+        items={
+          data?.map((photo) => {
+            return {
+              original: `assets/photos/${vehicleActive}/${photo}`,
+              thumbnail: `assets/photos/${vehicleActive}/${photo}`,
+              originalAlt: vehicleActive,
+              thumbnailAlt: vehicleActive,
+              originalHeight: galleryWidth || 500,
+              originalWidth: galleryWidth || 750,
+              thumbnailHeight: 70,
+              thumbnailWidth: 150,
+            };
+          }) || [
+            {
+              original: 'assets/photos/Harley-removebg-preview.png',
+              thumbnail: 'assets/photos/Harley-removebg-preview.png',
+              originalAlt: 'harley',
+              thumbnailAlt: 'harley',
+              originalHeight: galleryWidth || 500,
+              originalWidth: galleryWidth || 750,
+              thumbnailHeight: 70,
+              thumbnailWidth: 150,
+            },
+          ]
+        }
+        showBullets={false}
+        autoPlay={true}
+        slideInterval={5000}
+        slideDuration={500}
+        lazyLoad={true}
+      />
     </div>
   );
 };
