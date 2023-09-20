@@ -70,6 +70,10 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
+.primaryColor {
+  color: var(--primary-color);
+}
+
 .titre {
   font-size: var(--titre-576px);
   font-family: 'BirdsOfParadise', sans-serif;

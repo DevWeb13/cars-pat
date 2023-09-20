@@ -9,6 +9,7 @@ import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import SectionHeader from './components/SectionHeader/SectionHeader';
 import Card from './components/Card/Card';
 import Gallery from './components/Gallery/Gallery';
+import GalleryFooter from './components/GalleryFooter/GalleryFooter';
 
 const queryClient = new QueryClient();
 
@@ -118,6 +119,7 @@ export default function Home() {
           <SectionHeader text='Gallerie photos' />
           <section className={styles.sectionContent}>
             <Gallery />
+            <GalleryFooter />
           </section>
         </section>
         <section

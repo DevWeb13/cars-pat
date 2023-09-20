@@ -1,0 +1,12 @@
+.galleryFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.socialMedia {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';
+import Image from 'next/image';
 
 import RadioButtons from '../RadioButtons/RadioButtons';
 
