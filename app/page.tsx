@@ -74,7 +74,7 @@ export default function Home() {
           ref={servicesRef}
           className={styles.section}>
           <SectionHeader text='Nos services' />
-          <section className={styles.sectionContent}>
+          <section className={styles.sectionContent + ' ' + styles.wrap}>
             <Card
               cardData={{
                 title: 'Carrosserie',
@@ -117,7 +117,7 @@ export default function Home() {
           ref={galleryRef}
           className={styles.section}>
           <SectionHeader text='Gallerie photos' />
-          <section className={styles.sectionContent}>
+          <section className={styles.sectionContent + ' ' + styles.column}>
             <Gallery />
             <GalleryFooter />
           </section>
