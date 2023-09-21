@@ -29,9 +29,13 @@ export async function GET(request: Request) {
       );
     }
   } catch (error) {
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : "Une erreur inconnue s'est produite";
     return new Response(
       JSON.stringify({
-        error: `Erreur lors de la requête à l'API: ${error.message}`,
+        error: `Erreur lors de la requête à l'API: ${errorMessage}`,
       }),
       { status: 500 }
     );
