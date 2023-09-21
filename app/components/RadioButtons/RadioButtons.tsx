@@ -18,25 +18,11 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
       name: 'peugeot504',
       display: 'Peugeot 504',
     },
+
     {
       id: 2,
-      name: 'porsche911',
-      display: 'Porsche 911',
-    },
-    {
-      id: 3,
       name: 'mercedes',
       display: 'Mercedes',
-    },
-    {
-      id: 4,
-      name: 'ferarri',
-      display: 'Ferarri',
-    },
-    {
-      id: 5,
-      name: 'toyota',
-      display: 'Toyota',
     },
   ];
 

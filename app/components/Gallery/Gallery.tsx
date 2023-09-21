@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
 
 import RadioButtons from '../RadioButtons/RadioButtons';
 
@@ -70,7 +69,7 @@ const Gallery = () => {
               originalHeight: galleryWidth || 500,
               originalWidth: galleryWidth || 750,
               thumbnailHeight: 70,
-              thumbnailWidth: 150,
+              thumbnailWidth: 90,
             },
           ]
         }

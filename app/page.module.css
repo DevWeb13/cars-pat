@@ -2,16 +2,32 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  width: 100%;
   padding: 40px 0;
+  max-width: 1440px;
+}
+
+.sectionHome {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
+  padding: 0;
 }
 
 .sectionContent {
   display: flex;
-
   justify-content: center;
+  align-items: center;
   padding: 0 10px;
   gap: 10px;
+}
+
+.sectionContent img {
+  max-width: 950px;
 }
 
 .wrap {
@@ -20,6 +36,24 @@
 
 .column {
   flex-direction: column;
+}
+
+.sectionContentInfos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.infosContacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+}
+
+.map {
+  border: 1px solid var(--primary-color);
+  max-width: 100%;
 }
 
 @media (min-width: 576px) {

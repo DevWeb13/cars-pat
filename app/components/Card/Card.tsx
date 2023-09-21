@@ -70,7 +70,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
 
   useEffect(() => {
     if (cardTextRef.current && imageGalleryRef.current) {
-      console.log(cardTextRef);
+      // console.log(cardTextRef);
       const textHeightExpanded = `${cardTextRef.current.scrollHeight}px`;
       setTextHeight(isExpanded ? textHeightExpanded : textHeightInitial);
       isExpanded

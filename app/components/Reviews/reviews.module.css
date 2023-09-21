@@ -1,0 +1,23 @@
+.averageRating {
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .averageRating {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .averageRating {
+    font-size: 96px;
+  }
+}
+
+@media (min-width: 992px) {
+  .averageRating {
+    font-size: 128px;
+  }
+}
