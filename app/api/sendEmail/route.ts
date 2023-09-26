@@ -15,11 +15,12 @@ export async function POST(request: any): Promise<NextResponse> {
     const photos = formData.getAll('photos'); // Récupère toutes les photos
     console.log({ name, email, message, photos });
 
+    const nodemailer = require('nodemailer');
+
     let transporter = nodemailer.createTransport({
-      host: 'smtp-mail.outlook.com',
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      requireTLS: true,
+      host: 'smtp.office365.com', // Serveur SMTP d'Outlook
+      port: 587, // Port standard pour le SMTP avec STARTTLS
+      secure: false, // Pour STARTTLS, secure doit être défini sur false
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
