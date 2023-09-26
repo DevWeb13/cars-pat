@@ -7,12 +7,15 @@ import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import Image from 'next/image';
 
+import Section from './components/Section/Section';
 import SectionHeader from './components/SectionHeader/SectionHeader';
 import Card from './components/Card/Card';
 import Gallery from './components/Gallery/Gallery';
 import GalleryFooter from './components/GalleryFooter/GalleryFooter';
 import InfoContact from './components/InfoContact/InfoContact';
 import Reviews from './components/Reviews/Reviews';
+import Link from 'next/link';
+import MailForm from './components/MailForm/MailForm';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +36,9 @@ export default function Home() {
   const [informationsRef, informationsInView] = useInView({
     threshold: 0.1,
   });
+  const [avisRef, avisInView] = useInView({
+    threshold: 0.1,
+  });
   const [contactRef, contactInView] = useInView({
     threshold: 0.1,
   });
@@ -50,6 +56,9 @@ export default function Home() {
     if (informationsInView) {
       setActiveLink('informations');
     }
+    if (avisInView) {
+      setActiveLink('avis');
+    }
     if (contactInView) {
       setActiveLink('contact');
     }
@@ -59,6 +68,7 @@ export default function Home() {
     galleryInView,
     informationsInView,
     contactInView,
+    avisInView,
     setActiveLink,
   ]);
 
@@ -75,38 +85,36 @@ export default function Home() {
 
     getHeight();
 
-    // Ajoutez l'écouteur d'événement lorsque le composant est monté
     window.addEventListener('resize', getHeight);
 
-    // Supprimez l'écouteur d'événement lorsque le composant est démonté
     return () => {
       window.removeEventListener('resize', getHeight);
     };
-  }, []);
-
-  // console.log(contactHeight);
+  }, [infosContactsRef]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <main id='main'>
-        <section
+        <Section
           id='home'
           ref={homeRef}
-          className={styles.section + ' ' + styles.sectionHome}>
+          className={styles.sectionHome}>
           <Image
             src='/assets/photos/porscheRougeAvecFond.jpg'
             alt='home'
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            layout='fill'
+            width={1920}
+            height={1080}
+            className={styles.homeImage}
+            priority
           />
-        </section>
+        </Section>
 
         <section
           id='services'
           ref={servicesRef}
-          className={styles.section}>
+          className='section'>
           <SectionHeader text='Nos services' />
-          <section className={styles.sectionContent + ' ' + styles.wrap}>
+          <section className='sectionContent wrap'>
             <Card
               cardData={{
                 title: 'Carrosserie',
@@ -148,9 +156,9 @@ export default function Home() {
         <section
           id='gallery'
           ref={galleryRef}
-          className={styles.section}>
+          className='section'>
           <SectionHeader text='Gallerie photos' />
-          <section className={styles.sectionContent + ' ' + styles.column}>
+          <section className='sectionContent column'>
             <p className='textBold'>Choisissez un véhicule:</p>
             <Gallery />
             <GalleryFooter />
@@ -160,15 +168,13 @@ export default function Home() {
         <section
           id='informations'
           ref={informationsRef}
-          className={styles.section}>
+          className='section'>
           <SectionHeader text='Informations' />
-          <section
-            className={
-              styles.sectionContent + ' ' + styles.sectionContentInfos
-            }>
+          <section className='sectionContent wrap'>
             <div
-              className={styles.infosContacts}
-              ref={infosContactsRef}>
+              className='card'
+              ref={infosContactsRef}
+              style={{ minWidth: contactHeight }}>
               <InfoContact
                 logo='/assets/clock.svg'
                 alt='clock'
@@ -179,36 +185,39 @@ export default function Home() {
                   '14H00 - 18H30',
                 ]}
               />
-              <a
+              <Link
                 target='_blank'
-                href='tel:+33491402801'>
+                href='tel:+33491402801'
+                className='link'>
                 <InfoContact
                   logo='/assets/phone.svg'
                   alt='phone'
                   title='TÉLÉPHONE'
                   textLines={['04-91-40-28-01']}
                 />
-              </a>
-              <a
+              </Link>
+              <Link
                 target='_blank'
-                href='mailto:carrosse-pat@hotmail.fr'>
+                href='mailto:carrosse-pat@hotmail.fr'
+                className='link'>
                 <InfoContact
                   logo='/assets/mail.svg'
                   alt='mail'
                   title='E-MAIL'
                   textLines={['carrosse-pat@hotmail.fr']}
                 />
-              </a>
-              <a
+              </Link>
+              <Link
                 target='_blank'
-                href='https://www.google.fr/maps/place/Cars+Pat/@43.2483917,5.3983134,17z/data=!4m15!1m8!3m7!1s0x12c9b884f41a612d:0x5b0f382c309b6090!2s1+Rue+Denis+Magdelon,+13009+Marseille!3b1!8m2!3d43.2483917!4d5.4008883!16s%2Fg%2F11cs7q5f4j!3m5!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!16s%2Fg%2F1tf20zt9?entry=ttu'>
+                href='https://www.google.fr/maps/place/Cars+Pat/@43.2483917,5.3983134,17z/data=!4m15!1m8!3m7!1s0x12c9b884f41a612d:0x5b0f382c309b6090!2s1+Rue+Denis+Magdelon,+13009+Marseille!3b1!8m2!3d43.2483917!4d5.4008883!16s%2Fg%2F11cs7q5f4j!3m5!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!16s%2Fg%2F1tf20zt9?entry=ttu'
+                className='link'>
                 <InfoContact
                   logo='/assets/position.svg'
                   alt='address'
                   title='ADRESSE'
                   textLines={['1 Rue Denis Magdelon', '13009 Marseille']}
                 />
-              </a>
+              </Link>
             </div>
             <iframe
               src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14137.182395999138!2d5.400888!3d43.248392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b884f41d09d5%3A0x967b25d3c34e14c3!2sCars%20Pat!5e1!3m2!1sfr!2sfr!4v1695283837705!5m2!1sfr!2sfr'
@@ -224,6 +233,15 @@ export default function Home() {
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
               className={styles.map}></iframe>
+          </section>
+        </section>
+
+        <section
+          id='avis'
+          ref={avisRef}
+          className='section'>
+          <SectionHeader text='Avis Google' />
+          <section className='sectionContent wrap'>
             <Reviews />
           </section>
         </section>
@@ -231,8 +249,12 @@ export default function Home() {
         <section
           id='contact'
           ref={contactRef}
-          className={styles.section}>
+          className='section'>
           <SectionHeader text='Nous contacter' />
+          <section className='sectionContent column'>
+            {' '}
+            <MailForm />
+          </section>
         </section>
       </main>
     </QueryClientProvider>

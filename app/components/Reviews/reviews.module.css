@@ -1,23 +1,37 @@
+.reviewsWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
 .averageRating {
-  font-size: 48px;
+  font-size: var(--titre-576px);
   font-weight: 900;
+  text-align: center;
+}
+
+.ratingWrapper {
+  padding: 0 20%;
+}
+
+.totalReviews {
   text-align: center;
 }
 
 @media (min-width: 576px) {
   .averageRating {
-    font-size: 64px;
+    font-size: var(--titre-768px);
   }
 }
 
 @media (min-width: 768px) {
   .averageRating {
-    font-size: 96px;
+    font-size: var(--titre-992px);
   }
 }
 
 @media (min-width: 992px) {
   .averageRating {
-    font-size: 128px;
+    font-size: var(--titre-1200px);
   }
 }

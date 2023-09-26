@@ -1,0 +1,70 @@
+.headerForm {
+  padding: 0;
+  align-items: flex-start;
+}
+
+.contactForm,
+.formGroup {
+  padding: 0;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 25px;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+
+  background-size: contain; /* Ajustez la taille de l'image pour qu'elle s'adapte à la boîte */
+  background-repeat: no-repeat; /* Assurez-vous que l'image ne se répète pas */
+  background-position: center; /* Centrez l'image dans la boîte */
+}
+
+.labelName::before {
+  background-image: url('/assets/user.svg');
+  width: 25px;
+  height: 20px;
+}
+
+.labelMail::before {
+  background-image: url('/assets/arrobase.svg');
+  width: 25px;
+  height: 20px;
+}
+
+.labelPhone::before {
+  background-image: url('/assets/phone.svg');
+  width: 25px;
+  height: 25px;
+}
+
+.labelMessage::before {
+  background-image: url('/assets/message.svg');
+  width: 25px;
+  height: 25px;
+}
+
+.input {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.visuallyHidden {
+  display: none;
+}
+
+.customFileUpload {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+}

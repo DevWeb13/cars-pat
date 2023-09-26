@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 0.9375rem;
-  color: var(--secondary-color-light);
+  color: var(--secondary-color);
   font-size: var(--text-576px);
   transition: all 0.3s ease-in-out;
   font-family: 'Inter', sans-serif;

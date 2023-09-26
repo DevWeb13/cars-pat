@@ -6,6 +6,7 @@
   height: 60px;
   width: 100%;
   z-index: 1000;
+  background-color: var(--secondary-color);
 }
 
 .headerContent {
@@ -24,4 +25,5 @@
   height: 40px;
   font-size: var(--titre-576px);
   min-width: fit-content;
+  text-shadow: 1px 0px var(--tertiary-color);
 }

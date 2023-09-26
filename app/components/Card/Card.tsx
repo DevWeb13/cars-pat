@@ -82,7 +82,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
   }, [isExpanded, textHeightInitial]);
 
   return (
-    <article className={styles.card}>
+    <article className='card'>
       <button
         className={styles.cardButton}
         onClick={() => setIsExpanded(!isExpanded)}>

@@ -156,6 +156,35 @@ const Navigation = () => {
       ),
     },
     {
+      id: 'avis',
+      name: 'Avis clients',
+      icon: (
+        <svg
+          width='30px'
+          height='100%'
+          viewBox='0 0 60 60'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'>
+          <path
+            d='M30 42.5V27.5'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+          />
+          <path
+            d='M30 17.5C31.3807 17.5 32.5 18.6193 32.5 20C32.5 21.3807 31.3807 22.5 30 22.5C28.6193 22.5 27.5 21.3807 27.5 20C27.5 18.6193 28.6193 17.5 30 17.5Z'
+            fill='currentColor'
+          />
+          <path
+            d='M55 30C55 41.785 55 47.6777 51.3387 51.3387C47.6777 55 41.785 55 30 55C18.2149 55 12.3223 55 8.66117 51.3387C5 47.6777 5 41.785 5 30C5 18.2149 5 12.3223 8.66117 8.66117C12.3223 5 18.2149 5 30 5C41.785 5 47.6777 5 51.3387 8.66117C53.7732 11.0955 54.589 14.5164 54.8623 20'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+          />
+        </svg>
+      ),
+    },
+    {
       id: 'contact',
       name: 'Contact',
       nameTwo: 'Devis en ligne',

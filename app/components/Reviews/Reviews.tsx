@@ -1,11 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import styles from './reviews.module.css';
+import Review from '../Review/Review';
+import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
 
-type Review = {
+export type Review = {
   author_name: string;
-  text: string;
+  author_url: string;
+  language: string;
+  original_language: string;
+  profile_photo_url: string;
   rating: number;
+  relative_time_description: string;
+  text: string;
+  time: number;
+  translated: boolean;
 };
 
 type ReviewsState = {
@@ -15,50 +25,56 @@ type ReviewsState = {
 };
 
 export default function ReviewsPage() {
-  const [state, setState] = useState<ReviewsState>({
-    reviews: [],
-    averageRating: null,
-    totalReviews: null,
-  });
-  const [error, setError] = useState<string | null>(null);
+  const fetchReviews = async () => {
+    try {
+      const res = await fetch('/api/reviews');
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const data: ReviewsState = await res.json();
+      return data;
+    } catch (error) {
+      console.error('An error occurred while fetching data: ', error);
+    }
+  };
 
-  useEffect(() => {
-    fetch('/reviews')
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) {
-          setError(data.error);
-        } else {
-          setState({
-            reviews: data.reviews,
-            averageRating: data.averageRating,
-            totalReviews: data.totalReviews,
-          });
-        }
-      })
-      .catch((err) => {
-        setError(`Erreur lors de la récupération des avis: ${err.message}`);
-      });
-  }, []);
+  const { data, error } = useQuery(['reviews'], () => fetchReviews());
+
+  // console.log({ data });
 
   return (
-    <div>
+    <>
       {error ? (
-        <p>{error}</p>
+        <p>{(error as Error).message}</p>
       ) : (
-        <div>
-          <p className={styles.averageRating}>{state.averageRating}</p>
-          <RatingComponent value={state.averageRating || 5} />
-          <p>{state.totalReviews} avis</p>
-          {state.reviews.map((review, index) => (
-            <div key={index}>
-              <h3>{review.author_name}</h3>
-              <p>{review.text}</p>
-              <p>Rating: {review.rating}</p>
-            </div>
-          ))}
-        </div>
+        <>
+          <p className={styles.averageRating}>{data?.averageRating}</p>
+          <div className={styles.ratingWrapper}>
+            <RatingComponent value={data?.averageRating || 5} />
+          </div>
+          <p className={`${styles.totalReviews} text`}>
+            {data?.totalReviews} avis
+          </p>
+          <div className='sectionContent wrap'>
+            {data?.reviews.map((review, index) => (
+              <Review
+                key={index}
+                review={review}
+              />
+            ))}
+          </div>
+          <div className='sectionContent'>
+            <Link
+              className='button'
+              href='https://www.google.fr/maps/place/Cars+Pat/@43.2483415,5.3982268,17z/data=!4m8!3m7!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!9m1!1b1!16s%2Fg%2F1tf20zt9?entry=ttu'
+              target='_blank'>
+              <p>Voir tous les avis</p>
+              <p>-----</p>
+              <p>Poster un avis</p>
+            </Link>
+          </div>
+        </>
       )}
-    </div>
+    </>
   );
 }

@@ -1,8 +1,8 @@
 .preHeader {
   display: flex;
   width: 100%;
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
   font-size: var(--textFooter-576px);
   justify-content: flex-end;
   padding: 3px 4%;

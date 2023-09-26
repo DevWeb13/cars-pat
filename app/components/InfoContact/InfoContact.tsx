@@ -22,7 +22,8 @@ const InfoContact: FC<InfoContactProps> = ({
           src={logo}
           alt={alt}
           width={25}
-          height={25}></Image>
+          height={25}
+        />
         <h2 className={`${styles.infoContactTitle} textBold`}>{title}</h2>
       </div>
       <p className='text'>

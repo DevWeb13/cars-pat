@@ -1,12 +1,3 @@
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  padding: 40px 0;
-  max-width: 1440px;
-}
-
 .sectionHome {
   position: relative;
   display: flex;
@@ -18,30 +9,15 @@
   padding: 0;
 }
 
-.sectionContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
-  gap: 10px;
-}
+.homeImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-.sectionContent img {
-  max-width: 950px;
-}
-
-.wrap {
-  flex-wrap: wrap;
-}
-
-.column {
-  flex-direction: column;
-}
-
-.sectionContentInfos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  object-fit: cover;
+  object-position: center;
 }
 
 .infosContacts {
@@ -49,53 +25,12 @@
   flex-direction: column;
   gap: 10px;
   height: fit-content;
+  padding: 20px;
+  border: 1px solid var(--primary-color);
+  max-width: 100%;
 }
 
 .map {
   border: 1px solid var(--primary-color);
   max-width: 100%;
-}
-
-@media (min-width: 576px) {
-  .section,
-  .sectionContent {
-    gap: 15px;
-  }
-
-  .sectionContent {
-    padding: 0 10px;
-  }
-}
-
-@media (min-width: 768px) {
-  .section,
-  .sectionContent {
-    gap: 20px;
-  }
-
-  .sectionContent {
-    padding: 0 20px;
-  }
-}
-
-@media (min-width: 992px) {
-  .section,
-  .sectionContent {
-    gap: 30px;
-  }
-
-  .sectionContent {
-    padding: 0 30px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .section,
-  .sectionContent {
-    gap: 40px;
-  }
-
-  .sectionContent {
-    padding: 0 40px;
-  }
 }

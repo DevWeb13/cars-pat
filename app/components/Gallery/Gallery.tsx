@@ -14,7 +14,7 @@ const Gallery = () => {
 
   const fetchPhotos = async (vehicleName: string) => {
     try {
-      const res = await fetch(`/photos/${vehicleName}`);
+      const res = await fetch(`/api/photos/${vehicleName}`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
