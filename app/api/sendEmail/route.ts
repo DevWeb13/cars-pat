@@ -17,9 +17,9 @@ export async function POST(request: any): Promise<NextResponse> {
 
     let transporter = nodemailer.createTransport({
       host: 'smtp-mail.outlook.com',
-      port: 465,
-      secure: true, // true for 465, false for other ports
-
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      requireTLS: true,
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
