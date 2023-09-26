@@ -15,7 +15,7 @@ export async function POST(request: any): Promise<NextResponse> {
     const photos = formData.getAll('photos'); // Récupère toutes les photos
     console.log({ name, email, message, photos });
 
-    const nodemailer = require('nodemailer');
+    // const nodemailer = require('nodemailer');
 
     let transporter = nodemailer.createTransport({
       host: 'smtp.office365.com', // Serveur SMTP d'Outlook
@@ -26,18 +26,6 @@ export async function POST(request: any): Promise<NextResponse> {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
       },
-    });
-    await new Promise((resolve, reject) => {
-      // verify connection configuration
-      transporter.verify(function (error, success) {
-        if (error) {
-          console.log(error);
-          reject(error);
-        } else {
-          console.log('Server is ready to take our messages');
-          resolve(success);
-        }
-      });
     });
 
     const attachments = await Promise.all(
@@ -59,20 +47,18 @@ export async function POST(request: any): Promise<NextResponse> {
       attachments: attachments, // Ajoutez les pièces jointes ici
     };
 
-    await new Promise((resolve, reject) => {
-      // send mail
-      transporter.sendMail(
-        mailOption,
-        (err: Error | null, info: SentMessageInfo) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log(info);
+    // await new Promise((resolve, reject) => {
+    transporter.sendMail(
+      mailOption,
+      (err: Error | null, info: SentMessageInfo) => {
+        if (err) {
+          console.log(err);
+          return;
         }
-      );
-    });
-
+        console.log(info);
+      }
+    );
+    // });
     console.log(mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
