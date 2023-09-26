@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer, {
-  Transporter,
-  SendMailOptions,
-  SentMessageInfo,
-} from 'nodemailer';
+import nodemailer, { SendMailOptions } from 'nodemailer';
 
 export async function POST(request: any): Promise<NextResponse> {
   try {
@@ -14,8 +10,6 @@ export async function POST(request: any): Promise<NextResponse> {
     const message = formData.get('message') as string;
     const photos = formData.getAll('photos'); // Récupère toutes les photos
     console.log({ name, email, message, photos });
-
-    // const nodemailer = require('nodemailer');
 
     let transporter = nodemailer.createTransport({
       host: 'smtp.office365.com', // Serveur SMTP d'Outlook
@@ -47,22 +41,14 @@ export async function POST(request: any): Promise<NextResponse> {
       attachments: attachments, // Ajoutez les pièces jointes ici
     };
 
-    await new Promise((resolve, reject) => {
-      transporter.sendMail(
-        mailOption,
-        (err: Error | null, info: SentMessageInfo) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log(info);
-        }
-      );
-    });
+    // Utilisez await ici pour attendre que l'e-mail soit envoyé
+    const info = await transporter.sendMail(mailOption);
+    console.log(info);
     console.log(mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: 'Email not sent' }, { status: 500 });
   }
 }
