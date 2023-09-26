@@ -27,6 +27,18 @@ export async function POST(request: any): Promise<NextResponse> {
         pass: process.env.PASSWORD,
       },
     });
+    await new Promise((resolve, reject) => {
+      // verify connection configuration
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.log(error);
+          reject(error);
+        } else {
+          console.log('Server is ready to take our messages');
+          resolve(success);
+        }
+      });
+    });
 
     const attachments = await Promise.all(
       photos.map(async (photo: any) => {
@@ -47,16 +59,20 @@ export async function POST(request: any): Promise<NextResponse> {
       attachments: attachments, // Ajoutez les pièces jointes ici
     };
 
-    await transporter.sendMail(
-      mailOption,
-      (err: Error | null, info: SentMessageInfo) => {
-        if (err) {
-          console.log(err);
-          return;
+    await new Promise((resolve, reject) => {
+      // send mail
+      transporter.sendMail(
+        mailOption,
+        (err: Error | null, info: SentMessageInfo) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log(info);
         }
-        console.log(info);
-      }
-    );
+      );
+    });
+
     console.log(mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
