@@ -21,6 +21,7 @@ export async function POST(request: any): Promise<NextResponse> {
       host: 'smtp.office365.com', // Serveur SMTP d'Outlook
       port: 587, // Port standard pour le SMTP avec STARTTLS
       secure: false, // Pour STARTTLS, secure doit être défini sur false
+      requireTLS: true, // Oblige nodemailer à utiliser STARTTLS
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
