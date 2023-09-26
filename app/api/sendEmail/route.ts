@@ -47,18 +47,18 @@ export async function POST(request: any): Promise<NextResponse> {
       attachments: attachments, // Ajoutez les pièces jointes ici
     };
 
-    // await new Promise((resolve, reject) => {
-    transporter.sendMail(
-      mailOption,
-      (err: Error | null, info: SentMessageInfo) => {
-        if (err) {
-          console.log(err);
-          return;
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(
+        mailOption,
+        (err: Error | null, info: SentMessageInfo) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log(info);
         }
-        console.log(info);
-      }
-    );
-    // });
+      );
+    });
     console.log(mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
