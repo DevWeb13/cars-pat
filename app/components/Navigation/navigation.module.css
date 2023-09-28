@@ -73,10 +73,19 @@
     gap: 5%;
   }
   .link {
-    color: var(--tertiary-color);
+    color: var(--secondary-color-light);
+  }
+
+  .link:hover {
+    color: var(--secondary-color);
   }
 
   .activeLink {
+    color: var(--primary-color);
+    text-shadow: 1px 1px var(--secondary-color);
+  }
+
+  .activeLink:hover {
     color: var(--primary-color);
   }
 

@@ -16,6 +16,7 @@ import InfoContact from './components/InfoContact/InfoContact';
 import Reviews from './components/Reviews/Reviews';
 import Link from 'next/link';
 import MailForm from './components/MailForm/MailForm';
+import HomeAside from './components/HomeAside/HomeAside';
 
 const queryClient = new QueryClient();
 
@@ -99,14 +100,32 @@ export default function Home() {
           id='home'
           ref={homeRef}
           className={styles.sectionHome}>
-          <Image
-            src='/assets/photos/porscheRougeAvecFond.jpg'
-            alt='home'
-            width={1920}
-            height={1080}
-            className={styles.homeImage}
-            priority
-          />
+          {/* <SectionHeader manyWord={['Cars Pat', 'Carrosserie', 'Peinture']} /> */}
+          <section
+            className={
+              styles.sectionContentHome + ' ' + 'sectionContent column'
+            }>
+            <p className='text'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              voluptatibus, quos, voluptatem, quas, quod quia nesciunt
+              voluptatum officia quibusdam quae voluptas. Quisquam voluptatibus,
+              quos, voluptatem, quas, quod quia nesciunt voluptatum officia
+              quibusdam quae voluptas.
+            </p>
+            <div className={styles.homeImageAndAsideWrapper}>
+              <div className={styles.homeImageWrapper}>
+                <Image
+                  src='/assets/photos/porscheRougeAvecFond.jpg'
+                  alt='home'
+                  width={1920}
+                  height={1080}
+                  className={styles.homeImage}
+                  priority
+                />
+              </div>
+              <HomeAside />
+            </div>
+          </section>
         </Section>
 
         <section
@@ -114,6 +133,70 @@ export default function Home() {
           ref={servicesRef}
           className='section'>
           <SectionHeader text='Nos services' />
+          <section className={styles.newServices}>
+            <article className={styles.newService}>
+              <div className={styles.newServiceContent}>
+                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
+                  Carrosserie
+                </h2>
+                <p className='text'>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Minima omnis est, optio magnam dicta corrupti harum
+                  praesentium consectetur in amet nostrum cum dolorum vitae
+                  doloremque id ducimus adipisci voluptatibu debitis perferendis
+                  reprehenderit pariatur rem quo voluptate illo? Delectus
+                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
+                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
+                  omnis praesentium consectetur in amet nostrum cum dolorum
+                  vitae doloremque id ducimus adipisci voluptatibu debitis
+                  perferendis reprehenderit pariatur rem quo voluptate illo?
+                  Delectus blanditiis dicta veritatis quas recusandae odio at
+                  fugiat vel velit distinctio sunt sint est officiis quaerat
+                  ullam, ipsa omnis
+                </p>
+              </div>
+              <div className={styles.newServicePhoto}>
+                <Image
+                  src='/assets/photos/gros-plan-processus-entretien-voiture.jpg'
+                  alt='peinture'
+                  width={1000}
+                  height={667}
+                  className={styles.newServiceImage}
+                />
+              </div>
+            </article>
+            <article className={styles.newService}>
+              <div className={styles.newServicePhoto}>
+                <Image
+                  src='/assets/photos/pistolet-peinture-dans-mains-homme-pour-peindre-voiture.jpg'
+                  alt='peinture'
+                  width={1000}
+                  height={667}
+                  className={styles.newServiceImage}
+                />
+              </div>
+              <div className={styles.newServiceContent}>
+                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
+                  Peinture
+                </h2>
+                <p className='text'>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Minima omnis est, optio magnam dicta corrupti harum
+                  praesentium consectetur in amet nostrum cum dolorum vitae
+                  doloremque id ducimus adipisci voluptatibu debitis perferendis
+                  reprehenderit pariatur rem quo voluptate illo? Delectus
+                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
+                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
+                  omnis praesentium consectetur in amet nostrum cum dolorum
+                  vitae doloremque id ducimus adipisci voluptatibu debitis
+                  perferendis reprehenderit pariatur rem quo voluptate illo?
+                  Delectus blanditiis dicta veritatis quas recusandae odio at
+                  fugiat vel velit distinctio sunt sint est officiis quaerat
+                  ullam, ipsa omnis
+                </p>
+              </div>
+            </article>
+          </section>
           <section className='sectionContent wrap'>
             <Card
               cardData={{

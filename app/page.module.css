@@ -1,21 +1,37 @@
 .sectionHome {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
   height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
-  padding: 0;
+  padding-bottom: 0;
+}
+
+.sectionContentHome {
+  height: 100%;
+  max-height: 100%;
+  padding-top: 0;
+  justify-content: flex-start;
+}
+
+.sectionContentHome p {
+  width: 100%;
+}
+
+.homeImageAndAsideWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.homeImageWrapper {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
 }
 
 .homeImage {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center;
 }
@@ -33,4 +49,43 @@
 .map {
   border: 1px solid var(--primary-color);
   max-width: 100%;
+}
+
+.newService {
+  display: flex;
+}
+
+.newServiceContent {
+  display: flex;
+  flex-direction: column;
+
+  padding: 5%;
+  justify-content: space-around;
+  max-width: 50%;
+}
+
+.newSectionTitle {
+  color: var(--primary-color);
+  text-shadow: 1.5px 0px var(--secondary-color);
+}
+
+.newServicePhoto {
+  min-width: 50%;
+}
+
+.newServiceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 576px) {
+  .sectionContentHome {
+    padding: 10px;
+  }
+  .homeImageAndAsideWrapper {
+    flex-direction: row;
+    width: 100%;
+  }
 }

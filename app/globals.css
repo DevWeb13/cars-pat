@@ -15,6 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,10 +44,10 @@ input[type='reset'] {
 :root {
   --primary-color: #e67f2a;
   --secondary-color: #1d1d1d;
-  --secondary-color-light: rgba(30, 30, 30, 0.86);
-  --tertiary-color: #f0f0f0;
+  --secondary-color-light: rgba(30, 30, 30, 0.75);
+  --tertiary-color: rgb(245, 245, 245);
   --quaternary-color: #fbbc04;
-  --backgroundHeader: rgba(30, 30, 30, 0.86);
+  --backgroundHeader: rgba(245, 245, 245, 0.86);
 
   --titre-576px: 3rem;
   --sousTitre-576px: 1.2rem;
@@ -89,6 +90,7 @@ input[type='reset'] {
 .titre {
   font-size: var(--titre-576px);
   font-family: 'BirdsOfParadise', sans-serif;
+  font-weight: 100;
 }
 .sousTitre {
   font-size: var(--sousTitre-576px);
@@ -113,21 +115,21 @@ input[type='reset'] {
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  padding: 40px 0;
-  max-width: 1440px;
+  padding: 10px 0;
+  /* max-width: 1440px; */
 }
 
 .sectionContent {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 10px 0px 10px;
+  padding: 10px;
   gap: 10px;
 }
 
-.sectionContent img {
+/* .sectionContent img {
   max-width: 950px;
-}
+} */
 
 .card {
   display: flex;
@@ -284,9 +286,9 @@ input[type='reset'] {
   transition: all 0.3s ease-in-out;
 }
 
-#main {
+/* #main {
   background: var(--tertiary-color);
-}
+} */
 
 @media (min-width: 992px) {
   .ReactModal__Overlay {
