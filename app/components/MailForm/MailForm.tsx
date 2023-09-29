@@ -34,6 +34,8 @@ const MailForm = () => {
     'image/png',
     'image/gif',
     'application/pdf',
+    //video
+    'video/mp4',
   ];
   const MAX_SIZE = 18 * 1024 * 1024; // 18MB
 
@@ -159,43 +161,84 @@ const MailForm = () => {
     }
   };
 
+  const uploadFilesToBlob = async (files: File[]) => {
+    const uploadedUrls = [];
+
+    for (const file of files) {
+      const response = await fetch(`/api/uploadToBlob?filename=${file.name}`, {
+        method: 'POST',
+        body: file,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to upload file to Blob');
+      }
+
+      const data = await response.json();
+      console.log({ data });
+      if (data && data.blobUrl) {
+        uploadedUrls.push(data.blobUrl);
+      } else {
+        throw new Error('URL not returned from /api/uploadToBlob');
+      }
+    }
+    console.log({ uploadedUrls });
+    return uploadedUrls;
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(event.currentTarget.surName.value);
     setStatus('loading');
+    const name = event.currentTarget.surName.value;
+    const email = event.currentTarget.email.value;
+    const phone = event.currentTarget.phone.value;
+    const message = event.currentTarget.message.value;
 
-    const isNameValid = validateName(event.currentTarget.surName.value);
-    const isEmailValid = validateEmail(event.currentTarget.email.value);
-    const isPhoneValid = validatePhone(event.currentTarget.phone.value);
-    const isMessageValid = validateMessage(event.currentTarget.message.value);
+    const isNameValid = validateName(name);
+    const isEmailValid = validateEmail(email);
+    const isPhoneValid = validatePhone(phone);
+    const isMessageValid = validateMessage(message);
 
     if (!isNameValid || !isEmailValid || !isMessageValid || !isPhoneValid) {
       setStatus(null);
       return;
     }
+    console.log(images);
+    try {
+      // Étape 1: Téléchargez les fichiers sur Vercel Blob
+      const fileUrls = await uploadFilesToBlob(images.map((img) => img.file));
+      console.log({ fileUrls });
 
-    const formData = new FormData();
-    images.forEach((image) => {
-      formData.append('photos', image.file);
-    });
-    formData.append('name', event.currentTarget.surName.value);
-    formData.append('email', event.currentTarget.email.value);
-    formData.append('phone', event.currentTarget.phone.value);
-    formData.append('message', event.currentTarget.message.value);
+      // Étape 2: Envoyez ces URL de fichier à votre endpoint /api/sendEmail
+      const formData = new FormData();
+      console.log(formData);
+      fileUrls.forEach((url) => {
+        formData.append('photos', url); // Nous envoyons des URL au lieu de fichiers
+      });
+      console.log(name);
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('message', message);
 
-    const response = await fetch('/api/sendEmail', {
-      method: 'POST',
-      body: formData,
-    });
-    console.log(await response.json());
-    // const responseData = await response.json();
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        body: formData,
+      });
 
-    if (response.ok) {
-      setStatus('success');
-      setImages([]); // Réinitialise les images
-      formRef.current?.reset(); // Réinitialise le formulaire
-    } else {
+      if (response.ok) {
+        setStatus('success');
+        setImages([]); // Réinitialise les images
+        formRef.current?.reset(); // Réinitialise le formulaire
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Error:', error);
       setStatus('error');
     }
+
     setTimeout(() => {
       setStatus(null);
     }, 5000);

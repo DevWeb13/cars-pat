@@ -18,9 +18,15 @@ export async function POST(request: any): Promise<NextResponse> {
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
     const message = formData.get('message') as string;
-    const photos = formData.getAll('photos'); // Récupère toutes les photos
+    const photoUrls = formData.getAll('photos'); // Récupère toutes les URL des photos
 
-    console.log('Form data received:', { name, email, phone, message, photos });
+    console.log('Form data received:', {
+      name,
+      email,
+      phone,
+      message,
+      photoUrls,
+    });
 
     let transporter = nodemailer.createTransport({
       host: 'smtp.office365.com', // Serveur SMTP d'Outlook
@@ -33,29 +39,26 @@ export async function POST(request: any): Promise<NextResponse> {
       },
     });
 
-    const attachments = await Promise.all(
-      photos.map(async (photo: any) => {
-        const buffer = Buffer.from(await photo.arrayBuffer());
-        return {
-          filename: photo.name,
-          content: buffer,
-        };
-      })
-    );
+    // Créer une liste de liens pour les photos
+    const photoLinks = photoUrls
+      .map(
+        (url: string) => `<a href="${url}">${url}
+      <img src="${url}" alt="${url}" style="width: 100px; height: 100px;">
+      </a>`
+      )
+      .join('<br>');
 
     const mailOption: SendMailOptions = {
       from: `${email} <${process.env.EMAIL}>`,
       to: process.env.EMAIL,
       replyTo: email,
       subject: `Message from ${name} - ${phone} - ${email}`,
-      html: `<p>${message}</p>`,
-      attachments: attachments, // Ajoutez les pièces jointes ici
+      html: `<p>${message}</p><br><p>Photos:</p><br>${photoLinks}`,
     };
 
     // Utilisez await ici pour attendre que l'e-mail soit envoyé
     const info = await transporter.sendMail(mailOption);
     console.log('Email sent:', info);
-    console.log('Attachments:', mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
   } catch (error) {
