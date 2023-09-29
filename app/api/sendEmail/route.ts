@@ -4,12 +4,23 @@ import nodemailer, { SendMailOptions } from 'nodemailer';
 export async function POST(request: any): Promise<NextResponse> {
   try {
     const formData = await request.formData();
+
+    // Vérification des données du formulaire
+    if (!formData) {
+      console.error('No form data received');
+      return NextResponse.json(
+        { message: 'No form data received' },
+        { status: 400 }
+      );
+    }
+
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
     const message = formData.get('message') as string;
     const photos = formData.getAll('photos'); // Récupère toutes les photos
-    console.log({ name, email, message, photos });
+
+    console.log('Form data received:', { name, email, phone, message, photos });
 
     let transporter = nodemailer.createTransport({
       host: 'smtp.office365.com', // Serveur SMTP d'Outlook
@@ -43,12 +54,13 @@ export async function POST(request: any): Promise<NextResponse> {
 
     // Utilisez await ici pour attendre que l'e-mail soit envoyé
     const info = await transporter.sendMail(mailOption);
-    console.log(info);
-    console.log(mailOption.attachments);
+    console.log('Email sent:', info);
+    console.log('Attachments:', mailOption.attachments);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
   } catch (error) {
     console.error(error);
+    console.error('Error sending email:', error);
     return NextResponse.json({ message: 'Email not sent' }, { status: 500 });
   }
 }
