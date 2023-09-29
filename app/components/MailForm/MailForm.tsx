@@ -19,6 +19,7 @@ type ErrorState = {
 
 const MailForm = () => {
   const [images, setImages] = useState<ImageState>([]);
+  const [totalFileSize, setTotalFileSize] = useState<number>(0);
 
   const [errors, setErrors] = useState<ErrorState>({});
   const [status, setStatus] = useState<'loading' | 'success' | 'error' | null>(
@@ -26,6 +27,7 @@ const MailForm = () => {
   );
 
   const formRef = useRef<HTMLFormElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const allowedFileTypes = [
     'image/jpeg',
@@ -103,6 +105,7 @@ const MailForm = () => {
       const totalSize =
         newFiles.reduce((acc, file) => acc + file.size, 0) +
         images.reduce((acc, imageItem) => acc + imageItem.file.size, 0);
+      setTotalFileSize(totalSize);
       if (totalSize > MAX_SIZE) {
         setErrors((prev) => ({
           ...prev,
@@ -147,6 +150,13 @@ const MailForm = () => {
     const newImages = [...images];
     newImages.splice(index, 1);
     setImages(newImages);
+    const sizeAfterRemoval = totalFileSize - images[index].file.size;
+    setTotalFileSize(sizeAfterRemoval);
+
+    // Réinitialisez la valeur de l'élément d'entrée
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -313,6 +323,7 @@ const MailForm = () => {
             Sélectionner des fichiers
           </label>
           <input
+            ref={fileInputRef}
             type='file'
             id='photos'
             name='photos'
@@ -320,6 +331,12 @@ const MailForm = () => {
             className={styles.visuallyHidden}
             onChange={handleFileChange}
           />
+          {images.length > 0 && (
+            <p>
+              Taille totale des fichiers :{' '}
+              {(totalFileSize / (1024 * 1024)).toFixed(2)} MB
+            </p>
+          )}
 
           {images.length > 0 &&
             images.map((image, index) => (
