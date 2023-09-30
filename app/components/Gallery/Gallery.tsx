@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';
 
 import RadioButtons from '../RadioButtons/RadioButtons';
+import Loader from '../Loader/Loader';
 
 const Gallery = () => {
   const [vehicleActive, setVehicleActive] = useState('peugeot504');
@@ -32,7 +33,7 @@ const Gallery = () => {
 
   useEffect(() => {
     if (galleryRef.current) {
-      setGalleryWidth(galleryRef.current.offsetWidth * 0.8);
+      setGalleryWidth(galleryRef.current.offsetWidth * 0.5);
     }
   }, [galleryRef]);
 
@@ -46,39 +47,45 @@ const Gallery = () => {
       />
 
       {status === 'error' && <p>error</p>}
-
-      <ImageGallery
-        items={
-          data?.map((photo) => {
-            return {
-              original: `assets/photos/${vehicleActive}/${photo}`,
-              thumbnail: `assets/photos/${vehicleActive}/${photo}`,
-              originalAlt: vehicleActive,
-              thumbnailAlt: vehicleActive,
-              originalHeight: galleryWidth || 500,
-              originalWidth: galleryWidth || 750,
-              thumbnailHeight: 70,
-              thumbnailWidth: 150,
-            };
-          }) || [
-            {
-              original: 'assets/photos/Harley-removebg-preview.png',
-              thumbnail: 'assets/photos/Harley-removebg-preview.png',
-              originalAlt: 'harley',
-              thumbnailAlt: 'harley',
-              originalHeight: galleryWidth || 500,
-              originalWidth: galleryWidth || 750,
-              thumbnailHeight: 70,
-              thumbnailWidth: 90,
-            },
-          ]
-        }
-        showBullets={false}
-        autoPlay={true}
-        slideInterval={5000}
-        slideDuration={500}
-        lazyLoad={true}
-      />
+      {status === 'loading' ? (
+        <Loader
+          width={galleryWidth}
+          height={galleryWidth}
+        />
+      ) : (
+        <ImageGallery
+          items={
+            data?.map((photo) => {
+              return {
+                original: `assets/photos/${vehicleActive}/${photo}`,
+                thumbnail: `assets/photos/${vehicleActive}/${photo}`,
+                originalAlt: vehicleActive,
+                thumbnailAlt: vehicleActive,
+                originalHeight: galleryWidth || 500,
+                originalWidth: galleryWidth || 750,
+                thumbnailHeight: 70,
+                thumbnailWidth: 150,
+              };
+            }) || [
+              {
+                original: 'assets/photos/Harley-removebg-preview.png',
+                thumbnail: 'assets/photos/Harley-removebg-preview.png',
+                originalAlt: 'harley',
+                thumbnailAlt: 'harley',
+                originalHeight: galleryWidth || 500,
+                originalWidth: galleryWidth || 750,
+                thumbnailHeight: 70,
+                thumbnailWidth: 90,
+              },
+            ]
+          }
+          showBullets={false}
+          autoPlay={true}
+          slideInterval={5000}
+          slideDuration={500}
+          lazyLoad={true}
+        />
+      )}
     </div>
   );
 };

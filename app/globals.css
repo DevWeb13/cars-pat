@@ -47,7 +47,7 @@ input[type='reset'] {
   --secondary-color-light: rgba(30, 30, 30, 0.75);
   --tertiary-color: rgb(245, 245, 245);
   --quaternary-color: #fbbc04;
-  --backgroundHeader: rgba(245, 245, 245, 0.86);
+  --backgroundHeader: rgba(30, 30, 30, 0.86);
 
   --titre-576px: 3rem;
   --sousTitre-576px: 1.2rem;
@@ -62,13 +62,13 @@ input[type='reset'] {
   --textFooter-768px: 0.6875rem;
 
   --titre-992px: 6rem;
-  --sous-titre-992px: 1.3rem;
+  --sous-titre-992px: 1.6rem;
   --text-992px: 1rem;
   --textBold-992px: 1.125rem;
   --textFooter-992px: 0.75rem;
 
   --titre-1200px: 7rem;
-  --sous-titre-1200px: 1.4rem;
+  --sous-titre-1200px: 1.8rem;
   --text-1200px: 1.125rem;
   --textBold-1200px: 1.25rem;
   --textFooter-1200px: 0.8125rem;
@@ -81,7 +81,8 @@ input[type='reset'] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid var(--secondary-color);
+  border-top: 1px solid var(--primary-color);
+  background-color: var(--tertiary-color);
 }
 
 .primaryColor {
@@ -141,6 +142,7 @@ input[type='reset'] {
   padding: 20px;
   gap: 10px;
   height: 100%;
+  width: 100%;
 }
 
 .button {
@@ -153,16 +155,17 @@ input[type='reset'] {
   border: 1.5px solid var(--secondary-color);
 
   background-color: var(--primary-color);
-  color: var(--tertiary-color);
-  font-size: var(--textFooter-576px);
+  color: var(--secondary-color);
+  /* font-size: var(--textFooter-576px); */
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  text-wrap: nowrap;
 }
 
 .button:hover {
-  color: var(--secondary-color);
+  color: var(--tertiary-color);
   /* border: 1.5px solid var(--primary-color); */
 }
 
@@ -189,14 +192,18 @@ input[type='reset'] {
   .textFooter {
     font-size: var(--textFooter-768px);
   }
-  .section,
+  /* .section,
   .sectionContent {
     gap: 15px;
   }
 
-  .sectionContent {
-    padding: 0 10px;
+  .section {
+    padding: 15px 0;
   }
+
+  .sectionContent {
+    padding: 0 15px;
+  } */
   .card {
     padding: 25px;
     max-width: 48%;
@@ -221,6 +228,7 @@ input[type='reset'] {
   }
   .section,
   .sectionContent {
+    padding: 20px 0;
     gap: 20px;
   }
 
@@ -252,6 +260,7 @@ input[type='reset'] {
   }
   .section,
   .sectionContent {
+    padding: 30px 0;
     gap: 30px;
   }
 
@@ -267,6 +276,7 @@ input[type='reset'] {
 @media (min-width: 1200px) {
   .section,
   .sectionContent {
+    padding: 40px 0;
     gap: 40px;
   }
 
@@ -308,4 +318,30 @@ input[type='reset'] {
 
 .column {
   flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 1s ease-in-out forwards;
 }

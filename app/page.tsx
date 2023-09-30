@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import Image from 'next/image';
 
+import Loader from './components/Loader/Loader';
 import Section from './components/Section/Section';
 import SectionHeader from './components/SectionHeader/SectionHeader';
 import Card from './components/Card/Card';
@@ -17,6 +18,7 @@ import Reviews from './components/Reviews/Reviews';
 import Link from 'next/link';
 import MailForm from './components/MailForm/MailForm';
 import HomeAside from './components/HomeAside/HomeAside';
+import HomeImageWrapper from './components/HomeImageWrapper/HomeImageWrapper';
 
 const queryClient = new QueryClient();
 
@@ -100,32 +102,24 @@ export default function Home() {
           id='home'
           ref={homeRef}
           className={styles.sectionHome}>
-          {/* <SectionHeader manyWord={['Cars Pat', 'Carrosserie', 'Peinture']} /> */}
-          <section
-            className={
-              styles.sectionContentHome + ' ' + 'sectionContent column'
-            }>
-            <p className='text'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptatibus, quos, voluptatem, quas, quod quia nesciunt
-              voluptatum officia quibusdam quae voluptas. Quisquam voluptatibus,
-              quos, voluptatem, quas, quod quia nesciunt voluptatum officia
-              quibusdam quae voluptas.
-            </p>
-            <div className={styles.homeImageAndAsideWrapper}>
-              <div className={styles.homeImageWrapper}>
-                <Image
-                  src='/assets/photos/porscheRougeAvecFond.jpg'
-                  alt='home'
-                  width={1920}
-                  height={1080}
-                  className={styles.homeImage}
-                  priority
-                />
-              </div>
-              <HomeAside />
-            </div>
-          </section>
+          <SectionHeader manyWord={['Carrosserie', 'Peinture']} />
+
+          {/* <p className={styles.homeText + ' ' + 'text'}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            voluptatibus, quos, voluptatem, quas, quod quia nesciunt voluptatum
+            officia quibusdam quae voluptas. Quisquam voluptatibus, quos,
+            voluptatem, quas, quod quia nesciunt voluptatum officia quibusdam
+            quae voluptas.
+          </p> */}
+          <div className={styles.homeImageAndAsideWrapper}>
+            <HomeImageWrapper
+              photos={[
+                '/assets/photos/gros-plan-processus-entretien-voiture.jpg',
+                '/assets/photos/pistolet-peinture-dans-mains-homme-pour-peindre-voiture.jpg',
+              ]}
+            />
+            <HomeAside />
+          </div>
         </Section>
 
         <section
@@ -134,7 +128,9 @@ export default function Home() {
           className='section'>
           <SectionHeader text='Nos services' />
           <section className={styles.newServices}>
-            <article className={styles.newService}>
+            <article
+              className={styles.newService}
+              id='carrosserie'>
               <div className={styles.newServiceContent}>
                 <h2 className={'titre' + ' ' + styles.newSectionTitle}>
                   Carrosserie
@@ -165,7 +161,9 @@ export default function Home() {
                 />
               </div>
             </article>
-            <article className={styles.newService}>
+            <article
+              className={styles.newService}
+              id='peinture'>
               <div className={styles.newServicePhoto}>
                 <Image
                   src='/assets/photos/pistolet-peinture-dans-mains-homme-pour-peindre-voiture.jpg'

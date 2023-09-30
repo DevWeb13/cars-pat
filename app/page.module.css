@@ -1,12 +1,13 @@
 .sectionHome {
   height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
   padding-bottom: 0;
+  gap: 0;
 }
 
 .sectionContentHome {
   height: 100%;
   max-height: 100%;
-  padding-top: 0;
+  padding: 0;
   justify-content: flex-start;
 }
 
@@ -14,26 +15,17 @@
   width: 100%;
 }
 
+.homeText {
+  padding: 0 10px;
+}
+
 .homeImageAndAsideWrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   max-height: 100%;
   height: 100%;
   overflow: hidden;
-}
-
-.homeImageWrapper {
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-}
-
-.homeImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .infosContacts {
@@ -66,7 +58,7 @@
 
 .newSectionTitle {
   color: var(--primary-color);
-  text-shadow: 1.5px 0px var(--secondary-color);
+  text-shadow: 2px 0px var(--secondary-color);
 }
 
 .newServicePhoto {
@@ -82,10 +74,26 @@
 
 @media (min-width: 576px) {
   .sectionContentHome {
-    padding: 10px;
+    padding: inherit;
+  }
+  .homeText {
+    padding: 0 15px;
   }
   .homeImageAndAsideWrapper {
     flex-direction: row;
     width: 100%;
+  }
+}
+
+@media (max-height: 550px) {
+  .sectionHome {
+    padding: 0;
+  }
+  .sectionContentHome {
+    padding: 0 15px;
+    gap: 0;
+  }
+  .none {
+    display: none;
   }
 }

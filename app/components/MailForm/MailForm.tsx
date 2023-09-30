@@ -412,7 +412,8 @@ const MailForm = () => {
         </div>
         <button
           type='submit'
-          disabled={status === 'loading'}>
+          disabled={status === 'loading'}
+          className='button'>
           Envoyer
         </button>
       </form>

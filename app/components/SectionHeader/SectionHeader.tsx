@@ -17,11 +17,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     let i = 0;
     const interval = setInterval(() => {
       if (manyWord && manyWord.length > 0) {
-        setAnimationClass(styles.fadeOut); // Déclenchez l'animation fadeOut
+        setAnimationClass('fadeOut'); // Déclenchez l'animation fadeOut
         setTimeout(() => {
           i = (i + 1) % manyWord.length; // Incrémentez l'index ici
           setWord(manyWord[i]);
-          setAnimationClass(styles.fadeIn); // Déclenchez l'animation fadeIn
+          setAnimationClass('fadeIn'); // Déclenchez l'animation fadeIn
         }, 1000); // Attendez que l'animation fadeOut soit terminée
       }
     }, 5000);
@@ -31,9 +31,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <header className={styles.sectionHeader}>
+      <div className={styles.leftWideBand}>
+        <div className={styles.leftThinBand} />
+      </div>
       <h2 className={`${styles.sectionTitle} ${animationClass}`}>
         {text ? text : word}
       </h2>
+      <div className={styles.rightWideBand}>
+        <div className={styles.rightThinBand} />
+      </div>
     </header>
   );
 };

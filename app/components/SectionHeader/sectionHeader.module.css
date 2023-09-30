@@ -1,8 +1,42 @@
 .sectionHeader {
-  background-image: url('/assets/lineBottom.svg');
-  background-size: cover; /* ou d'autres valeurs comme contain, auto, etc. */
-  background-repeat: no-repeat;
-  height: fit-content;
+  display: flex;
+  width: 100%;
+}
+
+.leftWideBand {
+  -webkit-clip-path: polygon(0 15%, 100% 100%, 30% 100%, 0 50%);
+  clip-path: polygon(0 15%, 100% 100%, 30% 100%, 0 50%);
+  background: var(--primary-color);
+
+  width: 100%;
+  position: relative;
+}
+
+.leftThinBand {
+  -webkit-clip-path: polygon(0 37%, 43% 100%, 40% 100%, 0 40%);
+  clip-path: polygon(0 37%, 43% 100%, 40% 100%, 0 40%);
+  background: var(--tertiary-color);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.rightWideBand {
+  -webkit-clip-path: polygon(100% 50%, 100% 70%, 70% 100%, 0 100%);
+  clip-path: polygon(100% 50%, 100% 70%, 70% 100%, 0 100%);
+  background: var(--primary-color);
+
+  width: 100%;
+  position: relative;
+}
+
+.rightThinBand {
+  -webkit-clip-path: polygon(100% 63%, 100% 65%, 64% 100%, 60% 100%);
+  clip-path: polygon(100% 63%, 100% 65%, 64% 100%, 60% 100%);
+  background: var(--tertiary-color);
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .sectionTitle {
@@ -13,32 +47,7 @@
   font-weight: 100;
   font-size: var(--titre-576px);
   text-shadow: 2px 0px var(--primary-color);
-  /* z-index: 1; */
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.fadeIn {
-  animation: fadeIn 1s ease-in-out forwards;
-}
-
-.fadeOut {
-  animation: fadeOut 1s ease-in-out forwards;
+  text-wrap: nowrap;
 }
 
 @media (min-width: 576px) {

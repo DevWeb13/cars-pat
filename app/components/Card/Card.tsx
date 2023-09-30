@@ -88,7 +88,7 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
         onClick={() => setIsExpanded(!isExpanded)}>
         <div className={styles.cardTitle}>
           <div className={styles.cardTitleIcon + ' ' + styles[icon]}></div>
-          <h3 className={`${styles.cardTitleText} sousTitre`}>{title}</h3>
+          <h3 className={`${styles.cardTitleText} textBold`}>{title}</h3>
         </div>
         <div
           ref={cardTextRef}
