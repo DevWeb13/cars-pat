@@ -52,10 +52,25 @@
 
 .input {
   width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: 1px solid var(--primary-color);
+}
+
+.input:focus {
+  border: 2px solid var(--primary-color); /* Changez la couleur et l'épaisseur de la bordure selon vos préférences */
+  outline: none; /* Supprime l'outline par défaut de certains navigateurs */
+}
+
+.textArea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid var(--primary-color);
 }
 
 .error {
   color: red;
+  height: 12px;
 }
 
 .visuallyHidden {
@@ -67,4 +82,31 @@
   border: 1px solid #ccc;
   display: inline-block;
   cursor: pointer;
+}
+
+.imagePreviews {
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+}
+
+.imagePreviewContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagePreviewName {
+  padding-bottom: 10px;
+}
+
+.imagePreview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.buttonDeleteWrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
 }

@@ -36,7 +36,7 @@ const HomeImageWrapper = ({ photos }: HomeImageWrapperProps) => {
           smooth={true}
           offset={-60}
           duration={500}
-          className={styles.button + ' ' + 'button' + ' ' + 'text'}>
+          className='button text'>
           Découvrez nos services
         </Link>
 
@@ -46,7 +46,7 @@ const HomeImageWrapper = ({ photos }: HomeImageWrapperProps) => {
           smooth={true}
           offset={-60}
           duration={500}
-          className={styles.buttonWhite + ' ' + 'button' + ' ' + 'text'}>
+          className=' button buttonWhite text'>
           Devis en ligne
         </Link>
       </div>

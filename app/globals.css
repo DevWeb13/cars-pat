@@ -150,7 +150,7 @@ input[type='reset'] {
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border: 1px solid var(--secondary-color);
 
   background-color: var(--primary-color);
@@ -161,11 +161,24 @@ input[type='reset'] {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   text-wrap: nowrap;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
 }
 
 .button:hover {
   color: var(--tertiary-color);
   border: 1px solid var(--tertiary-color);
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.buttonWhite {
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
+
+.buttonWhite:hover {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 .link:hover {

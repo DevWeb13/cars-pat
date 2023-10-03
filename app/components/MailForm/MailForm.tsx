@@ -353,7 +353,7 @@ const MailForm = () => {
           <textarea
             id='message'
             name='message'
-            className={styles.input}
+            className={styles.textArea}
             onBlur={(e) => validateMessage(e.target.value)}></textarea>
           <p className={styles.error + ' ' + 'textFooter'}>
             {errors.message ? errors.message : ''}
@@ -362,8 +362,8 @@ const MailForm = () => {
         <div className={styles.formGroup + ' ' + 'sectionContent column'}>
           <label
             htmlFor='photos'
-            className={styles.customFileUpload}>
-            Sélectionner des fichiers
+            className='button buttonWhite'>
+            Joindre des photos/vidéos
           </label>
           <input
             ref={fileInputRef}
@@ -380,23 +380,37 @@ const MailForm = () => {
               {(totalFileSize / (1024 * 1024)).toFixed(2)} MB
             </p>
           )}
+          <div className='sectionContent wrap'>
+            {images.length > 0 &&
+              images.map((image, index) => (
+                <div
+                  key={index + image.file.name}
+                  className={styles.imagePreviews}>
+                  <div className={styles.imagePreviewContent}>
+                    <p className={styles.imagePreviewName}>{image.file.name}</p>
 
-          {images.length > 0 &&
-            images.map((image, index) => (
-              <div key={index + image.file.name}>
-                <p>{image.file.name}</p>
-
-                <Image
-                  src={image.preview}
-                  alt='Preview'
-                  width={100}
-                  height={100}
-                />
-                <button onClick={() => handleRemoveImage(index)}>
-                  Supprimer
-                </button>
-              </div>
-            ))}
+                    <Image
+                      src={image.preview}
+                      alt='Preview'
+                      width={100}
+                      height={100}
+                      className={styles.imagePreview}
+                    />
+                    <button
+                      className={styles.buttonDeleteWrapper}
+                      onClick={() => handleRemoveImage(index)}>
+                      <Image
+                        src='/assets/delete.svg'
+                        alt='Supprimer'
+                        width={20}
+                        height={20}
+                      />
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
 
         <p className={styles.error + ' ' + 'textFooter'}>

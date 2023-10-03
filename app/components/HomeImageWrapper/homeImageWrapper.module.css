@@ -22,13 +22,3 @@
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-
-.buttonWhite {
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
-}
-
-.buttonWhite:hover {
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
