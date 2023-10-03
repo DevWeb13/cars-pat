@@ -154,7 +154,7 @@ export default function Home() {
               </div>
               <div className={styles.newServicePhoto}>
                 <Image
-                  src='/assets/photos/gros-plan-processus-entretien-voiture.jpg'
+                  src='/assets/photos/carrosserie.jpg'
                   alt='peinture'
                   width={1000}
                   height={667}
@@ -167,7 +167,7 @@ export default function Home() {
               id='peinture'>
               <div className={styles.newServicePhoto}>
                 <Image
-                  src='/assets/photos/pistolet-peinture-dans-mains-homme-pour-peindre-voiture.jpg'
+                  src='/assets/photos/peinture.jpg'
                   alt='peinture'
                   width={1000}
                   height={667}
@@ -324,7 +324,7 @@ export default function Home() {
           ref={avisRef}
           className='section'>
           <SectionHeader text='Avis Google' />
-          <section className='sectionContent wrap'>
+          <section className='sectionContent column'>
             <Reviews />
           </section>
         </section>
