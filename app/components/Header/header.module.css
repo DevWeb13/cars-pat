@@ -26,4 +26,5 @@
   font-size: var(--titre-576px);
   min-width: fit-content;
   text-shadow: 2px 0px var(--tertiary-color);
+  text-wrap: nowrap;
 }

@@ -1,5 +1,5 @@
 .sectionHeader {
-  display: flex;
+  display: none;
   width: 100%;
 }
 
@@ -9,6 +9,7 @@
   background: var(--primary-color);
 
   width: 100%;
+
   position: relative;
 }
 
@@ -48,22 +49,48 @@
   font-size: var(--titre-576px);
   text-shadow: 2px 0px var(--primary-color);
   text-wrap: nowrap;
+  min-width: 163px;
+  z-index: 0;
 }
 
 @media (min-width: 576px) {
+  .sectionHeader {
+    display: flex;
+    padding-top: 20px;
+  }
   .sectionTitle {
     font-size: var(--titre-768px);
   }
 }
 
 @media (min-width: 768px) {
+  .sectionHeader {
+    padding-top: 30px;
+  }
   .sectionTitle {
     font-size: var(--titre-992px);
+    min-width: 197px;
   }
 }
 
 @media (min-width: 992px) {
+  .sectionHeader {
+    padding-top: 35px;
+  }
   .sectionTitle {
     font-size: var(--titre-1200px);
+    min-width: 260px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sectionTitle {
+    min-width: 345px;
+  }
+}
+
+@media (max-height: 550px) {
+  .sectionTitle {
+    display: none;
   }
 }

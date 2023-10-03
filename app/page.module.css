@@ -1,6 +1,7 @@
 .sectionHome {
   height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
   padding-bottom: 0;
+  padding: 0;
   gap: 0;
 }
 

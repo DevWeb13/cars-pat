@@ -19,6 +19,7 @@ import Link from 'next/link';
 import MailForm from './components/MailForm/MailForm';
 import HomeAside from './components/HomeAside/HomeAside';
 import HomeImageWrapper from './components/HomeImageWrapper/HomeImageWrapper';
+import NewCard from './components/NewCard/NewCard';
 
 const queryClient = new QueryClient();
 
@@ -114,8 +115,8 @@ export default function Home() {
           <div className={styles.homeImageAndAsideWrapper}>
             <HomeImageWrapper
               photos={[
-                '/assets/photos/gros-plan-processus-entretien-voiture.jpg',
-                '/assets/photos/pistolet-peinture-dans-mains-homme-pour-peindre-voiture.jpg',
+                '/assets/photos/carrosserie.jpg',
+                '/assets/photos/peinture.jpg',
               ]}
             />
             <HomeAside />
@@ -196,6 +197,7 @@ export default function Home() {
             </article>
           </section>
           <section className='sectionContent wrap'>
+            <NewCard type='carrosserie' />
             <Card
               cardData={{
                 title: 'Carrosserie',

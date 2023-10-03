@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './header.module.css';
 import Navigation from '../Navigation/Navigation';
+import { Link } from 'react-scroll';
 
 const Header = () => {
   const headerContentRef = useRef<HTMLDivElement>(null);
@@ -31,7 +32,15 @@ const Header = () => {
       <div
         className={styles.headerContent}
         ref={headerContentRef}>
-        <h1 className={styles.h1}>Cars Pat</h1>
+        <Link
+          href='/'
+          to={'home'}
+          smooth={true}
+          offset={-60}
+          duration={500}
+          className={styles.logoWrapper}>
+          <h1 className={styles.h1}>Cars Pat</h1>
+        </Link>
         <Navigation />
       </div>
     </header>
