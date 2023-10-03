@@ -30,7 +30,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   }, [manyWord]);
 
   return (
-    <header className={styles.sectionHeader}>
+    <header
+      className={`${styles.sectionHeader} ${
+        manyWord.length > 0 ? styles.sectionHeaderHome : ''
+      }`}>
       <div className={styles.leftWideBand}>
         <div className={styles.leftThinBand} />
       </div>
