@@ -1,0 +1,168 @@
+.headerForm {
+  padding: 0;
+  align-items: flex-start;
+}
+
+.contactForm,
+.formGroup {
+  padding: 0;
+  align-items: flex-start;
+  width: 100%;
+  gap: 5px;
+  max-width: 100%;
+}
+
+.inputAndButtonPhotosWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 25px;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+
+  background-size: contain; /* Ajustez la taille de l'image pour qu'elle s'adapte à la boîte */
+  background-repeat: no-repeat; /* Assurez-vous que l'image ne se répète pas */
+  background-position: center; /* Centrez l'image dans la boîte */
+}
+
+.labelName::before {
+  background-image: url('/assets/user.svg');
+  width: 25px;
+  height: 20px;
+}
+
+.labelMail::before {
+  background-image: url('/assets/arrobase.svg');
+  width: 25px;
+  height: 20px;
+}
+
+.labelPhone::before {
+  background-image: url('/assets/phone.svg');
+  width: 25px;
+  height: 25px;
+}
+
+.labelMessage::before {
+  background-image: url('/assets/message.svg');
+  width: 25px;
+  height: 25px;
+}
+
+.input {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: 1px solid var(--primary-color);
+}
+
+.input:focus {
+  border: 2px solid var(--primary-color); /* Changez la couleur et l'épaisseur de la bordure selon vos préférences */
+  outline: none; /* Supprime l'outline par défaut de certains navigateurs */
+}
+
+.textArea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid var(--primary-color);
+}
+
+.error {
+  color: red;
+  height: 12px;
+}
+
+.visuallyHidden {
+  display: none;
+}
+
+.customFileUpload {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.imagesPreviewsWrapper {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imagePreviewCard {
+  display: flex;
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.imagePreviewContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.imagePreviewName {
+  width: 100%;
+  padding-bottom: 10px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.imagePreview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.buttonDeleteWrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.buttonPhotos {
+  text-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .inputAndButtonPhotosWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .inputWrapper {
+    width: 49%;
+  }
+
+  .buttonPhotosWrapper {
+    width: 49%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

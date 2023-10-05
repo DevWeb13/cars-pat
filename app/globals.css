@@ -41,10 +41,14 @@ input[type='reset'] {
 }
 
 :root {
-  --primary-color: #e67f2a;
+  --primary-color: rgb(230, 127, 42);
+  --primary-color-light: rgb(255, 153, 77);
+  --primary-color-high: rgb(208, 94, 0);
   --secondary-color: #1d1d1d;
   --secondary-color-light: rgba(30, 30, 30, 0.75);
   --tertiary-color: rgb(245, 245, 245);
+  --tertiary-color-light: rgb(255, 255, 255);
+  --tertiary-color-high: rgb(230, 230, 230);
   --quaternary-color: #fbbc04;
   --backgroundHeader: rgba(30, 30, 30, 0.86);
 
@@ -76,14 +80,6 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
-#main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border-top: 1px solid var(--primary-color); */
-  background-color: var(--tertiary-color);
-}
-
 .primaryColor {
   color: var(--primary-color);
 }
@@ -109,15 +105,6 @@ input[type='reset'] {
 .textFooter {
   font-size: var(--textFooter-576px);
   font-family: 'Inter', sans-serif;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 0;
-  /* max-width: 1440px; */
 }
 
 .sectionContent {
@@ -177,7 +164,7 @@ input[type='reset'] {
 }
 
 .buttonWhite:hover {
-  color: var(--primary-color);
+  color: white;
   border: 1px solid var(--primary-color);
 }
 
@@ -198,7 +185,7 @@ input[type='reset'] {
     font-size: var(--text-768px);
   }
   .textBold {
-    font-size: var(--textBold-768px);
+    font-size: var(--text-768px);
     font-weight: bold;
   }
   .button {
@@ -224,7 +211,7 @@ input[type='reset'] {
     font-size: var(--text-992px);
   }
   .textBold {
-    font-size: var(--textBold-992px);
+    font-size: var(--text-992px);
     font-weight: bold;
   }
   .textFooter {
@@ -259,7 +246,7 @@ input[type='reset'] {
     font-size: var(--text-1200px);
   }
   .textBold {
-    font-size: var(--textBold-1200px);
+    font-size: var(--text-1200px);
     font-weight: bold;
   }
   .textFooter {

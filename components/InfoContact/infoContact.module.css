@@ -1,0 +1,22 @@
+.infoContact {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  gap: 0.3125rem;
+}
+
+.infoContactTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary-color);
+}
+
+@media (min-width: 576px) {
+  .infoContact {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

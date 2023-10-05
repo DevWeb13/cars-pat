@@ -6,28 +6,30 @@ import styles from './page.module.css';
 import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import Image from 'next/image';
-
-import Loader from './components/Loader/Loader';
-import Section from './components/Section/Section';
-import SectionHeader from './components/SectionHeader/SectionHeader';
-import Card from './components/Card/Card';
-import Gallery from './components/Gallery/Gallery';
-import GalleryFooter from './components/GalleryFooter/GalleryFooter';
-import InfoContact from './components/InfoContact/InfoContact';
-import Reviews from './components/Reviews/Reviews';
 import Link from 'next/link';
-import MailForm from './components/MailForm/MailForm';
-import HomeAside from './components/HomeAside/HomeAside';
-import HomeImageWrapper from './components/HomeImageWrapper/HomeImageWrapper';
-import NewCard from './components/NewCard/NewCard';
+
+import Main from '@/components/layout/Main/Main';
+
+import Loader from '@/components/Loader/Loader';
+import Button from '@/components/ui/Button/Button';
+import Section from '@/components/layout/Section/Section';
+import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
+import SectionHeader from '@/components/SectionHeader/SectionHeader';
+import Card from '@/components/Card/Card';
+import Gallery from '@/components/Gallery/Gallery';
+import GalleryFooter from '@/components/GalleryFooter/GalleryFooter';
+import InfoContact from '@/components/InfoContact/InfoContact';
+import Reviews from '@/components/Reviews/Reviews';
+import MailForm from '@/components/MailForm/MailForm';
+import HomeAside from '@/components/HomeAside/HomeAside';
+import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
+import NewCard from '@/components/NewCard/NewCard';
 
 const queryClient = new QueryClient();
 
 export default function Home() {
   const { setActiveLink } = useActiveLink();
   const infosContactsRef = useRef<HTMLDivElement>(null);
-  const [contactHeight, setContactHeight] = useState(0);
-
   const [homeRef, homeInView] = useInView({
     threshold: 0.1,
   });
@@ -80,29 +82,12 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  useEffect(() => {
-    const getHeight = () => {
-      if (infosContactsRef.current) {
-        setContactHeight(infosContactsRef.current.clientHeight);
-      }
-    };
-
-    getHeight();
-
-    window.addEventListener('resize', getHeight);
-
-    return () => {
-      window.removeEventListener('resize', getHeight);
-    };
-  }, [infosContactsRef]);
-
   return (
     <QueryClientProvider client={queryClient}>
-      <main id='main'>
+      <Main>
         <Section
           id='home'
-          ref={homeRef}
-          className={styles.sectionHome}>
+          ref={homeRef}>
           <SectionHeader manyWord={['Carrosserie', 'Peinture']} />
 
           {/* <p className={styles.homeText + ' ' + 'text'}>
@@ -123,10 +108,9 @@ export default function Home() {
           </div>
         </Section>
 
-        <section
+        <Section
           id='services'
-          ref={servicesRef}
-          className='section'>
+          ref={servicesRef}>
           <SectionHeader text='Nos services' />
           <section className={styles.newServices}>
             <article
@@ -196,6 +180,7 @@ export default function Home() {
               </div>
             </article>
           </section>
+
           <section className='sectionContent wrap'>
             <NewCard type='carrosserie' />
             <Card
@@ -234,30 +219,27 @@ export default function Home() {
               }}
             />
           </section>
-        </section>
+        </Section>
 
-        <section
+        <Section
           id='gallery'
-          ref={galleryRef}
-          className='section'>
+          ref={galleryRef}>
           <SectionHeader text='Gallerie photos' />
-          <section className='sectionContent column'>
+          <SectionContentColumn>
             <p className='textBold'>Choisissez un véhicule:</p>
             <Gallery />
             <GalleryFooter />
-          </section>
-        </section>
+          </SectionContentColumn>
+        </Section>
 
-        <section
+        <Section
           id='informations'
-          ref={informationsRef}
-          className='section'>
+          ref={informationsRef}>
           <SectionHeader text='Informations' />
-          <section className='sectionContent wrap'>
+          <SectionContentColumn>
             <div
-              className='card'
-              ref={infosContactsRef}
-              style={{ minWidth: contactHeight }}>
+              className={styles.infosContacts}
+              ref={infosContactsRef}>
               <InfoContact
                 logo='/assets/clock.svg'
                 alt='clock'
@@ -304,42 +286,40 @@ export default function Home() {
             </div>
             <iframe
               src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14137.182395999138!2d5.400888!3d43.248392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b884f41d09d5%3A0x967b25d3c34e14c3!2sCars%20Pat!5e1!3m2!1sfr!2sfr!4v1695283837705!5m2!1sfr!2sfr'
-              width={contactHeight || '280'}
-              height={contactHeight || '269'}
+              width={280}
+              height={269}
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
               className={styles.map}></iframe>
             <iframe
               src='https://www.google.com/maps/embed?pb=!4v1695311394340!6m8!1m7!1sW9TDgMNjV8IejcCtJpTTzA!2m2!1d43.24829969231534!2d5.400771836629596!3f26.714348!4f0!5f0.7820865974627469'
-              width={contactHeight || '280'}
-              height={contactHeight || '269'}
+              width={280}
+              height={269}
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
               className={styles.map}></iframe>
-          </section>
-        </section>
+          </SectionContentColumn>
+        </Section>
 
-        <section
+        <Section
           id='avis'
-          ref={avisRef}
-          className='section'>
+          ref={avisRef}>
           <SectionHeader text='Avis Google' />
           <section className='sectionContent column'>
             <Reviews />
           </section>
-        </section>
+        </Section>
 
-        <section
+        <Section
           id='contact'
-          ref={contactRef}
-          className='section'>
+          ref={contactRef}>
           <SectionHeader text='Nous contacter' />
           <section className='sectionContent column'>
             {' '}
             <MailForm />
           </section>
-        </section>
-      </main>
+        </Section>
+      </Main>
     </QueryClientProvider>
   );
 }

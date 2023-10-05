@@ -2,8 +2,8 @@ import { ActiveLinkProvider } from '@/contexts/ActiveLinkContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import PreHeader from './components/PreHeader/PreHeader';
-import Header from './components/Header/Header';
+import PreHeader from '@/components/PreHeader/PreHeader';
+import Header from '@/components/Header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
