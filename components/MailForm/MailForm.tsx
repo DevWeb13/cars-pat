@@ -1,6 +1,7 @@
 import { FormEvent, useState, useRef } from 'react';
 import styles from './mailForm.module.css';
 import Image from 'next/image';
+import Button from '../ui/Button/Button';
 
 type ImageItem = {
   preview: string;
@@ -122,8 +123,11 @@ const MailForm = () => {
       if (invalidFileType) {
         setErrors((prev) => ({
           ...prev,
-          files: 'Un ou plusieurs fichiers ont un type non autorisé.',
+          files: 'Ce type de fichier n’est pas autorisé.',
         }));
+        setTimeout(() => {
+          setErrors((prev) => ({ ...prev, files: undefined }));
+        }, 5000);
         return;
       } else {
         setErrors((prev) => ({ ...prev, files: undefined }));
@@ -244,6 +248,67 @@ const MailForm = () => {
     }, 5000);
   };
 
+  const handleDragOver = (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+
+    if (files.length) {
+      const existingFileNames = images.map((imageItem) => imageItem.file.name);
+      const newFiles = Array.from(files).filter(
+        (file) => !existingFileNames.includes(file.name)
+      );
+
+      const totalSize =
+        newFiles.reduce((acc, file) => acc + file.size, 0) +
+        images.reduce((acc, imageItem) => acc + imageItem.file.size, 0);
+      setTotalFileSize(totalSize);
+      if (totalSize > MAX_SIZE) {
+        setErrors((prev) => ({
+          ...prev,
+          files: 'La taille totale des fichiers dépasse la limite de 18MB.',
+        }));
+        return;
+      }
+
+      const invalidFileType = newFiles.some(
+        (file) => !allowedFileTypes.includes(file.type)
+      );
+      if (invalidFileType) {
+        setErrors((prev) => ({
+          ...prev,
+          files: 'Ce type de fichier n’est pas autorisé.',
+        }));
+        setTimeout(() => {
+          setErrors((prev) => ({ ...prev, files: undefined }));
+        }, 5000);
+        return;
+      } else {
+        setErrors((prev) => ({ ...prev, files: undefined }));
+      }
+
+      Promise.all(
+        newFiles.map((file: File) => {
+          const reader = new FileReader();
+          return new Promise<ImageItem>((resolve) => {
+            reader.onloadend = () => {
+              resolve({
+                preview: reader.result as string,
+                file: file,
+              });
+            };
+            reader.readAsDataURL(file);
+          });
+        })
+      ).then((newImageItems) => {
+        setImages((prevState) => [...prevState, ...newImageItems]);
+      });
+    }
+  };
+
   return (
     <>
       <header className={styles.headerForm + ' ' + 'sectionContent column'}>
@@ -263,105 +328,104 @@ const MailForm = () => {
         onSubmit={handleSubmit}
         encType='multipart/form-data'
         className={styles.contactForm + ' ' + 'sectionContent column'}>
-        <div className={styles.inputAndButtonPhotosWrapper}>
-          <div className={styles.inputWrapper}>
-            <div className={styles.formGroup + ' ' + 'sectionContent column'}>
-              <label
-                htmlFor='surName'
-                className={
-                  styles.label +
-                  ' ' +
-                  styles.labelName +
-                  ' ' +
-                  'primaryColor textBold'
-                }>
-                Nom/Prénom*
-              </label>
-              <input
-                type='text'
-                id='surName'
-                name='surName'
-                onBlur={(e) => validateName(e.target.value)}
-                className={styles.input}
-                placeholder='Nom/Prénom'
-              />
+        <div className={styles.inputWrapper}>
+          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+            <label
+              htmlFor='surName'
+              className={
+                styles.label +
+                ' ' +
+                styles.labelName +
+                ' ' +
+                'primaryColor textBold'
+              }>
+              Nom/Prénom*
+            </label>
+            <input
+              type='text'
+              id='surName'
+              name='surName'
+              onBlur={(e) => validateName(e.target.value)}
+              className={styles.input}
+              placeholder='Nom/Prénom'
+            />
 
-              <p className={styles.error + ' ' + 'textFooter'}>
-                {errors.name ? errors.name : ''}
-              </p>
-            </div>
-            <div className={styles.formGroup + ' ' + 'sectionContent column'}>
-              <label
-                htmlFor='email'
-                className={
-                  styles.label +
-                  ' ' +
-                  styles.labelMail +
-                  ' ' +
-                  'primaryColor textBold'
-                }>
-                Email*
-              </label>
-              <input
-                type='email'
-                id='email'
-                name='email'
-                className={styles.input}
-                onBlur={(e) => validateEmail(e.target.value)}
-                placeholder='E-mail'
-              />
-
-              <p className={styles.error + ' ' + 'textFooter'}>
-                {errors.email ? errors.email : ''}
-              </p>
-            </div>
-            <div className={styles.formGroup + ' ' + 'sectionContent column'}>
-              <label
-                htmlFor='phone'
-                className={
-                  styles.label +
-                  ' ' +
-                  styles.labelPhone +
-                  ' ' +
-                  'primaryColor textBold'
-                }>
-                Téléphone*
-              </label>
-              <input
-                type='tel'
-                id='phone'
-                name='phone'
-                className={styles.input}
-                onBlur={(e) => validatePhone(e.target.value)}
-                placeholder='Téléphone'
-              />
-
-              <p className={styles.error + ' ' + 'textFooter'}>
-                {errors.phone ? errors.phone : ''}
-              </p>
-            </div>
-            <div className={styles.formGroup + ' ' + 'sectionContent column'}>
-              <label
-                htmlFor='message'
-                className={
-                  styles.label +
-                  ' ' +
-                  styles.labelMessage +
-                  ' ' +
-                  'primaryColor textBold'
-                }>
-                Message*
-              </label>
-              <textarea
-                id='message'
-                name='message'
-                className={styles.textArea}
-                onBlur={(e) => validateMessage(e.target.value)}></textarea>
-              <p className={styles.error + ' ' + 'textFooter'}>
-                {errors.message ? errors.message : ''}
-              </p>
-            </div>
+            <p className={styles.error + ' ' + 'textFooter'}>
+              {errors.name ? errors.name : ''}
+            </p>
           </div>
+          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+            <label
+              htmlFor='email'
+              className={
+                styles.label +
+                ' ' +
+                styles.labelMail +
+                ' ' +
+                'primaryColor textBold'
+              }>
+              Email*
+            </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              className={styles.input}
+              onBlur={(e) => validateEmail(e.target.value)}
+              placeholder='E-mail'
+            />
+
+            <p className={styles.error + ' ' + 'textFooter'}>
+              {errors.email ? errors.email : ''}
+            </p>
+          </div>
+          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+            <label
+              htmlFor='phone'
+              className={
+                styles.label +
+                ' ' +
+                styles.labelPhone +
+                ' ' +
+                'primaryColor textBold'
+              }>
+              Téléphone*
+            </label>
+            <input
+              type='tel'
+              id='phone'
+              name='phone'
+              className={styles.input}
+              onBlur={(e) => validatePhone(e.target.value)}
+              placeholder='Téléphone'
+            />
+
+            <p className={styles.error + ' ' + 'textFooter'}>
+              {errors.phone ? errors.phone : ''}
+            </p>
+          </div>
+          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+            <label
+              htmlFor='message'
+              className={
+                styles.label +
+                ' ' +
+                styles.labelMessage +
+                ' ' +
+                'primaryColor textBold'
+              }>
+              Message*
+            </label>
+            <textarea
+              id='message'
+              name='message'
+              className={styles.textArea}
+              onBlur={(e) => validateMessage(e.target.value)}></textarea>
+            <p className={styles.error + ' ' + 'textFooter'}>
+              {errors.message ? errors.message : ''}
+            </p>
+          </div>
+
           <div
             className={
               styles.formGroup +
@@ -370,12 +434,62 @@ const MailForm = () => {
               ' ' +
               'sectionContent column'
             }>
+            <p
+              className={
+                styles.label +
+                ' ' +
+                styles.labelPhotos +
+                ' ' +
+                'primaryColor textBold'
+              }>
+              Pieces jointes
+            </p>
             <label
               htmlFor='photos'
-              className={
-                styles.buttonPhotos + ' ' + 'button' + ' ' + 'buttonWhite'
-              }>
-              Joindre des photos/vidéos
+              className={styles.buttonPhotos + ' ' + 'textFooter'}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}>
+              {images.length === 0 ? (
+                <>
+                  <p>Cliquez ou glissez-déposez vos photos/vidéos ici</p>
+                  <p>Types de fichiers autorisé:</p>
+                  <p>jpg, jpeg, png, gif, pdf, mp4</p>
+                  <p>Taille maximale: 18MB</p>
+                </>
+              ) : (
+                <div className={styles.imagesPreviewsWrapper}>
+                  {images.map((image, index) => (
+                    <div
+                      key={index + image.file.name}
+                      className={styles.imagePreviewCard}>
+                      <div className={styles.imagePreviewContent}>
+                        <p className={styles.imagePreviewName}>
+                          {image.file.name}
+                        </p>
+
+                        <Image
+                          src={image.preview}
+                          alt='Preview'
+                          width={25}
+                          height={25}
+                          className={styles.imagePreview}
+                        />
+                        <button
+                          className={styles.buttonDeleteWrapper}
+                          onClick={() => handleRemoveImage(index)}>
+                          <Image
+                            src='/assets/delete.svg'
+                            alt='Supprimer'
+                            width={20}
+                            height={20}
+                          />
+                          Supprimer
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </label>
             <input
               ref={fileInputRef}
@@ -386,46 +500,13 @@ const MailForm = () => {
               className={styles.visuallyHidden}
               onChange={handleFileChange}
             />
-            {images.length > 0 && (
-              <p>
-                Taille totale des fichiers :{' '}
-                {(totalFileSize / (1024 * 1024)).toFixed(2)} MB
-              </p>
-            )}
-            <div className={styles.imagesPreviewsWrapper}>
-              {images.length > 0 &&
-                images.map((image, index) => (
-                  <div
-                    key={index + image.file.name}
-                    className={styles.imagePreviewCard}>
-                    <div className={styles.imagePreviewContent}>
-                      <p className={styles.imagePreviewName}>
-                        {image.file.name}
-                      </p>
-
-                      <Image
-                        src={image.preview}
-                        alt='Preview'
-                        width={100}
-                        height={100}
-                        className={styles.imagePreview}
-                      />
-                      <button
-                        className={styles.buttonDeleteWrapper}
-                        onClick={() => handleRemoveImage(index)}>
-                        <Image
-                          src='/assets/delete.svg'
-                          alt='Supprimer'
-                          width={20}
-                          height={20}
-                        />
-                        Supprimer
-                      </button>
-                    </div>
-                  </div>
-                ))}
-            </div>
           </div>
+          {images.length > 0 && (
+            <p>
+              Taille totale des fichiers :{' '}
+              {(totalFileSize / (1024 * 1024)).toFixed(2)} MB
+            </p>
+          )}
         </div>
 
         <p className={styles.error + ' ' + 'textFooter'}>
@@ -439,12 +520,11 @@ const MailForm = () => {
             <p>Erreur lors de l&apos;envoi de l&apos;email.</p>
           )}
         </div>
-        <button
+        <Button
+          text='Envoyer'
           type='submit'
           disabled={status === 'loading'}
-          className='button'>
-          Envoyer
-        </button>
+        />
       </form>
     </>
   );

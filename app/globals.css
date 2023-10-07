@@ -41,7 +41,7 @@ input[type='reset'] {
 }
 
 :root {
-  --primary-color: rgb(230, 127, 42);
+  --primary-color: #e67f2a;
   --primary-color-light: rgb(255, 153, 77);
   --primary-color-high: rgb(208, 94, 0);
   --secondary-color: #1d1d1d;
@@ -129,43 +129,6 @@ input[type='reset'] {
   gap: 10px;
   height: 100%;
   width: 100%;
-}
-
-.button {
-  display: flex;
-
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 15px;
-  border: 1px solid var(--secondary-color);
-
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  /* font-size: var(--textFooter-576px); */
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  text-wrap: nowrap;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
-}
-
-.button:hover {
-  color: var(--tertiary-color);
-  border: 1px solid var(--tertiary-color);
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-}
-
-.buttonWhite {
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
-}
-
-.buttonWhite:hover {
-  color: white;
-  border: 1px solid var(--primary-color);
 }
 
 .link:hover {

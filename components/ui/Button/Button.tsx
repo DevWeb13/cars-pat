@@ -5,11 +5,20 @@ interface ButtonProps {
   text: string;
   color?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, color, onClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  color,
+  onClick,
+  type = 'button',
+  disabled,
+}: ButtonProps) => {
   return (
     <button
+      type={type}
       className={
         styles.button +
         ' ' +
@@ -17,7 +26,8 @@ const Button: React.FC<ButtonProps> = ({ text, color, onClick }) => {
         ' ' +
         (color ? styles.btnColor : styles.btn)
       }
-      onClick={onClick}>
+      onClick={onClick}
+      disabled={disabled}>
       {text}
       <div />
     </button>
