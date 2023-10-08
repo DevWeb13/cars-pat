@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './sectionContentColumn.module.css';
+import styles from './sectionContentWrap.module.css';
 
-interface SectionContentColumnProps {
+interface SectionContentWrapProps {
   children: React.ReactNode;
   contact?: boolean;
 }
 
-const SectionContentColumn: React.FC<SectionContentColumnProps> = ({
+const SectionContentWrap: React.FC<SectionContentWrapProps> = ({
   children,
   contact,
 }) => {
@@ -17,4 +17,4 @@ const SectionContentColumn: React.FC<SectionContentColumnProps> = ({
   );
 };
 
-export default SectionContentColumn;
+export default SectionContentWrap;

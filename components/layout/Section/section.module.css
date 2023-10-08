@@ -4,12 +4,24 @@
   width: 100%;
 
   min-height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
-  padding: 10px 0;
-  max-width: 1920px;
+
+  max-width: 1440px;
+  background: var(--tertiary-color-high);
+  background: linear-gradient(
+    0deg,
+    var(--tertiary-color-high) 0%,
+    var(--tertiary-color) 25%,
+    var(--tertiary-color-light) 100%
+  );
 }
 
 .sectionHome {
   padding: 0;
+  background: var(--tertiary-color);
+}
+
+.sectionServices {
+  min-height: calc(100svh - (var(--headerHeight)));
 }
 
 @media (min-width: 992px) {

@@ -34,6 +34,22 @@
   background-image: url('/assets/photos/carrosserie.jpg');
 }
 
+.peinture {
+  background-image: url('/assets/photos/peinture.jpg');
+}
+
+.pareBrise {
+  background-image: url('/assets/photos/pareBrise.jpg');
+}
+
+.franchise {
+  background-image: url('/assets/photos/franchise.jpg');
+}
+
+.pret {
+  background-image: url('/assets/photos/pret.jpg');
+}
+
 .newCardText {
   display: flex;
   padding: 20px;

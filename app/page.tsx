@@ -24,6 +24,7 @@ import HomeAside from '@/components/HomeAside/HomeAside';
 import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
 import NewCard from '@/components/NewCard/NewCard';
 import InfosContacts from '@/components/sections/InfosContacts/InfosContacts';
+import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionContentWrap';
 
 const queryClient = new QueryClient();
 
@@ -105,7 +106,7 @@ export default function Home() {
           id='services'
           ref={servicesRef}>
           <SectionHeader text='Nos services' />
-          <section className={styles.newServices}>
+          {/* <section className={styles.newServices}>
             <article
               className={styles.newService}
               id='carrosserie'>
@@ -172,11 +173,63 @@ export default function Home() {
                 </p>
               </div>
             </article>
-          </section>
-
-          <section className='sectionContent wrap'>
-            <NewCard type='carrosserie' />
-            <Card
+            <article
+              className={styles.newService}
+              id='pareBrise'>
+              <div className={styles.newServicePhoto}>
+                <Image
+                  src='/assets/photos/pareBrise.jpg'
+                  alt='peinture'
+                  width={1000}
+                  height={667}
+                  className={styles.newServiceImage}
+                />
+              </div>
+              <div className={styles.newServiceContent}>
+                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
+                  Remplacement pare-brise
+                </h2>
+                <p className='text'>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Minima omnis est, optio magnam dicta corrupti harum
+                  praesentium consectetur in amet nostrum cum dolorum vitae
+                  doloremque id ducimus adipisci voluptatibu debitis perferendis
+                  reprehenderit pariatur rem quo voluptate illo? Delectus
+                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
+                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
+                  omnis praesentium consectetur in amet nostrum cum dolorum
+                  vitae doloremque id ducimus adipisci voluptatibu debitis
+                  perferendis reprehenderit pariatur rem quo voluptate illo?
+                  Delectus blanditiis dicta veritatis quas recusandae odio at
+                  fugiat vel velit distinctio sunt sint est officiis quaerat
+                  ullam, ipsa omnis
+                </p>
+              </div>
+            </article>
+          </section> */}
+          <SectionContentColumn>
+            <SectionContentWrap>
+              <NewCard
+                type='carrosserie'
+                text='Carrosserie'
+              />
+              <NewCard
+                type='peinture'
+                text='Peinture'
+              />
+              <NewCard
+                type='pareBrise'
+                text='Remplacement pare-brise'
+              />
+              <NewCard
+                type='franchise'
+                text='Franchise prise en charge*'
+              />
+              <NewCard
+                type='pret'
+                text='Prêt de véhicule offert*'
+              />
+              {/* <Card
               cardData={{
                 title: 'Carrosserie',
                 text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
@@ -210,8 +263,9 @@ export default function Home() {
                 text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
                 icon: 'cars',
               }}
-            />
-          </section>
+            /> */}
+            </SectionContentWrap>
+          </SectionContentColumn>
         </Section>
 
         <Section
@@ -228,20 +282,24 @@ export default function Home() {
           id='avis'
           ref={avisRef}>
           <SectionHeader text='Avis Google' />
-          <section className='sectionContent column'>
+          <SectionContentColumn>
             <Reviews />
-          </section>
+          </SectionContentColumn>
         </Section>
 
         <Section
           id='contact'
           ref={contactRef}>
           <SectionHeader text='Nous contacter' />
-          <SectionContentColumn>
-            <MailForm />
-          </SectionContentColumn>
+          <SectionContentWrap contact>
+            <SectionContentColumn contact>
+              <MailForm />
+            </SectionContentColumn>
+            <SectionContentColumn contact>
+              <InfosContacts />
+            </SectionContentColumn>
+          </SectionContentWrap>
         </Section>
-        <InfosContacts />
       </Main>
     </QueryClientProvider>
   );

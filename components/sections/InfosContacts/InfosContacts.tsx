@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './infosContacts.module.css';
 
-import SectionContentColumn from '../../layout/SectionContentColumn/SectionContentColumn';
 import InfoContact from '../../InfoContact/InfoContact';
 import Link from 'next/link';
 
@@ -11,8 +10,8 @@ interface InfosContactsProps {
 
 const InfosContacts: React.FC<InfosContactsProps> = () => {
   return (
-    <SectionContentColumn>
-      <div className={styles.infosContacts}>
+    <>
+      <div className={styles.container}>
         <InfoContact
           logo='/assets/clock.svg'
           alt='clock'
@@ -67,7 +66,7 @@ const InfosContacts: React.FC<InfosContactsProps> = () => {
         loading='lazy'
         referrerPolicy='no-referrer-when-downgrade'
         className={styles.map}></iframe>
-    </SectionContentColumn>
+    </>
   );
 };
 

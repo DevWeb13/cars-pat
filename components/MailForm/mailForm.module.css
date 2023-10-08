@@ -222,7 +222,4 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  .inputWrapper {
-    width: 49%;
-  }
 }

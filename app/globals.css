@@ -44,11 +44,12 @@ input[type='reset'] {
   --primary-color: #e67f2a;
   --primary-color-light: rgb(255, 153, 77);
   --primary-color-high: rgb(208, 94, 0);
-  --secondary-color: #1d1d1d;
-  --secondary-color-light: rgba(30, 30, 30, 0.75);
+  --secondary-color: rgb(30, 30, 30);
+  --secondary-color-light: rgb(15, 15, 15);
+  --secondary-color-high: rgb(45, 45, 45);
   --tertiary-color: rgb(245, 245, 245);
-  --tertiary-color-light: rgb(255, 255, 255);
-  --tertiary-color-high: rgb(230, 230, 230);
+  --tertiary-color-light: rgb(250, 250, 250);
+  --tertiary-color-high: rgb(240, 240, 240);
   --quaternary-color: #fbbc04;
   --backgroundHeader: rgba(30, 30, 30, 0.86);
 

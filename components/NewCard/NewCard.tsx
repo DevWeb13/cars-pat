@@ -4,14 +4,15 @@ import Image from 'next/image';
 
 interface NewCardProps {
   type: string;
+  text: string;
 }
 
-const NewCard = ({ type }: NewCardProps) => {
+const NewCard = ({ type, text }: NewCardProps) => {
   return (
     <button className={styles.newCard}>
       <div className={styles.newCardImage + ' ' + styles[type]} />
       <div className={styles.newCardText}>
-        <h2 className='text'>Carrosserie</h2>
+        <h2 className='text'>{text}</h2>
         <div className={styles.newCardArrow} />
       </div>
     </button>
