@@ -219,7 +219,6 @@ export default function Home() {
           ref={galleryRef}>
           <SectionHeader text='Gallerie photos' />
           <SectionContentColumn>
-            <p className='textBold'>Choisissez un véhicule:</p>
             <Gallery />
             <GalleryFooter />
           </SectionContentColumn>

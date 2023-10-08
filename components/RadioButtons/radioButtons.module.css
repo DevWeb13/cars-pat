@@ -4,3 +4,26 @@
   justify-content: center;
   gap: 10px;
 }
+@media (min-width: 576px) {
+  .radioButtons {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .radioButtons {
+    width: 85%;
+  }
+}
+
+@media (min-width: 992px) {
+  .radioButtons {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .radioButtons {
+    width: 75%;
+  }
+}

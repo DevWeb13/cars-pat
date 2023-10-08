@@ -35,42 +35,44 @@ const Gallery = () => {
       />
 
       {/* {status === 'error' && <p>error</p>} */}
-      {status === 'loading' ? (
-        <Loader />
-      ) : (
-        <ImageGallery
-          items={
-            data?.map((photo) => {
-              return {
-                original: `assets/photos/${vehicleActive}/${photo}`,
-                thumbnail: `assets/photos/${vehicleActive}/${photo}`,
-                originalAlt: vehicleActive,
-                thumbnailAlt: vehicleActive,
-                originalHeight: 500,
-                originalWidth: 750,
-                thumbnailHeight: 70,
-                thumbnailWidth: 150,
-              };
-            }) || [
-              {
-                original: 'assets/photos/Harley-removebg-preview.png',
-                thumbnail: 'assets/photos/Harley-removebg-preview.png',
-                originalAlt: 'harley',
-                thumbnailAlt: 'harley',
-                originalHeight: 500,
-                originalWidth: 750,
-                thumbnailHeight: 70,
-                thumbnailWidth: 90,
-              },
-            ]
-          }
-          showBullets={false}
-          autoPlay={true}
-          slideInterval={5000}
-          slideDuration={500}
-          lazyLoad={true}
-        />
-      )}
+      <div className={styles.galleryWrapper}>
+        {status === 'loading' ? (
+          <Loader />
+        ) : (
+          <ImageGallery
+            items={
+              data?.map((photo) => {
+                return {
+                  original: `assets/photos/${vehicleActive}/${photo}`,
+                  thumbnail: `assets/photos/${vehicleActive}/${photo}`,
+                  originalAlt: vehicleActive,
+                  thumbnailAlt: vehicleActive,
+                  originalHeight: 500,
+                  originalWidth: 750,
+                  thumbnailHeight: 70,
+                  thumbnailWidth: 150,
+                };
+              }) || [
+                {
+                  original: 'assets/photos/Harley-removebg-preview.png',
+                  thumbnail: 'assets/photos/Harley-removebg-preview.png',
+                  originalAlt: 'harley',
+                  thumbnailAlt: 'harley',
+                  originalHeight: 500,
+                  originalWidth: 750,
+                  thumbnailHeight: 70,
+                  thumbnailWidth: 90,
+                },
+              ]
+            }
+            showBullets={false}
+            autoPlay={true}
+            slideInterval={5000}
+            slideDuration={500}
+            lazyLoad={true}
+          />
+        )}
+      </div>
     </div>
   );
 };

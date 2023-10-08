@@ -50,6 +50,7 @@ const HomeImageWrapper = ({ photos }: HomeImageWrapperProps) => {
           <Button
             text='Contactez-nous'
             color='white'
+            animate={true}
           />
         </Link>
       </div>

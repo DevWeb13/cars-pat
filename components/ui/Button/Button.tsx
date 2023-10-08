@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  animate?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   type = 'button',
   disabled,
+  animate,
 }: ButtonProps) => {
   return (
     <button
@@ -24,7 +26,9 @@ const Button: React.FC<ButtonProps> = ({
         ' ' +
         'textBold' +
         ' ' +
-        (color ? styles.btnColor : styles.btn)
+        (color ? styles.btnColor : styles.btn) +
+        ' ' +
+        (animate ? styles.animate : '')
       }
       onClick={onClick}
       disabled={disabled}>

@@ -11,7 +11,7 @@ type ReviewProps = {
 
 const Review: React.FC<ReviewProps> = ({ review }) => {
   return (
-    <article className='card'>
+    <article className={styles.review}>
       <Link
         href={review.author_url}
         target='_blank'

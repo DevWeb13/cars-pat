@@ -18,9 +18,7 @@ const Section: ForwardRefRenderFunction<HTMLElement, SectionProps> = (
       className={
         styles.section +
         ' ' +
-        (id === 'home' || id === 'gallery' || id === 'contact'
-          ? styles.sectionHome
-          : '')
+        (id === 'home' || id === 'contact' ? styles.sectionHome : '')
       }>
       {children}
     </section>
