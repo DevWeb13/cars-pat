@@ -52,7 +52,7 @@
   font-weight: 100;
   font-size: var(--titre-576px);
   text-shadow: 2px 0px var(--primary-color);
-  text-wrap: nowrap;
+  white-space: nowrap;
   min-width: 163px;
   z-index: 0;
   height: 56px;
