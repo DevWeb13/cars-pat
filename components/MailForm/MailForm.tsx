@@ -226,7 +226,7 @@ const MailForm = () => {
       formData.append('phone', phone);
       formData.append('message', message);
 
-      const response = await fetch('@/api/sendEmail', {
+      const response = await fetch('/api/sendEmail', {
         method: 'POST',
         body: formData,
       });
