@@ -1,15 +1,13 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
-export async function POST(request: {
-  body: ReadableStream;
-}): Promise<NextResponse> {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   // Convertir le ReadableStream en Buffer
   const chunks = [];
-  const reader = request.body.getReader();
+  const reader = request.body?.getReader();
   let done, value;
 
   while (!done) {
-    ({ done, value } = await reader.read());
+    ({ done, value } = await reader!.read());
     if (value) {
       chunks.push(value);
     }
@@ -36,8 +34,8 @@ export async function POST(request: {
 
   try {
     const formData = new FormData();
-    formData.append('key', 'c7a82b9a4cc5d7c684d49051ab1d17c8');
-    formData.append('image', image);
+    formData.append('key', process.env.IMGBB_API_KEY!);
+    formData.append('image', image!);
 
     const response = await fetch('https://api.imgbb.com/1/upload', {
       method: 'POST',
