@@ -160,8 +160,10 @@ const MailForm = () => {
 
   async function uploadToImgBB(base64String: string) {
     const formData = new FormData();
-    formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY); // Remplacez par votre clé API
-    formData.append('image', base64String);
+    formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY ?? ''); // Remplacez par votre clé API
+    if (base64String) {
+      formData.append('image', base64String);
+    }
 
     const response = await fetch('https://api.imgbb.com/1/upload', {
       method: 'POST',
