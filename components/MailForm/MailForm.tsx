@@ -2,7 +2,6 @@ import { FormEvent, useState, useRef } from 'react';
 import styles from './mailForm.module.css';
 import Image from 'next/image';
 import Button from '../ui/Button/Button';
-import { upload } from '@vercel/blob/client';
 
 type ImageItem = {
   preview: string;
@@ -32,14 +31,19 @@ const MailForm = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const allowedFileTypes = [
+    /* JPG PNG BMP GIF TIF WEBP HEIC PDF */
+    'image/jpg',
     'image/jpeg',
     'image/png',
     'image/gif',
     'application/pdf',
-    //video
-    'video/mp4',
+    // bmp, tif, webp, heic
+    'image/bmp',
+    'image/tiff',
+    'image/webp',
+    'image/heic',
   ];
-  const MAX_SIZE = 18 * 1024 * 1024; // 18MB
+  const MAX_SIZE = 32 * 1024 * 1024; // 18MB
 
   const validateName = (name: string): boolean => {
     if (!name.trim()) {
@@ -166,18 +170,42 @@ const MailForm = () => {
     }
   };
 
-  const uploadFilesToBlob = async (files: File[]) => {
+  const uploadFilesToImgBB = async (files: File[]) => {
     const uploadedUrls = [];
 
     for (const file of files) {
-      const blobResult = await upload(file.name, file, {
-        access: 'public',
-        handleUploadUrl: '/api/uploadToBlob',
+      const reader = new FileReader();
+      const promise = new Promise<string>((resolve, reject) => {
+        reader.onloadend = async () => {
+          try {
+            const base64String = (reader.result as string).split(',')[1];
+            const response = await fetch('/api/saveToImgBB', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ image: base64String }),
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+              throw new Error(
+                data.message || 'Failed to upload image to ImgBB'
+              );
+            }
+
+            resolve(data.url);
+          } catch (error) {
+            reject(error);
+          }
+        };
       });
-      uploadedUrls.push(blobResult.url);
+
+      reader.readAsDataURL(file);
+      uploadedUrls.push(promise);
     }
 
-    return uploadedUrls;
+    return Promise.all(uploadedUrls);
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -200,8 +228,9 @@ const MailForm = () => {
     }
     console.log(images);
     try {
-      // Étape 1: Téléchargez les fichiers sur Vercel Blob
-      const fileUrls = await uploadFilesToBlob(images.map((img) => img.file));
+      ////////////////// NEW CODE ///////////////////////
+      const fileUrls = await uploadFilesToImgBB(images.map((img) => img.file));
+
       console.log({ fileUrls });
 
       // Étape 2: Envoyez ces URL de fichier à votre endpoint @/api/sendEmail
