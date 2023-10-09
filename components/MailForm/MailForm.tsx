@@ -43,7 +43,8 @@ const MailForm = () => {
     'image/webp',
     'image/heic',
   ];
-  const MAX_SIZE = 32 * 1024 * 1024; // 32MB
+  // 4.5MO
+  const MAX_SIZE = 4.5 * 1024 * 1024;
 
   const validateName = (name: string): boolean => {
     if (!name.trim()) {
@@ -157,6 +158,25 @@ const MailForm = () => {
     }
   };
 
+  async function uploadToImgBB(base64String: string) {
+    const formData = new FormData();
+    formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY); // Remplacez par votre clé API
+    formData.append('image', base64String);
+
+    const response = await fetch('https://api.imgbb.com/1/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to upload image to ImgBB');
+    }
+
+    return data.data.url; // Retourne l'URL de l'image téléchargée
+  }
+
   const handleRemoveImage = (index: number) => {
     const newImages = [...images];
     newImages.splice(index, 1);
@@ -179,22 +199,8 @@ const MailForm = () => {
         reader.onloadend = async () => {
           try {
             const base64String = (reader.result as string).split(',')[1];
-            const response = await fetch('/api/saveToImgBB', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ image: base64String }),
-            });
-
-            const data = await response.json();
-            if (!response.ok) {
-              throw new Error(
-                data.message || 'Failed to upload image to ImgBB'
-              );
-            }
-
-            resolve(data.url);
+            const imageUrl = await uploadToImgBB(base64String);
+            resolve(imageUrl);
           } catch (error) {
             reject(error);
           }
