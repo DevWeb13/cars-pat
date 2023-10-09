@@ -43,8 +43,8 @@ const MailForm = () => {
     'image/webp',
     'image/heic',
   ];
-  // 4.5MO
-  const MAX_SIZE = 4.5 * 1024 * 1024;
+
+  const MAX_SIZE = 25 * 1024 * 1024;
 
   const validateName = (name: string): boolean => {
     if (!name.trim()) {
