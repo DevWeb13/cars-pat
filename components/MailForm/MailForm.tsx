@@ -2,6 +2,7 @@ import { FormEvent, useState, useRef } from 'react';
 import styles from './mailForm.module.css';
 import Image from 'next/image';
 import Button from '../ui/Button/Button';
+import { upload } from '@vercel/blob/client';
 
 type ImageItem = {
   preview: string;
@@ -169,24 +170,13 @@ const MailForm = () => {
     const uploadedUrls = [];
 
     for (const file of files) {
-      const response = await fetch(`/api/uploadToBlob?filename=${file.name}`, {
-        method: 'POST',
-        body: file,
+      const blobResult = await upload(file.name, file, {
+        access: 'public',
+        handleUploadUrl: '/api/uploadToBlob',
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to upload file to Blob');
-      }
-
-      const data = await response.json();
-      console.log({ data });
-      if (data && data.blobUrl) {
-        uploadedUrls.push(data.blobUrl);
-      } else {
-        throw new Error('URL not returned from @/api/uploadToBlob');
-      }
+      uploadedUrls.push(blobResult.url);
     }
-    console.log({ uploadedUrls });
+
     return uploadedUrls;
   };
 
