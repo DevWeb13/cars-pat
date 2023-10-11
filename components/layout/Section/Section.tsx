@@ -20,7 +20,7 @@ const Section: ForwardRefRenderFunction<HTMLElement, SectionProps> = (
         ' ' +
         (id === 'home' ? styles.sectionHome : '') +
         ' ' +
-        (id === 'services' ? styles.sectionServices : '')
+        (id === 'services' || id === 'gallery' ? styles.sectionServices : '')
       }>
       {children}
     </section>

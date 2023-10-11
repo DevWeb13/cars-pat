@@ -4,6 +4,7 @@
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
   font-size: var(--textFooter-576px);
+
   justify-content: flex-end;
   padding: 3px 4%;
   gap: 5%;

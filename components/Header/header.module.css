@@ -19,7 +19,7 @@
 }
 
 .h1 {
-  font-family: 'BirdsOfParadise', sans-serif;
+  font-family: var(--local-font), sans-serif;
   color: var(--primary-color);
   font-weight: 100;
   height: 40px;

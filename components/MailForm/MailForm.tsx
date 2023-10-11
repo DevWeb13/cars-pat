@@ -28,23 +28,17 @@ const MailForm = () => {
   );
 
   const formRef = useRef<HTMLFormElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileLabelRef = useRef<HTMLLabelElement>(null);
 
   const allowedFileTypes = [
-    /* JPG PNG BMP GIF TIF WEBP HEIC PDF */
     'image/jpg',
     'image/jpeg',
     'image/png',
     'image/gif',
-    'application/pdf',
-    // bmp, tif, webp, heic
-    'image/bmp',
-    'image/tiff',
     'image/webp',
-    'image/heic',
   ];
 
-  const MAX_SIZE = 25 * 1024 * 1024;
+  const MAX_SIZE = 32 * 1024 * 1024;
 
   const validateName = (name: string): boolean => {
     if (!name.trim()) {
@@ -111,21 +105,25 @@ const MailForm = () => {
         (file) => !existingFileNames.includes(file.name)
       );
 
-      const totalSize =
-        newFiles.reduce((acc, file) => acc + file.size, 0) +
-        images.reduce((acc, imageItem) => acc + imageItem.file.size, 0);
-      setTotalFileSize(totalSize);
-      if (totalSize > MAX_SIZE) {
-        setErrors((prev) => ({
-          ...prev,
-          files: 'La taille totale des fichiers dépasse la limite de 18MB.',
-        }));
-        return;
-      }
+      // Filtrer les fichiers qui dépassent la taille maximale et afficher une erreur si nécessaire
+      const validFiles = newFiles.filter((file) => {
+        if (file.size > MAX_SIZE) {
+          setErrors((prev) => ({
+            ...prev,
+            files: 'Un fichier dépasse la limite de 32MB.',
+          }));
+          setTimeout(() => {
+            setErrors((prev) => ({ ...prev, files: undefined }));
+          }, 5000);
+          return false;
+        }
+        return true;
+      });
 
-      const invalidFileType = newFiles.some(
+      const invalidFileType = validFiles.some(
         (file) => !allowedFileTypes.includes(file.type)
       );
+
       if (invalidFileType) {
         setErrors((prev) => ({
           ...prev,
@@ -139,8 +137,20 @@ const MailForm = () => {
         setErrors((prev) => ({ ...prev, files: undefined }));
       }
 
+      const totalImages = images.length + newFiles.length;
+      if (totalImages > 9) {
+        setErrors((prev) => ({
+          ...prev,
+          files: 'Vous ne pouvez télécharger que 9 photos au maximum.',
+        }));
+        setTimeout(() => {
+          setErrors((prev) => ({ ...prev, files: undefined }));
+        }, 5000);
+        return;
+      }
+
       Promise.all(
-        newFiles.map((file) => {
+        validFiles.map((file) => {
           const reader = new FileReader();
           return new Promise<ImageItem>((resolve) => {
             reader.onloadend = () => {
@@ -179,17 +189,18 @@ const MailForm = () => {
     return data.data.url; // Retourne l'URL de l'image téléchargée
   }
 
-  const handleRemoveImage = (index: number) => {
+  const handleRemoveImage = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    event.stopPropagation(); // Ajoutez cette ligne pour arrêter la propagation de l'événement
+    event.preventDefault(); // Ajoutez cette ligne pour arrêter la propagation de l'événement
+
     const newImages = [...images];
     newImages.splice(index, 1);
     setImages(newImages);
     const sizeAfterRemoval = totalFileSize - images[index].file.size;
     setTotalFileSize(sizeAfterRemoval);
-
-    // Réinitialisez la valeur de l'élément d'entrée
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
   };
 
   const uploadFilesToImgBB = async (files: File[]) => {
@@ -218,7 +229,7 @@ const MailForm = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event.currentTarget.surName.value);
+
     setStatus('loading');
     const name = event.currentTarget.surName.value;
     const email = event.currentTarget.email.value;
@@ -231,10 +242,19 @@ const MailForm = () => {
     const isMessageValid = validateMessage(message);
 
     if (!isNameValid || !isEmailValid || !isMessageValid || !isPhoneValid) {
+      // Supposons que la hauteur de votre en-tête soit de 60px
+      const headerHeight = 60;
+
+      if (formRef.current) {
+        const yOffset = formRef.current.offsetTop - headerHeight;
+        window.scrollTo({ top: yOffset, behavior: 'smooth' });
+      }
+
       setStatus(null);
       return;
     }
     console.log(images);
+
     try {
       ////////////////// NEW CODE ///////////////////////
       const fileUrls = await uploadFilesToImgBB(images.map((img) => img.file));
@@ -289,18 +309,6 @@ const MailForm = () => {
         (file) => !existingFileNames.includes(file.name)
       );
 
-      const totalSize =
-        newFiles.reduce((acc, file) => acc + file.size, 0) +
-        images.reduce((acc, imageItem) => acc + imageItem.file.size, 0);
-      setTotalFileSize(totalSize);
-      if (totalSize > MAX_SIZE) {
-        setErrors((prev) => ({
-          ...prev,
-          files: 'La taille totale des fichiers dépasse la limite de 18MB.',
-        }));
-        return;
-      }
-
       const invalidFileType = newFiles.some(
         (file) => !allowedFileTypes.includes(file.type)
       );
@@ -333,6 +341,20 @@ const MailForm = () => {
       ).then((newImageItems) => {
         setImages((prevState) => [...prevState, ...newImageItems]);
       });
+    }
+  };
+
+  const handleMouseEnter = () => {
+    // Ajoutez une classe pour désactiver l'effet de survol du label
+    if (fileLabelRef.current) {
+      fileLabelRef.current.classList.add(styles['no-hover']);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // Retirez la classe pour réactiver l'effet de survol du label
+    if (fileLabelRef.current) {
+      fileLabelRef.current.classList.remove(styles['no-hover']);
     }
   };
 
@@ -373,7 +395,10 @@ const MailForm = () => {
               id='surName'
               name='surName'
               onBlur={(e) => validateName(e.target.value)}
-              className={styles.input}
+              onChange={(e) => validateName(e.target.value)}
+              className={`${styles.input} ${
+                errors.name ? styles.errorOutline : ''
+              }`}
               placeholder='Nom/Prénom'
             />
 
@@ -397,8 +422,11 @@ const MailForm = () => {
               type='email'
               id='email'
               name='email'
-              className={styles.input}
+              className={`${styles.input} ${
+                errors.email ? styles.errorOutline : ''
+              }`}
               onBlur={(e) => validateEmail(e.target.value)}
+              onChange={(e) => validateEmail(e.target.value)}
               placeholder='E-mail'
             />
 
@@ -422,8 +450,11 @@ const MailForm = () => {
               type='tel'
               id='phone'
               name='phone'
-              className={styles.input}
+              className={`${styles.input} ${
+                errors.phone ? styles.errorOutline : ''
+              }`}
               onBlur={(e) => validatePhone(e.target.value)}
+              onChange={(e) => validatePhone(e.target.value)}
               placeholder='Téléphone'
             />
 
@@ -446,8 +477,12 @@ const MailForm = () => {
             <textarea
               id='message'
               name='message'
-              className={styles.textArea}
-              onBlur={(e) => validateMessage(e.target.value)}></textarea>
+              className={`${styles.textArea} ${
+                errors.message ? styles.errorOutline : ''
+              }`}
+              onBlur={(e) => validateMessage(e.target.value)}
+              onChange={(e) => validateMessage(e.target.value)}
+            />
             <p className={styles.error + ' ' + 'textFooter'}>
               {errors.message ? errors.message : ''}
             </p>
@@ -475,20 +510,24 @@ const MailForm = () => {
               htmlFor='photos'
               className={styles.buttonPhotos + ' ' + 'textFooter'}
               onDragOver={handleDragOver}
-              onDrop={handleDrop}>
+              onDrop={handleDrop}
+              ref={fileLabelRef}>
               {images.length === 0 ? (
                 <>
-                  <p>Cliquez ou glissez-déposez vos photos/vidéos ici</p>
+                  <p>Cliquez ou glissez-déposez vos photos ici</p>
                   <p>Types de fichiers autorisé:</p>
-                  <p>jpg, jpeg, png, gif, pdf, mp4</p>
-                  <p>Taille maximale: 18MB</p>
+                  <p>JPG PNG GIF WEBP</p>
+                  <p>Taille maximale d&apos;une fichier: 32MB</p>
+                  <p>Nombre de fichiers autorisé: 9</p>
                 </>
               ) : (
                 <div className={styles.imagesPreviewsWrapper}>
                   {images.map((image, index) => (
                     <div
                       key={index + image.file.name}
-                      className={styles.imagePreviewCard}>
+                      className={styles.imagePreviewCard}
+                      onMouseEnter={() => handleMouseEnter()}
+                      onMouseLeave={() => handleMouseLeave()}>
                       <div className={styles.imagePreviewContent}>
                         <p className={styles.imagePreviewName}>
                           {image.file.name}
@@ -503,7 +542,7 @@ const MailForm = () => {
                         />
                         <button
                           className={styles.buttonDeleteWrapper}
-                          onClick={() => handleRemoveImage(index)}>
+                          onClick={(event) => handleRemoveImage(event, index)}>
                           <Image
                             src='/assets/delete.svg'
                             alt='Supprimer'
@@ -517,23 +556,18 @@ const MailForm = () => {
                   ))}
                 </div>
               )}
+              <p>Ajouter des photos</p>
             </label>
             <input
-              ref={fileInputRef}
               type='file'
               id='photos'
               name='photos'
               multiple
               className={styles.visuallyHidden}
               onChange={handleFileChange}
+              accept='.png, .jpg, .jpeg, .gif, .webp'
             />
           </div>
-          {images.length > 0 && (
-            <p>
-              Taille totale des fichiers :{' '}
-              {(totalFileSize / (1024 * 1024)).toFixed(2)} MB
-            </p>
-          )}
         </div>
 
         <p className={styles.error + ' ' + 'textFooter'}>

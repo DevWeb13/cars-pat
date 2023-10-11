@@ -48,7 +48,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  font-family: 'BirdsOfParadise', sans-serif;
+  font-family: var(--local-font), sans-serif;
   font-weight: 100;
   font-size: var(--titre-576px);
   text-shadow: 2px 0px var(--primary-color);

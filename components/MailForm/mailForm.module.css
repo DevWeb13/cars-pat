@@ -113,7 +113,7 @@
 }
 
 .error {
-  color: red;
+  color: var(--alertColor);
   height: 12px;
 }
 
@@ -131,10 +131,13 @@
 .imagesPreviewsWrapper {
   display: flex;
   max-width: 100%;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  cursor: initial;
 }
 
 .imagePreviewCard {
@@ -173,32 +176,39 @@
   display: flex;
   align-items: center;
   padding-top: 10px;
-  gap: 10px;
+  gap: 5px;
+  color: var(--primary-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonDeleteWrapper:hover {
+  cursor: pointer;
+  color: var(--alertColor);
 }
 
 .buttonPhotos {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 200px;
+  height: 100%;
+  /* height: 200px; */
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  padding: 10px;
+  padding: 30px 20px;
   cursor: pointer;
-  transition: all 0.2s ease-in;
+
   position: relative;
 
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
-  outline: none;
+  outline: 1px solid var(--primary-color);
 
-  border: none;
   overflow: hidden;
   text-align: center;
   text-wrap: wrap;
   border-radius: 5px;
-  padding: 10px 25px;
-  border: 1px ridge var(--primary-color);
+
+  /* border: 1px ridge var(--primary-color); */
   gap: 5px;
   overflow-y: auto;
 }
@@ -212,9 +222,23 @@
   min-height: 25px;
 }
 
-.buttonPhotos:hover {
+.buttonPhotos:hover:not(.no-hover) {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-  border: 2px ridge var(--primary-color);
+  outline: 2px solid var(--primary-color);
+}
+
+.no-hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+  outline: 1px solid var(--primary-color);
+}
+
+.imagePreviewCard:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+  outline: 2px solid var(--primary-color);
+}
+
+.errorOutline {
+  border: 2px solid var(--alertColor);
 }
 
 @media (min-width: 768px) {

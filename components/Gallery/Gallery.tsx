@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';
@@ -34,7 +34,7 @@ const Gallery = () => {
         setVehicleActive={setVehicleActive}
       />
 
-      {/* {status === 'error' && <p>error</p>} */}
+      {status === 'error' && <p className={styles.error}>error</p>}
       <div className={styles.galleryWrapper}>
         {status === 'loading' ? (
           <Loader />

@@ -1,14 +1,3 @@
-@font-face {
-  font-family: 'BirdsOfParadise';
-  src: url('/fonts/birdsOfParadise.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter.ttf') format('truetype');
-  font-display: swap;
-}
 @import '~react-image-gallery/styles/css/image-gallery.css';
 
 * {
@@ -52,6 +41,7 @@ input[type='reset'] {
   --tertiary-color-high: rgb(240, 240, 240);
   --quaternary-color: #fbbc04;
   --backgroundHeader: rgba(30, 30, 30, 0.86);
+  --alertColor: #dc143c;
 
   --titre-576px: 3rem;
   --sousTitre-576px: 1.2rem;
@@ -81,31 +71,35 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
+/* body {
+  font-family: var(--inter-font), sans-serif;
+} */
+
 .primaryColor {
   color: var(--primary-color);
 }
 
 .titre {
   font-size: var(--titre-576px);
-  font-family: 'BirdsOfParadise', sans-serif;
+  font-family: var(--local-font), sans-serif;
   font-weight: 100;
 }
 .sousTitre {
   font-size: var(--sousTitre-576px);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--inter-font), sans-serif;
 }
 .text {
   font-size: var(--text-576px);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--inter-font), sans-serif;
 }
 .textBold {
   font-size: var(--textBold-576px);
   font-weight: bold;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--inter-font), sans-serif;
 }
 .textFooter {
   font-size: var(--textFooter-576px);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--inter-font), sans-serif;
 }
 
 .sectionContent {
@@ -302,4 +296,22 @@ input[type='reset'] {
 
 .fadeOut {
   animation: fadeOut 1s ease-in-out forwards;
+}
+
+/* ***************** Image Gallery ***************** */
+.image-gallery-slides {
+  border-radius: 5px;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  outline: none;
+  border: 4px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.image-gallery-thumbnail:hover {
+  outline: none;
+  border: 4px solid var(--primary-color-high);
+  border-radius: 5px;
 }
