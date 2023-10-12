@@ -49,8 +49,33 @@
 .burger {
   display: flex;
   flex-direction: column;
+  height: 20px;
   justify-content: space-between;
-  cursor: pointer;
+  width: 1.875rem;
+}
+
+.bar {
+  display: block;
+  background-color: var(--primary-color);
+
+  height: 4px;
+  width: 100%;
+  border-radius: 5px;
+  /* filter: drop-shadow(1px 1px 0px #fdfdfd); */
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.barOpenOne {
+  transform: rotate(45deg) translateY(12px);
+}
+
+.barOpenTwo {
+  opacity: 0;
+}
+
+.barOpenThree {
+  transform: rotate(-45deg) translateY(-11px);
 }
 
 .linkTextWrapper {

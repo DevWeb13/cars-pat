@@ -376,7 +376,10 @@ const MailForm = () => {
         ref={formRef}
         onSubmit={handleSubmit}
         encType='multipart/form-data'
-        className={styles.contactForm + ' ' + 'sectionContent column'}>
+        className={styles.contactForm + ' ' + 'sectionContent column'}
+        name='contactForm'
+        id='contactForm'
+        autoComplete='on'>
         <div className={styles.inputWrapper}>
           <div className={styles.formGroup + ' ' + 'sectionContent column'}>
             <label
@@ -400,6 +403,7 @@ const MailForm = () => {
                 errors.name ? styles.errorOutline : ''
               }`}
               placeholder='Nom/Prénom'
+              autoComplete='name'
             />
 
             <p className={styles.error + ' ' + 'textFooter'}>
@@ -428,6 +432,7 @@ const MailForm = () => {
               onBlur={(e) => validateEmail(e.target.value)}
               onChange={(e) => validateEmail(e.target.value)}
               placeholder='E-mail'
+              autoComplete='email'
             />
 
             <p className={styles.error + ' ' + 'textFooter'}>
@@ -456,6 +461,7 @@ const MailForm = () => {
               onBlur={(e) => validatePhone(e.target.value)}
               onChange={(e) => validatePhone(e.target.value)}
               placeholder='Téléphone'
+              autoComplete='tel'
             />
 
             <p className={styles.error + ' ' + 'textFooter'}>
@@ -482,6 +488,7 @@ const MailForm = () => {
               }`}
               onBlur={(e) => validateMessage(e.target.value)}
               onChange={(e) => validateMessage(e.target.value)}
+              autoComplete='off'
             />
             <p className={styles.error + ' ' + 'textFooter'}>
               {errors.message ? errors.message : ''}

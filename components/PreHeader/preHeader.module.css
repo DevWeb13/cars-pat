@@ -17,6 +17,10 @@
   text-wrap: nowrap;
 }
 
+.preHeaderLink:hover {
+  color: var(--primary-color);
+}
+
 .preHeaderLinkSvg {
   min-width: 18px;
 }

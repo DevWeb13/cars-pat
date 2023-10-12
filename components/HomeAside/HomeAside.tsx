@@ -14,7 +14,7 @@ const HomeAside = () => {
           href='/'
           to={'carrosserie'}
           smooth={true}
-          offset={-60}
+          offset={-70}
           duration={500}
           className={styles.link}>
           <h3 className='sousTitre'>{'Carrosserie'.toUpperCase()}</h3>
@@ -23,16 +23,16 @@ const HomeAside = () => {
           href='/'
           to={'peinture'}
           smooth={true}
-          offset={-60}
+          offset={-70}
           duration={500}
           className={styles.link}>
           <h3 className='sousTitre'>{'Peinture'.toUpperCase()}</h3>
         </Link>
         <Link
           href='/'
-          to={'peinture'}
+          to={'pareBrise'}
           smooth={true}
-          offset={-60}
+          offset={-70}
           duration={500}
           className={styles.link}>
           <h3 className={styles.none + ' ' + 'sousTitre'}>
@@ -42,9 +42,9 @@ const HomeAside = () => {
         </Link>
         <Link
           href='/'
-          to={'peinture'}
+          to={'franchise'}
           smooth={true}
-          offset={-60}
+          offset={-70}
           duration={500}
           className={styles.link}>
           <h3 className={styles.none + ' ' + 'sousTitre'}>
@@ -54,9 +54,9 @@ const HomeAside = () => {
         </Link>
         <Link
           href='/'
-          to={'peinture'}
+          to={'pret'}
           smooth={true}
-          offset={-60}
+          offset={-70}
           duration={500}
           className={styles.link}>
           <h3 className={styles.none + ' ' + 'sousTitre'}>

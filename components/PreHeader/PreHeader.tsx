@@ -3,7 +3,7 @@ import styles from './preHeader.module.css';
 
 const PreHeader = () => {
   return (
-    <div className={styles.preHeader}>
+    <div className={styles.preHeader + ' ' + 'textFooter'}>
       <a
         target='_blank'
         href='mailto:carrosse-pat@hotmail.fr'

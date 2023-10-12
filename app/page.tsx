@@ -212,22 +212,27 @@ export default function Home() {
               <NewCard
                 type='carrosserie'
                 text='Carrosserie'
+                id='carrosserie'
               />
               <NewCard
                 type='peinture'
                 text='Peinture'
+                id='peinture'
               />
               <NewCard
                 type='pareBrise'
                 text='Remplacement pare-brise'
+                id='pareBrise'
               />
               <NewCard
                 type='franchise'
                 text='Franchise prise en charge*'
+                id='franchise'
               />
               <NewCard
                 type='pret'
                 text='Prêt de véhicule offert*'
+                id='pret'
               />
               {/* <Card
               cardData={{

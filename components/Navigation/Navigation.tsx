@@ -5,8 +5,6 @@ import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import styles from './navigation.module.css';
 import Modal from 'react-modal';
 import { Link } from 'react-scroll';
-import UseAnimations from 'react-useanimations';
-import menu2 from 'react-useanimations/lib/menu2';
 
 const customStyles = {
   overlay: {
@@ -204,16 +202,6 @@ const Navigation = () => {
 
   return (
     <>
-      <UseAnimations
-        animation={menu2}
-        size={40}
-        strokeColor='#ff8739'
-        reverse={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-        speed={1}
-        className={styles.burger}
-      />
-
       <Modal
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
@@ -247,7 +235,9 @@ const Navigation = () => {
               smooth={true}
               offset={section.id === 'home' ? -84 : -60}
               duration={500}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+              }}
               className={
                 activeLink === section.id
                   ? styles.link + ' ' + styles.activeLink
@@ -280,6 +270,24 @@ const Navigation = () => {
           </svg>
         </div>
       </Modal>
+
+      <button
+        className={styles.burger}
+        id='burger'
+        onClick={() => setIsOpen(!isOpen)}>
+        <div
+          className={
+            styles.bar + ' ' + (isOpen ? styles.barOpenOne : '')
+          }></div>
+        <div
+          className={
+            styles.bar + ' ' + (isOpen ? styles.barOpenTwo : '')
+          }></div>
+        <div
+          className={
+            styles.bar + ' ' + (isOpen ? styles.barOpenThree : '')
+          }></div>
+      </button>
 
       <nav
         className={styles.navDesktop}

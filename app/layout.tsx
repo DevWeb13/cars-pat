@@ -1,5 +1,6 @@
 import { ActiveLinkProvider } from '@/contexts/ActiveLinkContext';
 import './globals.css';
+import { StrictMode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local'; // Importez localFont
@@ -30,17 +31,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang='fr'
-      suppressHydrationWarning={true}
-      className={`${inter.variable} ${local.variable}`}>
-      <body>
-        <ActiveLinkProvider>
-          <PreHeader />
-          <Header />
-          {children}
-        </ActiveLinkProvider>
-      </body>
-    </html>
+    <StrictMode>
+      <html
+        lang='fr'
+        suppressHydrationWarning={true}
+        className={`${inter.variable} ${local.variable}`}>
+        <body>
+          <ActiveLinkProvider>
+            <PreHeader />
+            <Header />
+            {children}
+          </ActiveLinkProvider>
+        </body>
+      </html>
+    </StrictMode>
   );
 }
