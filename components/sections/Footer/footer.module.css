@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* padding: 2rem 0; */
+  background-color: var(--secondary-color);
+  font-family: var(--inter-font), sans-serif;
+  color: var(--tertiary-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--secondary-color);
+  width: 100%;
+}

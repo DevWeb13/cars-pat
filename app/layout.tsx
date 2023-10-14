@@ -7,6 +7,7 @@ import localFont from 'next/font/local'; // Importez localFont
 
 import PreHeader from '@/components/PreHeader/PreHeader';
 import Header from '@/components/Header/Header';
+import Footer from '@/components/sections/Footer/Footer';
 
 const inter = Inter({
   variable: '--inter-font',
@@ -41,6 +42,7 @@ export default function RootLayout({
             <PreHeader />
             <Header />
             {children}
+            <Footer />
           </ActiveLinkProvider>
         </body>
       </html>

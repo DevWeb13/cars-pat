@@ -27,6 +27,7 @@ const Gallery = () => {
     () => fetchPhotos(vehicleActive)
   );
 
+  console.log({ status });
   return (
     <div className={styles.gallery}>
       <RadioButtons
@@ -41,29 +42,16 @@ const Gallery = () => {
         ) : (
           <ImageGallery
             items={
-              data?.map((photo) => {
-                return {
-                  original: `assets/photos/${vehicleActive}/${photo}`,
-                  thumbnail: `assets/photos/${vehicleActive}/${photo}`,
-                  originalAlt: vehicleActive,
-                  thumbnailAlt: vehicleActive,
-                  originalHeight: 500,
-                  originalWidth: 750,
-                  thumbnailHeight: 70,
-                  thumbnailWidth: 150,
-                };
-              }) || [
-                {
-                  original: 'assets/photos/Harley-removebg-preview.png',
-                  thumbnail: 'assets/photos/Harley-removebg-preview.png',
-                  originalAlt: 'harley',
-                  thumbnailAlt: 'harley',
-                  originalHeight: 500,
-                  originalWidth: 750,
-                  thumbnailHeight: 70,
-                  thumbnailWidth: 90,
-                },
-              ]
+              data?.map((photo) => ({
+                original: `assets/photos/${vehicleActive}/${photo}`,
+                thumbnail: `assets/photos/${vehicleActive}/${photo}`,
+                originalAlt: vehicleActive,
+                thumbnailAlt: vehicleActive,
+                originalHeight: 500,
+                originalWidth: 750,
+                thumbnailHeight: 70,
+                thumbnailWidth: 150,
+              })) ?? []
             }
             showBullets={false}
             autoPlay={true}
