@@ -8,6 +8,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   animate?: boolean;
+  children?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   disabled,
   animate,
+  children,
 }: ButtonProps) => {
   return (
     <button
@@ -33,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}>
       {text}
-      <div />
+      {children}
     </button>
   );
 };

@@ -4,8 +4,14 @@ import React, { useEffect, useRef } from 'react';
 import styles from './header.module.css';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-scroll';
+import LinkNext from 'next/link';
+import Button from '../ui/Button/Button';
 
-const Header = () => {
+interface HeaderProps {
+  page?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ page }) => {
   const headerContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,16 +38,33 @@ const Header = () => {
       <div
         className={styles.headerContent}
         ref={headerContentRef}>
-        <Link
-          href='/'
-          to={'home'}
-          smooth={true}
-          offset={-84}
-          duration={500}
-          className={styles.logoWrapper}>
-          <h1 className={styles.h1}>Cars Pat</h1>
-        </Link>
-        <Navigation />
+        {page ? (
+          <>
+            <LinkNext
+              href='/'
+              className={styles.logoWrapper}>
+              <h1 className={styles.h1}>Cars Pat</h1>
+            </LinkNext>
+            <LinkNext
+              href='/'
+              className={styles.contact}>
+              <Button text='Retour' />
+            </LinkNext>
+          </>
+        ) : (
+          <>
+            <Link
+              href='/'
+              to={'home'}
+              smooth={true}
+              offset={-84}
+              duration={500}
+              className={styles.logoWrapper}>
+              <h1 className={styles.h1}>Cars Pat</h1>
+            </Link>
+            <Navigation />
+          </>
+        )}
       </div>
     </header>
   );

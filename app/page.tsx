@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import styles from './page.module.css';
 import { useInView } from 'react-intersection-observer';
@@ -8,6 +8,7 @@ import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Header from '@/components/Header/Header';
 import Main from '@/components/layout/Main/Main';
 
 import Loader from '@/components/Loader/Loader';
@@ -78,6 +79,7 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Header />
       <Main>
         <Section
           id='home'
@@ -94,8 +96,8 @@ export default function Home() {
           <div className={styles.homeImageAndAsideWrapper}>
             <HomeImageWrapper
               photos={[
-                '/assets/photos/carrosserie.jpg',
-                '/assets/photos/peinture.jpg',
+                '/assets/photos/porscheRougeAvecFondPlaqueFloutée.jpg',
+                '/assets/photos/maserati/18.jpg',
               ]}
             />
             <HomeAside />

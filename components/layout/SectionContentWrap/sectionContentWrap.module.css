@@ -30,6 +30,11 @@
   align-items: flex-start;
 }
 
+.footer {
+  background: var(--secondary-color);
+  justify-content: space-between;
+}
+
 @media (min-width: 576px) {
   .container {
     padding: 10px 20px;

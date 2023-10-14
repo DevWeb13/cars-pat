@@ -54,7 +54,7 @@
   text-shadow: 2px 0px var(--primary-color);
   white-space: nowrap;
   min-width: 163px;
-  z-index: 0;
+  z-index: 1;
   height: 56px;
 }
 

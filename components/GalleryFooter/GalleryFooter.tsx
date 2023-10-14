@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './galleryFooter.module.css';
 import Image from 'next/image';
+import SocialMedia from '../SocialMedia/SocialMedia';
 
 const GalleryFooter = () => {
   return (
@@ -14,30 +15,7 @@ const GalleryFooter = () => {
           <span className='primaryColor'>réseaux sociaux</span>
         </p>
       </div>
-      <div className={styles.socialMedia}>
-        <a
-          href='https://www.facebook.com/profile.php?id=100057464648961'
-          target='_blank'
-          rel='noreferrer'>
-          <Image
-            src='assets/facebook.svg'
-            alt='facebook'
-            width={35}
-            height={35}
-          />
-        </a>
-        <a
-          href='https://www.tiktok.com/@cars_pat'
-          target='_blank'
-          rel='noreferrer'>
-          <Image
-            src='assets/tiktok.svg'
-            alt='instagram'
-            width={35}
-            height={35}
-          />
-        </a>
-      </div>
+      <SocialMedia />
     </footer>
   );
 };

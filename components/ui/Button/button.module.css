@@ -1,8 +1,10 @@
 .button {
   display: flex;
+  align-items: center;
 
   border-radius: 5px;
   padding: 10px 25px;
+  gap: 10px;
 
   /* background: transparent; */
   cursor: pointer;

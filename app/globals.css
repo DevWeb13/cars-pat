@@ -259,11 +259,6 @@ input[type='reset'] {
   }
 }
 
-.image-gallery-slide .image-gallery-image {
-  width: 99%;
-  max-height: 90vh;
-}
-
 .wrap {
   flex-wrap: wrap;
 }
@@ -299,6 +294,7 @@ input[type='reset'] {
 }
 
 /* ***************** Image Gallery ***************** */
+
 .image-gallery-slides {
   border-radius: 5px;
 }

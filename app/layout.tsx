@@ -40,7 +40,7 @@ export default function RootLayout({ children }: Props) {
         <body>
           <ActiveLinkProvider>
             <PreHeader />
-            <Header />
+
             {children}
             <Footer />
           </ActiveLinkProvider>
