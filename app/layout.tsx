@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     "Découvrez Cars Pat, votre carrosserie-peinture de confiance à Marseille Mazargues 13009. Une entreprise familiale dédiée à redonner éclat et sécurité à votre véhicule. Prenez rendez-vous dès aujourd'hui !",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface Props {
+  readonly children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: Props) {
   return (
     <StrictMode>
       <html
