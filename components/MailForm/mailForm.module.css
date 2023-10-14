@@ -206,7 +206,6 @@
   overflow: hidden;
   text-align: center;
   text-wrap: wrap;
-  border-radius: 5px;
 
   /* border: 1px ridge var(--primary-color); */
   gap: 5px;
