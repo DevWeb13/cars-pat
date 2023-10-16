@@ -42,7 +42,6 @@ export default function ReviewsPage() {
   };
 
   const { data, error } = useQuery(['reviews'], () => fetchReviews());
-  console.log(data);
 
   return (
     <>
@@ -50,14 +49,6 @@ export default function ReviewsPage() {
         <p>{(error as Error).message}</p>
       ) : (
         <>
-          <SectionContentWrap>
-            {data?.reviews.map((review, index) => (
-              <Review
-                key={index}
-                review={review}
-              />
-            ))}
-          </SectionContentWrap>
           <SectionContentColumn>
             <p className={styles.averageRating + ' ' + 'sousTitre'}>
               {data?.averageRating}
@@ -68,6 +59,14 @@ export default function ReviewsPage() {
             <p className={`${styles.totalReviews} text`}>
               {data?.totalReviews} avis
             </p>
+            <SectionContentWrap>
+              {data?.reviews.map((review, index) => (
+                <Review
+                  key={index + review.author_name}
+                  review={review}
+                />
+              ))}
+            </SectionContentWrap>
 
             <SectionContentWrap>
               <Link

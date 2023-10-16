@@ -534,7 +534,7 @@ const MailForm = () => {
                   <p>Nombre de fichiers autorisé: 9</p>
                 </div>
               ) : (
-                <div className={styles.labelPhotosTextWrapper}>
+                <div className={styles.labelPhotosImagesWrapper}>
                   {images.map((image, index) => (
                     <button
                       key={index + image.file.name}

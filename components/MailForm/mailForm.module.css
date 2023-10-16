@@ -220,6 +220,14 @@
 
 .labelPhotosTextWrapper {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+  text-align: center;
+}
+.labelPhotosImagesWrapper {
+  display: flex;
 
   flex-wrap: wrap;
   width: 100%;
