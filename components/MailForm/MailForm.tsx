@@ -515,41 +515,46 @@ const MailForm = () => {
             </p>
             <label
               htmlFor='photos'
-              className={styles.buttonPhotos + ' ' + 'textFooter'}
+              className={
+                styles.buttonPhotos +
+                ' ' +
+                'textFooter' +
+                ' ' +
+                (images.length > 0 ? styles.justifyContentNone : '')
+              }
               onDragOver={handleDragOver}
               onDrop={handleDrop}
               ref={fileLabelRef}>
               {images.length === 0 ? (
-                <>
+                <div className={styles.labelPhotosTextWrapper}>
                   <p>Cliquez ou glissez-déposez vos photos ici</p>
                   <p>Types de fichiers autorisé:</p>
                   <p>JPG PNG GIF WEBP</p>
                   <p>Taille maximale d&apos;une fichier: 32MB</p>
                   <p>Nombre de fichiers autorisé: 9</p>
-                </>
+                </div>
               ) : (
-                <div className={styles.imagesPreviewsWrapper}>
+                <div className={styles.labelPhotosTextWrapper}>
                   {images.map((image, index) => (
-                    <div
+                    <button
                       key={index + image.file.name}
-                      className={styles.imagePreviewCard}
-                      onMouseEnter={() => handleMouseEnter()}
-                      onMouseLeave={() => handleMouseLeave()}>
-                      <div className={styles.imagePreviewContent}>
-                        <p className={styles.imagePreviewName}>
-                          {image.file.name}
-                        </p>
-
-                        <Image
-                          src={image.preview}
-                          alt='Preview'
-                          width={25}
-                          height={25}
-                          className={styles.imagePreview}
-                        />
-                        <button
-                          className={styles.buttonDeleteWrapper}
-                          onClick={(event) => handleRemoveImage(event, index)}>
+                      className={styles.buttonDeleteWrapper}
+                      onClick={(event) => handleRemoveImage(event, index)}>
+                      <div
+                        className={styles.imagePreviewCard}
+                        onMouseEnter={() => handleMouseEnter()}
+                        onMouseLeave={() => handleMouseLeave()}>
+                        <div className={styles.imagePreviewContent}>
+                          <p className={styles.imagePreviewName}>
+                            {image.file.name}
+                          </p>
+                          <Image
+                            src={image.preview}
+                            alt='Preview'
+                            width={25}
+                            height={25}
+                            className={styles.imagePreview}
+                          />
                           <Image
                             src='/assets/delete.svg'
                             alt='Supprimer'
@@ -557,13 +562,13 @@ const MailForm = () => {
                             height={20}
                           />
                           Supprimer
-                        </button>
+                        </div>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               )}
-              <p>Ajouter des photos</p>
+              <p className={styles.addPhotosText}>Ajouter des photos</p>
             </label>
             <input
               type='file'

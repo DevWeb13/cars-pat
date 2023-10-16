@@ -175,10 +175,12 @@
 .buttonDeleteWrapper {
   display: flex;
   align-items: center;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   gap: 5px;
   color: var(--primary-color);
   transition: all 0.3s ease-in-out;
+  max-width: 100%;
+  width: min-content;
 }
 
 .buttonDeleteWrapper:hover {
@@ -191,39 +193,58 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  /* height: 200px; */
+  height: 300px;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  padding: 30px 20px;
+  padding: 20px 20px;
   cursor: pointer;
 
   position: relative;
-
+  flex-shrink: 1;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   outline: 1px solid var(--primary-color);
 
   overflow: hidden;
-  text-align: center;
+
   text-wrap: wrap;
 
-  /* border: 1px ridge var(--primary-color); */
-  gap: 5px;
+  gap: 15px;
   overflow-y: auto;
 }
 
-.buttonPhotos:after {
+.buttonPhotos:hover:not(.no-hover) {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+  outline: 2px solid var(--primary-color);
+}
+
+.labelPhotosTextWrapper {
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+  text-align: center;
+}
+
+.justifyContentNone {
+  justify-content: flex-start;
+}
+
+.addPhotosText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.addPhotosText:after {
   content: '';
   background: url('/assets/photos.svg') no-repeat center center;
   background-size: contain;
   width: 25px;
   height: 25px;
   min-height: 25px;
-}
-
-.buttonPhotos:hover:not(.no-hover) {
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-  outline: 2px solid var(--primary-color);
 }
 
 .no-hover {
@@ -233,7 +254,13 @@
 
 .imagePreviewCard:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-  outline: 2px solid var(--primary-color);
+  outline: 1px solid var(--alertColor);
+}
+
+.imagePreviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .errorOutline {

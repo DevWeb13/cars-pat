@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './legalNoticePage.module.css';
 import Main from '@/components/layout/Main/Main';
 import Section from '@/components/layout/Section/Section';
-import SectionHeader from '@/components/SectionHeader/SectionHeader';
+import SectionHeader from '@/components/container/SectionHeader/SectionHeader';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
 
 export default function legalNoticePage() {

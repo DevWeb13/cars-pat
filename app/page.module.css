@@ -1,14 +1,3 @@
-.homeImageAndAsideWrapper {
-  display: flex;
-  flex-direction: column;
-
-  /* min-height: 100%; */
-  height: 100%;
-  overflow: hidden;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-
 .infosContacts {
   display: flex;
   flex-direction: column;
@@ -57,11 +46,6 @@
 }
 
 @media (min-width: 576px) {
-  .homeImageAndAsideWrapper {
-    flex-direction: row;
-    width: 100%;
-  }
-
   .infosContacts {
     width: 50%;
     height: 100%;

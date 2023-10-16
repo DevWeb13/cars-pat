@@ -42,6 +42,7 @@ export default function ReviewsPage() {
   };
 
   const { data, error } = useQuery(['reviews'], () => fetchReviews());
+  console.log(data);
 
   return (
     <>

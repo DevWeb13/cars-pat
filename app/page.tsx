@@ -11,11 +11,13 @@ import Link from 'next/link';
 import Header from '@/components/Header/Header';
 import Main from '@/components/layout/Main/Main';
 
+import SectionHome from '@/components/container/SectionHome/SectionHome';
+
 import Loader from '@/components/Loader/Loader';
 import Button from '@/components/ui/Button/Button';
 import Section from '@/components/layout/Section/Section';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
-import SectionHeader from '@/components/SectionHeader/SectionHeader';
+import SectionHeader from '@/components/container/SectionHeader/SectionHeader';
 import Card from '@/components/Card/Card';
 import Gallery from '@/components/Gallery/Gallery';
 import GalleryFooter from '@/components/GalleryFooter/GalleryFooter';
@@ -26,6 +28,7 @@ import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
 import NewCard from '@/components/NewCard/NewCard';
 import InfosContacts from '@/components/sections/InfosContacts/InfosContacts';
 import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionContentWrap';
+import SectionContact from '@/components/container/SectionContact/SectionContact';
 
 const queryClient = new QueryClient();
 
@@ -81,28 +84,10 @@ export default function Home() {
     <QueryClientProvider client={queryClient}>
       <Header />
       <Main>
-        <Section
+        <SectionHome
           id='home'
-          ref={homeRef}>
-          <SectionHeader manyWord={['Carrosserie', 'Peinture']} />
-
-          {/* <p className={styles.homeText + ' ' + 'text'}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatibus, quos, voluptatem, quas, quod quia nesciunt voluptatum
-            officia quibusdam quae voluptas. Quisquam voluptatibus, quos,
-            voluptatem, quas, quod quia nesciunt voluptatum officia quibusdam
-            quae voluptas.
-          </p> */}
-          <div className={styles.homeImageAndAsideWrapper}>
-            <HomeImageWrapper
-              photos={[
-                '/assets/photos/porscheRougeAvecFondPlaqueFloutée.jpg',
-                '/assets/photos/maserati/18.jpg',
-              ]}
-            />
-            <HomeAside />
-          </div>
-        </Section>
+          ref={homeRef}
+        />
 
         <Section
           id='services'
@@ -294,19 +279,10 @@ export default function Home() {
           </SectionContentColumn>
         </Section>
 
-        <Section
+        <SectionContact
           id='contact'
-          ref={contactRef}>
-          <SectionHeader text='Nous contacter' />
-          <SectionContentWrap contact>
-            <SectionContentColumn contact>
-              <MailForm />
-            </SectionContentColumn>
-            <SectionContentColumn contact>
-              <InfosContacts />
-            </SectionContentColumn>
-          </SectionContentWrap>
-        </Section>
+          ref={contactRef}
+        />
       </Main>
     </QueryClientProvider>
   );

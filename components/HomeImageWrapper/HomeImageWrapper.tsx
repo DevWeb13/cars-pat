@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import styles from './homeImageWrapper.module.css';
 import { Link } from 'react-scroll';
@@ -6,28 +6,15 @@ import { Link } from 'react-scroll';
 import Button from '../ui/Button/Button';
 
 interface HomeImageWrapperProps {
-  photos: string[];
+  photo: string;
+  isFading: boolean;
 }
 
-const HomeImageWrapper = ({ photos }: HomeImageWrapperProps) => {
-  const [photo, setPhoto] = useState<string>(photos?.[0]);
-  const [animationClass, setAnimationClass] = useState<string>(styles.fadeIn);
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (photos && photos.length > 0) {
-        setAnimationClass('fadeOut');
-        setTimeout(() => {
-          i = (i + 1) % photos.length;
-          setPhoto(photos[i]);
-          setAnimationClass('fadeIn');
-        }, 1000);
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [photos]);
+const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
+  photo,
+  isFading,
+}) => {
+  const animationClass = isFading ? 'fadeOut' : 'fadeIn';
 
   return (
     <div className={`${styles.homeImageWrapper}`}>

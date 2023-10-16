@@ -35,7 +35,7 @@
   object-fit: cover;
   border-radius: 5px;
 
-  height: 100%;
+  height: auto;
 }
 
 .galleryWrapper button {
