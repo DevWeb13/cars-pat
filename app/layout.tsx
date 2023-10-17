@@ -8,6 +8,8 @@ import localFont from 'next/font/local'; // Importez localFont
 import PreHeader from '@/components/PreHeader/PreHeader';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/sections/Footer/Footer';
+import Script from 'next/script';
+import Head from 'next/head';
 
 const inter = Inter({
   variable: '--inter-font',

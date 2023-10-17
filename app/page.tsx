@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 
 import Header from '@/components/Header/Header';
 import Main from '@/components/layout/Main/Main';
@@ -88,7 +89,6 @@ export default function Home() {
           id='home'
           ref={homeRef}
         />
-
         <Section
           id='services'
           ref={servicesRef}>
@@ -259,17 +259,16 @@ export default function Home() {
             </SectionContentWrap>
           </SectionContentColumn>
         </Section>
-
         <Section
           id='gallery'
           ref={galleryRef}>
           <SectionHeader text='Gallerie photos' />
           <SectionContentColumn>
             <Gallery />
+
             <GalleryFooter />
           </SectionContentColumn>
         </Section>
-
         <Section
           id='avis'
           ref={avisRef}>
@@ -278,7 +277,6 @@ export default function Home() {
             <Reviews />
           </SectionContentColumn>
         </Section>
-
         <SectionContact
           id='contact'
           ref={contactRef}

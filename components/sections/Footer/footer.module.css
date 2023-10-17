@@ -32,13 +32,18 @@
   text-decoration: underline;
 }
 
+.logoLRD a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 @media (min-width: 576px) {
 }
 
 @media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    justify-content: space-between;
+  .sectionContent {
+    width: 30%;
   }
 }
 

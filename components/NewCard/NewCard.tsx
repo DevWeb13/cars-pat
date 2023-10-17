@@ -13,7 +13,15 @@ const NewCard = ({ type, text, id }: NewCardProps) => {
     <button
       className={styles.newCard}
       id={id}>
-      <div className={styles.newCardImage + ' ' + styles[type]} />
+      <div className={styles.newCardImageWrapper}>
+        <Image
+          src={`/assets/photos/${type}.jpg`}
+          alt={type}
+          width={200}
+          height={220}
+          className={styles.newCardImage}
+        />
+      </div>
       <div className={styles.newCardText}>
         <h2 className='text'>{text}</h2>
         <div className={styles.newCardArrow} />

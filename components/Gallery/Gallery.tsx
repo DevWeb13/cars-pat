@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';

@@ -66,25 +66,24 @@ export default function ReviewsPage() {
                   review={review}
                 />
               ))}
-            </SectionContentWrap>
-
-            <SectionContentWrap>
-              <Link
-                className='button'
-                href='https://www.google.fr/maps/place/Cars+Pat/@43.2483415,5.3982268,17z/data=!4m8!3m7!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!9m1!1b1!16s%2Fg%2F1tf20zt9?entry=ttu'
-                target='_blank'>
-                <Button text='Voir tous les avis' />
-              </Link>
-              <Link
-                className='button'
-                href='https://www.google.fr/maps/place/Cars+Pat/@43.2483415,5.3982268,17z/data=!4m8!3m7!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!9m1!1b1!16s%2Fg%2F1tf20zt9?entry=ttu'
-                target='_blank'>
-                <Button
-                  text='Poster un avis'
-                  color='white'
-                  animate
-                />
-              </Link>
+              <SectionContentWrap>
+                <Link
+                  className='button'
+                  href='https://www.google.fr/maps/place/Cars+Pat/@43.2483415,5.3982268,17z/data=!4m8!3m7!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!9m1!1b1!16s%2Fg%2F1tf20zt9?entry=ttu'
+                  target='_blank'>
+                  <Button text='Voir tous les avis' />
+                </Link>
+                <Link
+                  className='button'
+                  href='https://www.google.fr/maps/place/Cars+Pat/@43.2483415,5.3982268,17z/data=!4m8!3m7!1s0x12c9b884f41d09d5:0x967b25d3c34e14c3!8m2!3d43.2483415!4d5.4008017!9m1!1b1!16s%2Fg%2F1tf20zt9?entry=ttu'
+                  target='_blank'>
+                  <Button
+                    text='Poster un avis'
+                    color='white'
+                    animate
+                  />
+                </Link>
+              </SectionContentWrap>
             </SectionContentWrap>
           </SectionContentColumn>
         </>

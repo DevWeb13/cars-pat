@@ -13,13 +13,13 @@ import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionCo
 const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className={styles.container + ' ' + 'textFooter'}>
+      <div className={styles.sectionContent}>
+        <Image
+          src={logo}
+          alt='Cars Pat'
+        />
+      </div>
       <SectionContentWrap footer>
-        <div className={styles.sectionContent}>
-          <Image
-            src={logo}
-            alt='Cars Pat'
-          />
-        </div>
         <div className={styles.sectionContent}>
           <h3 className='textBold'>Contact</h3>
           <p className={styles.address}>
@@ -85,14 +85,29 @@ const Footer: React.FC<FooterProps> = () => {
             </Link>
           </div>
         </div>
-        <div className={styles.sectionContent}>
-          <Link
-            className={styles.linkFooter}
-            href='/legalNotice'>
-            Mentions légales
-          </Link>
-        </div>
       </SectionContentWrap>
+
+      <div className={styles.sectionContent}>
+        <Link
+          className={styles.linkFooter}
+          href='/legalNotice'>
+          Mentions légales
+        </Link>
+      </div>
+      <div className={styles.sectionContent + ' ' + styles.logoLRD}>
+        <Link
+          className={styles.linkFooter}
+          href='https://www.lareponsedev.com/'
+          target='_blank'>
+          Design et développement par LaReponseDev
+          <Image
+            src='/assets/photos/logo/logoLRD.png'
+            alt='LaReponseDev'
+            width={30}
+            height={30}
+          />
+        </Link>
+      </div>
     </footer>
   );
 };

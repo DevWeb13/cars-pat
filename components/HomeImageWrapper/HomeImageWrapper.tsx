@@ -45,8 +45,8 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
       <Image
         src={photo}
         alt='home'
-        width={1920}
-        height={1080}
+        width={967}
+        height={694}
         className={`${styles.homeImage} ${animationClass}`}
         priority
       />

@@ -15,6 +15,7 @@ type ErrorState = {
   email?: string;
   phone?: string;
   message?: string;
+  checkbox?: string;
   files?: string;
 };
 
@@ -94,6 +95,19 @@ const MailForm = () => {
       return false;
     } else {
       setErrors((prev) => ({ ...prev, message: undefined }));
+      return true;
+    }
+  };
+
+  const validateCheckbox = (isChecked: boolean): boolean => {
+    if (!isChecked) {
+      setErrors((prev) => ({
+        ...prev,
+        checkbox: 'Vous devez accepter les conditions.',
+      }));
+      return false;
+    } else {
+      setErrors((prev) => ({ ...prev, checkbox: undefined }));
       return true;
     }
   };
@@ -235,13 +249,21 @@ const MailForm = () => {
     const email = event.currentTarget.email.value;
     const phone = event.currentTarget.phone.value;
     const message = event.currentTarget.message.value;
+    const checkbox = event.currentTarget.consentCheckbox.checked;
 
     const isNameValid = validateName(name);
     const isEmailValid = validateEmail(email);
     const isPhoneValid = validatePhone(phone);
     const isMessageValid = validateMessage(message);
+    const isCheckboxValid = validateCheckbox(checkbox);
 
-    if (!isNameValid || !isEmailValid || !isMessageValid || !isPhoneValid) {
+    if (
+      !isNameValid ||
+      !isEmailValid ||
+      !isMessageValid ||
+      !isPhoneValid ||
+      !isCheckboxValid
+    ) {
       // Supposons que la hauteur de votre en-tête soit de 60px
       const headerHeight = 60;
 
@@ -579,6 +601,24 @@ const MailForm = () => {
               onChange={handleFileChange}
               accept='.png, .jpg, .jpeg, .gif, .webp'
             />
+            <p className={styles.error + ' ' + 'textFooter'} />
+          </div>
+          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+            <div className={styles.checkbox + ' ' + 'textFooter'}>
+              <input
+                type='checkbox'
+                id='consentCheckbox'
+                onChange={(e) => validateCheckbox(e.target.checked)}
+              />
+              <label htmlFor='consentCheckbox'>
+                En soumettant ce formulaire, j&apos;accepte que les informations
+                saisies soient exploitées dans le cadre de la demande de contact
+                et de la relation commerciale qui peut en découler.
+              </label>
+            </div>
+            <p className={styles.error + ' ' + 'textFooter'}>
+              {errors.checkbox ? errors.checkbox : ''}
+            </p>
           </div>
         </div>
 

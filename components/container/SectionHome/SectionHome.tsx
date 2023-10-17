@@ -35,7 +35,7 @@ const SectionHome: ForwardRefRenderFunction<HTMLElement, SectionHomeProps> = (
     }, 5000); // Changer toutes les 5 secondes
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <Section
