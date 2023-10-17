@@ -27,7 +27,7 @@ const Gallery = () => {
     () => fetchPhotos(vehicleActive)
   );
 
-  console.log({ status });
+  console.log({ data });
   return (
     <div className={styles.gallery}>
       <RadioButtons
@@ -43,14 +43,14 @@ const Gallery = () => {
           <ImageGallery
             items={
               data?.map((photo) => ({
-                original: `assets/photos/${vehicleActive}/${photo}`,
-                thumbnail: `assets/photos/${vehicleActive}/${photo}`,
+                original: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
+                thumbnail: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
                 originalAlt: vehicleActive,
                 thumbnailAlt: vehicleActive,
-                originalHeight: 500,
-                originalWidth: 750,
-                thumbnailHeight: 70,
-                thumbnailWidth: 150,
+                originalHeight: 341,
+                originalWidth: 512,
+                thumbnailHeight: 61,
+                thumbnailWidth: 92,
               })) ?? []
             }
             showBullets={false}
@@ -61,6 +61,12 @@ const Gallery = () => {
           />
         )}
       </div>
+      <iframe
+        src='/tiktok'
+        width='780'
+        height='550'
+        className={styles.tiktok}
+      />
     </div>
   );
 };

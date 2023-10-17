@@ -8,7 +8,7 @@ export async function GET(
     const vehicle = params.vehicle;
     const directoryPath = path.join(
       process.cwd(),
-      `public/assets/photos/${vehicle}`
+      `public/assets/photosWebp750*500/${vehicle}`
     );
 
     return new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ export async function GET(
             );
           } else {
             const imageFiles = files.filter((file: string) =>
-              ['.jpg', '.jpeg', '.png'].includes(
+              ['.jpg', '.jpeg', '.png', '.webp'].includes(
                 path.extname(file).toLowerCase()
               )
             );

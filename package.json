@@ -9,7 +9,7 @@
     "lint": "next lint",
     "create-component": "./script/createComponent.sh",
     "convert:webp": "node ./script/convertToWebp.js",
-    "resizeImages:800": "node ./script/resizeImages.js"
+    "resizeImages:750*500": "node ./script/resizeImages.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.35.3",

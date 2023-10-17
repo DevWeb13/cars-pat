@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import Header from '@/components/Header/Header';
 import Main from '@/components/layout/Main/Main';
+import PreHeader from '@/components/PreHeader/PreHeader';
+import Footer from '@/components/sections/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Cars Pat - Mentions légales',
@@ -16,8 +18,10 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <>
+      <PreHeader />
       <Header page='legalNotice' />
       <Main>{children}</Main>
+      <Footer />
     </>
   );
 }

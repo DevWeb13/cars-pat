@@ -40,12 +40,7 @@ export default function RootLayout({ children }: Props) {
         suppressHydrationWarning={true}
         className={`${inter.variable} ${local.variable}`}>
         <body>
-          <ActiveLinkProvider>
-            <PreHeader />
-
-            {children}
-            <Footer />
-          </ActiveLinkProvider>
+          <ActiveLinkProvider>{children}</ActiveLinkProvider>
         </body>
       </html>
     </StrictMode>

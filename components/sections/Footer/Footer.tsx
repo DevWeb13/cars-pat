@@ -101,7 +101,7 @@ const Footer: React.FC<FooterProps> = () => {
           target='_blank'>
           Design et développement par LaReponseDev
           <Image
-            src='/assets/photos/logo/logoLRD.png'
+            src='/assets/photosWebp750*500/logo/logoLRD.png'
             alt='LaReponseDev'
             width={30}
             height={30}

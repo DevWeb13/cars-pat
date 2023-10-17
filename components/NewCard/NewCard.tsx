@@ -15,10 +15,10 @@ const NewCard = ({ type, text, id }: NewCardProps) => {
       id={id}>
       <div className={styles.newCardImageWrapper}>
         <Image
-          src={`/assets/photos/${type}.jpg`}
+          src={`/assets/photosWebp750*500/${type}.webp`}
           alt={type}
-          width={200}
-          height={220}
+          width={384}
+          height={256}
           className={styles.newCardImage}
         />
       </div>

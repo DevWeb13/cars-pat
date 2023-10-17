@@ -1,6 +1,6 @@
 .newCard {
-  width: 321px;
-  height: 214px;
+  width: 384px;
+  height: 311px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
@@ -18,18 +18,16 @@
 
 .newCardImageWrapper {
   width: 100%;
-  /* height: 100%;
-  flex-grow: 1; */
+  height: 256px; /* Mise à jour de la hauteur */
   filter: invert(0%) saturate(0) brightness(100%);
   background-size: cover;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
   overflow: hidden;
 }
 
 .newCardImage {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .newCard:hover .newCardImageWrapper {
@@ -39,29 +37,11 @@
   transition-property: all;
 }
 
-.carrosserie {
-  background-image: url('/assets/photos/carrosserie.jpg');
-}
-
-.peinture {
-  background-image: url('/assets/photos/peinture.jpg');
-}
-
-.pareBrise {
-  background-image: url('/assets/photos/pareBrise.jpg');
-}
-
-.franchise {
-  background-image: url('/assets/photos/franchise.jpg');
-}
-
-.pret {
-  background-image: url('/assets/photos/pret.jpg');
-}
-
 .newCardText {
   display: flex;
-  padding: 20px;
+  height: 55px;
+  align-items: center;
+  padding: 0 20px;
   overflow: hidden;
   gap: 10px;
   transition: color 0.3s;

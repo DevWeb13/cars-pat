@@ -30,6 +30,8 @@ import NewCard from '@/components/NewCard/NewCard';
 import InfosContacts from '@/components/sections/InfosContacts/InfosContacts';
 import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionContentWrap';
 import SectionContact from '@/components/container/SectionContact/SectionContact';
+import PreHeader from '@/components/PreHeader/PreHeader';
+import Footer from '@/components/sections/Footer/Footer';
 
 const queryClient = new QueryClient();
 
@@ -83,6 +85,7 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <PreHeader />
       <Header />
       <Main>
         <SectionHome
@@ -282,6 +285,7 @@ export default function Home() {
           ref={contactRef}
         />
       </Main>
+      <Footer />
     </QueryClientProvider>
   );
 }
