@@ -75,15 +75,13 @@ const HomeAside = () => {
         <LinkNext
           href={'tel:+33491402801'}
           target='_blank'
-          className={'primaryColor sousTitre' + ' ' + styles.tel}>
+          className={'sousTitre' + ' ' + styles.tel}>
           04 91 40 28 01
         </LinkNext>
         <LinkNext
           href={'tel:+33615614914'}
           target='_blank'
-          className={
-            'primaryColor sousTitre' + ' ' + styles.tel + ' ' + styles.none
-          }>
+          className={'sousTitre' + ' ' + styles.tel + ' ' + styles.none}>
           06 15 61 49 14
         </LinkNext>
       </div>

@@ -13,7 +13,7 @@
 }
 
 .homeAsideTitleWrapper {
-  color: var(--primary-color);
+  color: var(--primary-color-high);
   text-shadow: 2px 0 var(--secondary-color);
   height: 45px;
 }
@@ -61,10 +61,10 @@
 }
 
 .tel:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .homeAside {
     width: fit-content;
     padding: 20px 4%;

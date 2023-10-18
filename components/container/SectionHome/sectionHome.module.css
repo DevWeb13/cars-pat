@@ -9,7 +9,7 @@
   flex-shrink: 1;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .homeImageAndAsideWrapper {
     flex-direction: row;
     width: 100%;

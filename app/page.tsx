@@ -32,6 +32,7 @@ import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionCo
 import SectionContact from '@/components/container/SectionContact/SectionContact';
 import PreHeader from '@/components/PreHeader/PreHeader';
 import Footer from '@/components/sections/Footer/Footer';
+import SectionServices from '@/components/container/SectionServices/SectionServices';
 
 const queryClient = new QueryClient();
 
@@ -92,176 +93,10 @@ export default function Home() {
           id='home'
           ref={homeRef}
         />
-        <Section
+        <SectionServices
           id='services'
-          ref={servicesRef}>
-          <SectionHeader text='Nos services' />
-          {/* <section className={styles.newServices}>
-            <article
-              className={styles.newService}
-              id='carrosserie'>
-              <div className={styles.newServiceContent}>
-                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
-                  Carrosserie
-                </h2>
-                <p className='text'>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima omnis est, optio magnam dicta corrupti harum
-                  praesentium consectetur in amet nostrum cum dolorum vitae
-                  doloremque id ducimus adipisci voluptatibu debitis perferendis
-                  reprehenderit pariatur rem quo voluptate illo? Delectus
-                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
-                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
-                  omnis praesentium consectetur in amet nostrum cum dolorum
-                  vitae doloremque id ducimus adipisci voluptatibu debitis
-                  perferendis reprehenderit pariatur rem quo voluptate illo?
-                  Delectus blanditiis dicta veritatis quas recusandae odio at
-                  fugiat vel velit distinctio sunt sint est officiis quaerat
-                  ullam, ipsa omnis
-                </p>
-              </div>
-              <div className={styles.newServicePhoto}>
-                <Image
-                  src='/assets/photos/carrosserie.jpg'
-                  alt='peinture'
-                  width={1000}
-                  height={667}
-                  className={styles.newServiceImage}
-                />
-              </div>
-            </article>
-            <article
-              className={styles.newService}
-              id='peinture'>
-              <div className={styles.newServicePhoto}>
-                <Image
-                  src='/assets/photos/peinture.jpg'
-                  alt='peinture'
-                  width={1000}
-                  height={667}
-                  className={styles.newServiceImage}
-                />
-              </div>
-              <div className={styles.newServiceContent}>
-                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
-                  Peinture
-                </h2>
-                <p className='text'>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima omnis est, optio magnam dicta corrupti harum
-                  praesentium consectetur in amet nostrum cum dolorum vitae
-                  doloremque id ducimus adipisci voluptatibu debitis perferendis
-                  reprehenderit pariatur rem quo voluptate illo? Delectus
-                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
-                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
-                  omnis praesentium consectetur in amet nostrum cum dolorum
-                  vitae doloremque id ducimus adipisci voluptatibu debitis
-                  perferendis reprehenderit pariatur rem quo voluptate illo?
-                  Delectus blanditiis dicta veritatis quas recusandae odio at
-                  fugiat vel velit distinctio sunt sint est officiis quaerat
-                  ullam, ipsa omnis
-                </p>
-              </div>
-            </article>
-            <article
-              className={styles.newService}
-              id='pareBrise'>
-              <div className={styles.newServicePhoto}>
-                <Image
-                  src='/assets/photos/pareBrise.jpg'
-                  alt='peinture'
-                  width={1000}
-                  height={667}
-                  className={styles.newServiceImage}
-                />
-              </div>
-              <div className={styles.newServiceContent}>
-                <h2 className={'titre' + ' ' + styles.newSectionTitle}>
-                  Remplacement pare-brise
-                </h2>
-                <p className='text'>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima omnis est, optio magnam dicta corrupti harum
-                  praesentium consectetur in amet nostrum cum dolorum vitae
-                  doloremque id ducimus adipisci voluptatibu debitis perferendis
-                  reprehenderit pariatur rem quo voluptate illo? Delectus
-                  blanditiis dicta veritatis quas recusandae odio at fugiat vel
-                  velit distinctio sunt sint est officiis quaerat ullam, ipsa
-                  omnis praesentium consectetur in amet nostrum cum dolorum
-                  vitae doloremque id ducimus adipisci voluptatibu debitis
-                  perferendis reprehenderit pariatur rem quo voluptate illo?
-                  Delectus blanditiis dicta veritatis quas recusandae odio at
-                  fugiat vel velit distinctio sunt sint est officiis quaerat
-                  ullam, ipsa omnis
-                </p>
-              </div>
-            </article>
-          </section> */}
-          <SectionContentColumn>
-            <SectionContentWrap>
-              <NewCard
-                type='carrosserie'
-                text='Carrosserie'
-                id='carrosserie'
-              />
-              <NewCard
-                type='peinture'
-                text='Peinture'
-                id='peinture'
-              />
-              <NewCard
-                type='pareBrise'
-                text='Remplacement pare-brise'
-                id='pareBrise'
-              />
-              <NewCard
-                type='franchise'
-                text='Franchise prise en charge*'
-                id='franchise'
-              />
-              <NewCard
-                type='pret'
-                text='Prêt de véhicule offert*'
-                id='pret'
-              />
-              {/* <Card
-              cardData={{
-                title: 'Carrosserie',
-                text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
-                icon: 'portiere',
-              }}
-            />
-            <Card
-              cardData={{
-                title: 'Peinture',
-                text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
-                icon: 'peinture',
-              }}
-            />
-            <Card
-              cardData={{
-                title: 'Remplacement pare-brise',
-                text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
-                icon: 'windshield',
-              }}
-            />
-            <Card
-              cardData={{
-                title: 'Franchise prise en charge*',
-                text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
-                icon: 'franchise',
-              }}
-            />
-            <Card
-              cardData={{
-                title: 'Prêt de véhicule offert*',
-                text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis est, optio magnam dicta corrupti harum praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis praesentium consectetur in amet nostrum cum dolorum vitae doloremque id ducimus adipisci voluptatibu debitis perferendis reprehenderit pariatur rem quo voluptate illo? Delectus blanditiis dicta veritatis quas recusandae odio at fugiat vel velit distinctio sunt sint est officiis quaerat ullam, ipsa omnis',
-                icon: 'cars',
-              }}
-            /> */}
-            </SectionContentWrap>
-          </SectionContentColumn>
-        </Section>
+          ref={servicesRef}
+        />
         <Section
           id='gallery'
           ref={galleryRef}>
@@ -276,9 +111,8 @@ export default function Home() {
           id='avis'
           ref={avisRef}>
           <SectionHeader text='Avis Google' />
-          <SectionContentColumn>
-            <Reviews />
-          </SectionContentColumn>
+
+          <Reviews />
         </Section>
         <SectionContact
           id='contact'

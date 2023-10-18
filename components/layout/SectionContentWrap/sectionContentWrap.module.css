@@ -30,9 +30,19 @@
   align-items: flex-start;
 }
 
+.services {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.reviews {
+  flex-grow: 0;
+}
+
 .footer {
   background: var(--secondary-color);
   justify-content: space-between;
+  max-width: 1440px;
 }
 
 @media (min-width: 576px) {

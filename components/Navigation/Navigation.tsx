@@ -274,7 +274,8 @@ const Navigation = () => {
       <button
         className={styles.burger}
         id='burger'
-        onClick={() => setIsOpen(!isOpen)}>
+        onClick={() => setIsOpen(!isOpen)}
+        name='burger'>
         <div
           className={
             styles.bar + ' ' + (isOpen ? styles.barOpenOne : '')

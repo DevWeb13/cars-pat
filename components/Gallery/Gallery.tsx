@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import { useQuery } from '@tanstack/react-query';
 
 import RadioButtons from '../RadioButtons/RadioButtons';
 import Loader from '../Loader/Loader';
+interface ExtendedReactImageGallery extends ImageGallery {
+  imageGallery: {
+    current: {
+      clientHeight: number;
+      // Et toute autre propriété nécessaire...
+    };
+  };
+}
 
 const Gallery = () => {
-  const [vehicleActive, setVehicleActive] = useState('peugeot504');
+  const [vehicleActive, setVehicleActive] = useState('divers');
+  const [galleryWrapperHeight, setGalleryWrapperHeight] = useState(0);
+
+  const galleryWrapperRef = useRef<ExtendedReactImageGallery>(null);
 
   const fetchPhotos = async (vehicleName: string) => {
     try {
@@ -27,7 +38,30 @@ const Gallery = () => {
     () => fetchPhotos(vehicleActive)
   );
 
-  console.log({ data });
+  useEffect(() => {
+    const handleResize = () => {
+      if (galleryWrapperRef.current && status === 'success') {
+        // Hauteur de l'element
+        console.log(
+          galleryWrapperRef.current.imageGallery.current.clientHeight
+        );
+        setGalleryWrapperHeight(
+          galleryWrapperRef.current.imageGallery.current.clientHeight
+        );
+      }
+    };
+
+    // Appellez la fonction lorsque le composant est monté
+    handleResize();
+
+    // Ajoutez un écouteur d'événement pour le resize
+    window.addEventListener('resize', handleResize);
+
+    // Supprimez l'écouteur d'événement lors du nettoyage pour éviter les fuites de mémoire
+    return () => window.removeEventListener('resize', handleResize);
+  }, [status]);
+
+  console.log({ galleryWrapperHeight });
   return (
     <div className={styles.gallery}>
       <RadioButtons
@@ -35,12 +69,18 @@ const Gallery = () => {
         setVehicleActive={setVehicleActive}
       />
 
-      {status === 'error' && <p className={styles.error}>error</p>}
-      <div className={styles.galleryWrapper}>
-        {status === 'loading' ? (
+      <div
+        className={styles.galleryWrapper}
+        style={{ height: galleryWrapperHeight, minHeight: '300px' }}>
+        {status === 'error' ? (
+          <p className={styles.error}>
+            Erreur lors de l&apos;affichage de la gallerie
+          </p>
+        ) : status === 'loading' ? (
           <Loader />
         ) : (
           <ImageGallery
+            ref={galleryWrapperRef}
             items={
               data?.map((photo) => ({
                 original: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
@@ -66,6 +106,9 @@ const Gallery = () => {
         width='780'
         height='550'
         className={styles.tiktok}
+        title='tiktok'
+        loading='lazy'
+        referrerPolicy='no-referrer-when-downgrade'
       />
     </div>
   );

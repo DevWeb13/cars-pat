@@ -53,19 +53,23 @@ const InfosContacts: React.FC<InfosContactsProps> = () => {
         </Link>
       </div>
       <iframe
+        title='map'
         src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14137.182395999138!2d5.400888!3d43.248392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b884f41d09d5%3A0x967b25d3c34e14c3!2sCars%20Pat!5e1!3m2!1sfr!2sfr!4v1695283837705!5m2!1sfr!2sfr'
         width={280}
         height={269}
         loading='lazy'
         referrerPolicy='no-referrer-when-downgrade'
-        className={styles.map}></iframe>
+        className={styles.map}
+      />
       <iframe
+        title='map'
         src='https://www.google.com/maps/embed?pb=!4v1695311394340!6m8!1m7!1sW9TDgMNjV8IejcCtJpTTzA!2m2!1d43.24829969231534!2d5.400771836629596!3f26.714348!4f0!5f0.7820865974627469'
         width={280}
         height={269}
         loading='lazy'
         referrerPolicy='no-referrer-when-downgrade'
-        className={styles.map}></iframe>
+        className={styles.map}
+      />
     </>
   );
 };

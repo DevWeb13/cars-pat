@@ -18,6 +18,13 @@
   text-align: center;
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 @media (min-width: 576px) {
   .averageRating {
     font-size: var(--titre-768px);
