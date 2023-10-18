@@ -56,6 +56,10 @@
     padding: 20px 40px;
     gap: 20px;
   }
+
+  .contact {
+    height: 1415px;
+  }
 }
 
 @media (min-width: 992px) {

@@ -276,6 +276,16 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  padding: 0 5px;
+}
+
+.consentCheckbox {
+  /* width: 20px;
+  height: 20px; */
+
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
 .checkbox label,
@@ -283,8 +293,24 @@
   cursor: pointer;
 }
 
-.errorOutline {
+.errorBorder {
   border: 2px solid var(--alertColor);
+}
+
+.errorText {
+  color: var(--alertColor);
+}
+
+.opacityNull {
+  opacity: 0;
+}
+
+.contactForm {
+  flex-grow: 1;
+}
+
+.disabled {
+  cursor: not-allowed;
 }
 
 @media (min-width: 768px) {

@@ -380,6 +380,19 @@ const MailForm = () => {
     }
   };
 
+  const errorSubmitDisplay = () => {
+    switch (status) {
+      case 'loading':
+        return <p>Envoi en cours...</p>;
+      case 'success':
+        return <p>Email envoyé avec succès!</p>;
+      case 'error':
+        return <p>Erreur lors de l&apos;envoi de l&apos;email.</p>;
+      default:
+        return <p className={styles.opacityNull}>OpacityNull</p>;
+    }
+  };
+
   return (
     <>
       <header className={styles.headerForm + ' ' + 'sectionContent column'}>
@@ -422,7 +435,7 @@ const MailForm = () => {
               onBlur={(e) => validateName(e.target.value)}
               onChange={(e) => validateName(e.target.value)}
               className={`${styles.input} ${
-                errors.name ? styles.errorOutline : ''
+                errors.name ? styles.errorBorder : ''
               }`}
               placeholder='Nom/Prénom'
               autoComplete='name'
@@ -449,7 +462,7 @@ const MailForm = () => {
               id='email'
               name='email'
               className={`${styles.input} ${
-                errors.email ? styles.errorOutline : ''
+                errors.email ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validateEmail(e.target.value)}
               onChange={(e) => validateEmail(e.target.value)}
@@ -478,7 +491,7 @@ const MailForm = () => {
               id='phone'
               name='phone'
               className={`${styles.input} ${
-                errors.phone ? styles.errorOutline : ''
+                errors.phone ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validatePhone(e.target.value)}
               onChange={(e) => validatePhone(e.target.value)}
@@ -506,7 +519,7 @@ const MailForm = () => {
               id='message'
               name='message'
               className={`${styles.textArea} ${
-                errors.message ? styles.errorOutline : ''
+                errors.message ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validateMessage(e.target.value)}
               onChange={(e) => validateMessage(e.target.value)}
@@ -542,7 +555,9 @@ const MailForm = () => {
                 ' ' +
                 'textFooter' +
                 ' ' +
-                (images.length > 0 ? styles.justifyContentNone : '')
+                (images.length > 0 ? styles.justifyContentNone : '') +
+                ' ' +
+                (images.length >= 9 ? styles.disabled : '')
               }
               onDragOver={handleDragOver}
               onDrop={handleDrop}
@@ -590,7 +605,9 @@ const MailForm = () => {
                   ))}
                 </div>
               )}
-              <p className={styles.addPhotosText}>Ajouter des photos</p>
+              {images.length < 9 && (
+                <p className={styles.addPhotosText}>Ajouter des photos</p>
+              )}
             </label>
             <input
               type='file'
@@ -600,6 +617,7 @@ const MailForm = () => {
               className={styles.visuallyHidden}
               onChange={handleFileChange}
               accept='.png, .jpg, .jpeg, .gif, .webp'
+              disabled={images.length >= 9} // Cette ligne a été ajoutée
             />
             <p className={styles.error + ' ' + 'textFooter'} />
           </div>
@@ -607,10 +625,13 @@ const MailForm = () => {
             <div className={styles.checkbox + ' ' + 'textFooter'}>
               <input
                 type='checkbox'
+                className={styles.consentCheckbox}
                 id='consentCheckbox'
                 onChange={(e) => validateCheckbox(e.target.checked)}
               />
-              <label htmlFor='consentCheckbox'>
+              <label
+                htmlFor='consentCheckbox'
+                className={errors.checkbox ? styles.errorText : ''}>
                 En soumettant ce formulaire, j&apos;accepte que les informations
                 saisies soient exploitées dans le cadre de la demande de contact
                 et de la relation commerciale qui peut en découler.
@@ -626,13 +647,7 @@ const MailForm = () => {
           {errors.files ? errors.files : ''}
         </p>
 
-        <div>
-          {status === 'loading' && <p>Envoi en cours...</p>}
-          {status === 'success' && <p>Email envoyé avec succès!</p>}
-          {status === 'error' && (
-            <p>Erreur lors de l&apos;envoi de l&apos;email.</p>
-          )}
-        </div>
+        <div>{errorSubmitDisplay()}</div>
         <Button
           text='Envoyer'
           type='submit'

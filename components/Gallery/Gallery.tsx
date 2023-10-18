@@ -38,6 +38,47 @@ const Gallery = () => {
     () => fetchPhotos(vehicleActive)
   );
 
+  const renderContent = () => {
+    switch (status) {
+      case 'error':
+        return (
+          <p className={styles.error}>
+            Erreur lors de l&apos;affichage des photos
+          </p>
+        );
+
+      case 'loading':
+        return <Loader />;
+
+      case 'success':
+        return (
+          <ImageGallery
+            ref={galleryWrapperRef}
+            items={
+              data?.map((photo) => ({
+                original: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
+                thumbnail: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
+                originalAlt: vehicleActive,
+                thumbnailAlt: vehicleActive,
+                originalHeight: 341,
+                originalWidth: 512,
+                thumbnailHeight: 61,
+                thumbnailWidth: 92,
+              })) ?? []
+            }
+            showBullets={false}
+            autoPlay={true}
+            slideInterval={5000}
+            slideDuration={500}
+            lazyLoad={true}
+          />
+        );
+
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (galleryWrapperRef.current && status === 'success') {
@@ -72,34 +113,7 @@ const Gallery = () => {
       <div
         className={styles.galleryWrapper}
         style={{ height: galleryWrapperHeight, minHeight: '300px' }}>
-        {status === 'error' ? (
-          <p className={styles.error}>
-            Erreur lors de l&apos;affichage de la gallerie
-          </p>
-        ) : status === 'loading' ? (
-          <Loader />
-        ) : (
-          <ImageGallery
-            ref={galleryWrapperRef}
-            items={
-              data?.map((photo) => ({
-                original: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
-                thumbnail: `assets/photosWebp750*500/${vehicleActive}/${photo}`,
-                originalAlt: vehicleActive,
-                thumbnailAlt: vehicleActive,
-                originalHeight: 341,
-                originalWidth: 512,
-                thumbnailHeight: 61,
-                thumbnailWidth: 92,
-              })) ?? []
-            }
-            showBullets={false}
-            autoPlay={true}
-            slideInterval={5000}
-            slideDuration={500}
-            lazyLoad={true}
-          />
-        )}
+        {renderContent()}
       </div>
       <iframe
         src='/tiktok'
