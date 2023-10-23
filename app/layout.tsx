@@ -5,11 +5,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local'; // Importez localFont
 
-import PreHeader from '@/components/PreHeader/PreHeader';
-import Header from '@/components/container/Header/Header';
-import Footer from '@/components/container/Footer/Footer';
-import Script from 'next/script';
-import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
   variable: '--inter-font',
@@ -41,6 +37,7 @@ export default function RootLayout({ children }: Props) {
         className={`${inter.variable} ${local.variable}`}>
         <body>
           <ActiveLinkProvider>{children}</ActiveLinkProvider>
+          <Analytics />
         </body>
       </html>
     </StrictMode>
