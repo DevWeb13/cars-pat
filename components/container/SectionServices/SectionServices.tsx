@@ -152,7 +152,6 @@ const SectionServices: ForwardRefRenderFunction<
     setHasScrolled(false);
   };
 
-  console.log({ services });
   return (
     <Section
       id={id}

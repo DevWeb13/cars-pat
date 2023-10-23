@@ -82,10 +82,6 @@ const Gallery = () => {
   useEffect(() => {
     const handleResize = () => {
       if (galleryWrapperRef.current && status === 'success') {
-        // Hauteur de l'element
-        console.log(
-          galleryWrapperRef.current.imageGallery.current.clientHeight
-        );
         setGalleryWrapperHeight(
           galleryWrapperRef.current.imageGallery.current.clientHeight
         );
@@ -102,7 +98,6 @@ const Gallery = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [status]);
 
-  console.log({ galleryWrapperHeight });
   return (
     <div className={styles.gallery}>
       <RadioButtons

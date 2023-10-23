@@ -178,8 +178,6 @@ const Navigation = () => {
     },
   ];
 
-  console.log('isOpen', isOpen);
-
   useEffect(() => {
     // Définir une fonction pour mettre à jour le state
     const updateState = () => {

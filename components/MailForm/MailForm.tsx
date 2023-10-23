@@ -275,21 +275,16 @@ const MailForm = () => {
       setStatus(null);
       return;
     }
-    console.log(images);
 
     try {
       ////////////////// NEW CODE ///////////////////////
       const fileUrls = await uploadFilesToImgBB(images.map((img) => img.file));
 
-      console.log({ fileUrls });
-
       // Étape 2: Envoyez ces URL de fichier à votre endpoint @/api/sendEmail
       const formData = new FormData();
-      console.log(formData);
       fileUrls.forEach((url) => {
         formData.append('photos', url); // Nous envoyons des URL au lieu de fichiers
       });
-      console.log(name);
       formData.append('name', name);
       formData.append('email', email);
       formData.append('phone', phone);
