@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CarsPat
 
-## Getting Started
+CarsPat est une entreprise familiale spécialisée en carrosserie et peinture automobile. Située dans le 13009 à Marseille, France, nous sommes fiers de notre expertise et de notre engagement envers nos clients.
 
-First, run the development server:
+## Fonctionnalités
+
+- **Galerie de photos** : Parcourez une vaste collection de photos de différents véhicules.
+- **Avis** : Consultez les avis laissés par d'autres utilisateurs ou partagez le vôtre.
+- **Formulaire de contact** : Contactez-nous directement via le formulaire de contact intégré.
+- **Page TikTok** : Découvrez notre présence sur TikTok et nos dernières vidéos.
+
+## Dépendances utilisées
+
+Le projet utilise les dépendances suivantes :
+
+- `@tanstack/react-query`: ^4.35.3
+- `@types/node`: 20.6.0
+- `@types/react`: 18.2.21
+- `next`: ^13.5.4
+- `nodemailer`: ^6.9.5
+- `react`: 18.2.0
+- `react-image-gallery`: ^1.3.0
+- `react-modal`: ^3.16.1
+- `sharp`: ^0.32.6
+- ... _(et d'autres dépendances que vous pouvez trouver dans le fichier [package.json](https://github.com/CarsPat/cars-pat/blob/main/package.json))_
+
+## Installation et utilisation
+
+1. Clonez le dépôt :
+
+```bash
+git clone https://github.com/CarsPat/cars-pat.git
+```
+
+2. Installez les dépendances :
+
+```bash
+npm install
+```
+
+3. Lancez le serveur de développement :
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Ouvrez votre navigateur et rendez-vous à l'adresse suivante : http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Auteur
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [**@LaReponseDev**](https://www.lareponsedev.com/) : Développeur web full-stack
+  ![LaReponseDev Logo](./public/assets/photosWebp750*500/logo/logoLRD.png)
