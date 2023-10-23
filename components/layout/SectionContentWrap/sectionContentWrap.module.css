@@ -30,11 +30,6 @@
   align-items: flex-start;
 }
 
-.services {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .reviews {
   flex-grow: 0;
 }
@@ -74,4 +69,8 @@
     padding: 40px 80px;
     gap: 40px;
   }
+  /* .services {
+    padding-left: 0;
+    padding-right: 0;
+  } */
 }

@@ -4,7 +4,7 @@ import MailForm from '@/components/MailForm/MailForm';
 import Section from '@/components/layout/Section/Section';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
 import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionContentWrap';
-import InfosContacts from '@/components/sections/InfosContacts/InfosContacts';
+import InfosContacts from '@/components/InfosContacts/InfosContacts';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 interface SectionContactProps {

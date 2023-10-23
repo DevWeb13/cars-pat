@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
-import Header from '@/components/Header/Header';
+import Header from '@/components/container/Header/Header';
 import Main from '@/components/layout/Main/Main';
 import PreHeader from '@/components/PreHeader/PreHeader';
-import Footer from '@/components/sections/Footer/Footer';
+import Footer from '@/components/container/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Cars Pat - Mentions légales',

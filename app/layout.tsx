@@ -6,8 +6,8 @@ import { Inter } from 'next/font/google';
 import localFont from 'next/font/local'; // Importez localFont
 
 import PreHeader from '@/components/PreHeader/PreHeader';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/sections/Footer/Footer';
+import Header from '@/components/container/Header/Header';
+import Footer from '@/components/container/Footer/Footer';
 import Script from 'next/script';
 import Head from 'next/head';
 

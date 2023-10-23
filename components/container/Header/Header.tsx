@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import styles from './header.module.css';
-import Navigation from '../Navigation/Navigation';
+import Navigation from '../../Navigation/Navigation';
 import { Link } from 'react-scroll';
 import LinkNext from 'next/link';
-import Button from '../ui/Button/Button';
+import Button from '../../ui/Button/Button';
 
 interface HeaderProps {
   page?: string;

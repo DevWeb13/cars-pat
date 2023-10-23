@@ -68,6 +68,7 @@ export default function ReviewsPage() {
             <p className={`${styles.totalReviews} text`}>
               {data?.totalReviews} avis
             </p>
+            <h2 className='sousTitre'>Les derniers avis...</h2>
             <SectionContentWrap>
               {data?.reviews.map((review, index) => (
                 <Review

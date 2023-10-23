@@ -2,8 +2,8 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const INPUT_DIRECTORY = './public/assets/photosWebp/tole'; // Par exemple: './images/originals'
-const OUTPUT_DIRECTORY = './public/assets/photosWebp750*500/tole'; // Par exemple: './images/resized'
+const INPUT_DIRECTORY = './public/assets/photosWebp'; // Par exemple: './images/originals'
+const OUTPUT_DIRECTORY = './public/assets/photosWebp750*500/divers'; // Par exemple: './images/resized'
 
 // Assurez-vous que le répertoire de sortie existe
 if (!fs.existsSync(OUTPUT_DIRECTORY)) {

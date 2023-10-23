@@ -311,3 +311,11 @@ input[type='reset'] {
   border: 4px solid var(--primary-color-high);
   border-radius: 5px;
 }
+
+.span {
+  color: var(--primary-color);
+  font-family: var(--local-font), sans-serif;
+  display: inline-block;
+  height: 0px;
+  text-shadow: 1px 0 var(--secondary-color);
+}

@@ -5,33 +5,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import styles from './page.module.css';
 import { useInView } from 'react-intersection-observer';
 import { useActiveLink } from '@/contexts/ActiveLinkContext';
-import Image from 'next/image';
-import Link from 'next/link';
-import Script from 'next/script';
 
-import Header from '@/components/Header/Header';
+import Header from '@/components/container/Header/Header';
 import Main from '@/components/layout/Main/Main';
 
 import SectionHome from '@/components/container/SectionHome/SectionHome';
 
-import Loader from '@/components/Loader/Loader';
-import Button from '@/components/ui/Button/Button';
 import Section from '@/components/layout/Section/Section';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
 import SectionHeader from '@/components/container/SectionHeader/SectionHeader';
-import Card from '@/components/Card/Card';
+
 import Gallery from '@/components/Gallery/Gallery';
 import GalleryFooter from '@/components/GalleryFooter/GalleryFooter';
 import Reviews from '@/components/Reviews/Reviews';
-import MailForm from '@/components/MailForm/MailForm';
-import HomeAside from '@/components/HomeAside/HomeAside';
-import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
-import NewCard from '@/components/NewCard/NewCard';
-import InfosContacts from '@/components/sections/InfosContacts/InfosContacts';
-import SectionContentWrap from '@/components/layout/SectionContentWrap/SectionContentWrap';
+
 import SectionContact from '@/components/container/SectionContact/SectionContact';
 import PreHeader from '@/components/PreHeader/PreHeader';
-import Footer from '@/components/sections/Footer/Footer';
+import Footer from '@/components/container/Footer/Footer';
 import SectionServices from '@/components/container/SectionServices/SectionServices';
 
 const queryClient = new QueryClient();

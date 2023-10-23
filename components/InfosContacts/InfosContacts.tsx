@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './infosContacts.module.css';
 
-import InfoContact from '../../InfoContact/InfoContact';
+import InfoContact from '../InfoContact/InfoContact';
 import Link from 'next/link';
 
 interface InfosContactsProps {

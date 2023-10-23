@@ -51,12 +51,20 @@
 .tiktok {
   border: none;
   width: 100%;
+  height: 450px;
+}
+
+@media (min-width: 420px) {
+  .tiktok {
+    height: 550px;
+  }
 }
 
 @media (min-width: 576px) {
   .gallery {
     gap: 15px;
   }
+
   /* .galleryWrapper {
     width: 80%;
   } */
