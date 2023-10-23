@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './galleryFooter.module.css';
-import Link from 'next/link';
 import SocialMedia from '../SocialMedia/SocialMedia';
-import Script from 'next/script';
 
 const GalleryFooter = () => {
   return (

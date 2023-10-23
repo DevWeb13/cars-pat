@@ -152,9 +152,10 @@
 
 .imagePreviewContent {
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .imagePreviewName {
@@ -263,12 +264,6 @@
 .imagePreviewCard:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
   outline: 1px solid var(--alertColor);
-}
-
-.imagePreviewContent {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 .checkbox {

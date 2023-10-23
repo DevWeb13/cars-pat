@@ -76,7 +76,7 @@ const MailForm = () => {
       }));
       return false;
     }
-    const phoneRegex = /^0[1-9]([-. ]?[0-9]{2}){4}$/;
+    const phoneRegex = /^0[1-9]([-. ]?\d{2}){4}$/;
     if (phone && !phoneRegex.test(phone)) {
       setErrors((prev) => ({ ...prev, phone: "Le numéro n'est pas valide." }));
       return false;
@@ -574,7 +574,7 @@ const MailForm = () => {
                 <div className={styles.labelPhotosImagesWrapper}>
                   {images.map((image, index) => (
                     <button
-                      key={index + image.file.name}
+                      key={image.file.name}
                       className={styles.buttonDeleteWrapper}
                       onClick={(event) => handleRemoveImage(event, index)}>
                       <div

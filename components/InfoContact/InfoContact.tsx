@@ -27,8 +27,8 @@ const InfoContact: FC<InfoContactProps> = ({
         <h2 className={`${styles.infoContactTitle} textBold`}>{title}</h2>
       </div>
       <p className='text'>
-        {textLines.map((line, index) => (
-          <React.Fragment key={index}>
+        {textLines.map((line) => (
+          <React.Fragment key={line}>
             {line}
             <br />
           </React.Fragment>

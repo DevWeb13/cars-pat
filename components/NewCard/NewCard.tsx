@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect } from 'react';
 import styles from './newCard.module.css';
 import Image from 'next/image';
 import Button from '../ui/Button/Button';
-import SectionContentColumn from '../layout/SectionContentColumn/SectionContentColumn';
 import { Link } from 'react-scroll';
 
 interface Service {

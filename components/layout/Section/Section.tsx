@@ -3,7 +3,6 @@ import styles from './section.module.css';
 
 interface SectionProps {
   id?: string;
-  className?: string;
   children: ReactNode;
 }
 

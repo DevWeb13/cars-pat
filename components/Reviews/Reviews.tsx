@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import styles from './reviews.module.css';
 import Review from '../Review/Review';

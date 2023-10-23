@@ -1,5 +1,4 @@
 import React, { ForwardRefRenderFunction } from 'react';
-import styles from './sectionContact.module.css';
 import MailForm from '@/components/MailForm/MailForm';
 import Section from '@/components/layout/Section/Section';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
