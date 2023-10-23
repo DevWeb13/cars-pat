@@ -17,9 +17,16 @@ interface Service {
 interface NewCardProps {
   service: Service;
   onCardClick: (id: string) => void; // Ajout de cette ligne
+  hasScrolled: boolean;
+  setHasScrolled: (hasScrolled: boolean) => void;
 }
 
-const NewCard = ({ service, onCardClick }: NewCardProps) => {
+const NewCard = ({
+  service,
+  onCardClick,
+  hasScrolled,
+  setHasScrolled,
+}: NewCardProps) => {
   const { id, type, title, isOpen, text, conditions } = service;
 
   const [isVisible, setIsVisible] = React.useState(false);
@@ -40,10 +47,11 @@ const NewCard = ({ service, onCardClick }: NewCardProps) => {
       id={id}
       onClick={() => onCardClick(id)}
       ref={(el) => {
-        if (el && isOpen) {
+        if (el && isOpen && !hasScrolled) {
           setTimeout(() => {
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 300); // déclenche le défilement après 0.3s
+            setHasScrolled(true);
+          }, 300);
         }
       }}>
       <div className={styles.newCardImageWrapper}>

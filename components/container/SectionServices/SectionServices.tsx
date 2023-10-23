@@ -137,6 +137,7 @@ const SectionServices: ForwardRefRenderFunction<
       ),
     },
   ]);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const onCardClick = (clickedServiceId: string) => {
     setServices((prevServices) =>
@@ -150,6 +151,7 @@ const SectionServices: ForwardRefRenderFunction<
         return { ...service, isOpen: false };
       })
     );
+    setHasScrolled(false);
   };
 
   console.log({ services });
@@ -165,6 +167,8 @@ const SectionServices: ForwardRefRenderFunction<
             key={service.id}
             service={service}
             onCardClick={onCardClick} // Pass down the handler
+            hasScrolled={hasScrolled}
+            setHasScrolled={setHasScrolled}
           />
         ))}
       </SectionContentWrap>
