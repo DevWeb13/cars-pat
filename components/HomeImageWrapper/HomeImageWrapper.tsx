@@ -4,6 +4,7 @@ import styles from './homeImageWrapper.module.css';
 import { Link } from 'react-scroll';
 
 import Button from '../ui/Button/Button';
+import CompanyAnniversary from '../CompanyAnniversary/CompanyAnniversary';
 
 interface HomeImageWrapperProps {
   photo: string;
@@ -19,6 +20,7 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
   return (
     <div className={`${styles.homeImageWrapper}`}>
       <div className={styles.linkWrapper}>
+        <CompanyAnniversary />
         <Link
           href='/'
           to={'services'}

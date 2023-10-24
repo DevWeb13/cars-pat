@@ -1,0 +1,14 @@
+.companyAnniversary {
+  position: relative;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* a semi-transparent background to improve readability */
+  color: var(--tertiary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 90%; /* adjust as needed */
+  border: 1px solid var(--primary-color);
+}
