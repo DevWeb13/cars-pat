@@ -99,7 +99,7 @@ const Footer: React.FC<FooterProps> = () => {
           className={styles.linkFooter}
           href='https://www.lareponsedev.com/'
           target='_blank'>
-          Design et développement par LaReponseDev
+          Design et développement: LaReponseDev
           <Image
             src='/assets/photosWebp750*500/logo/logoLRD.png'
             alt='LaReponseDev'

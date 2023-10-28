@@ -31,6 +31,17 @@ const InfosContacts: React.FC<InfosContactsProps> = () => {
         </Link>
         <Link
           target='_blank'
+          href='tel:+33615614914'
+          className='link'>
+          <InfoContact
+            logo='/assets/phone.svg'
+            alt='mobile'
+            title='MOBILE'
+            textLines={['06-15-61-49-14']}
+          />
+        </Link>
+        <Link
+          target='_blank'
           href='mailto:carrosse-pat@hotmail.fr'
           className='link'>
           <InfoContact

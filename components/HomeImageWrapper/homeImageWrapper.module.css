@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   overflow: hidden;
-  height: 40vh;
+  min-height: 45vh;
 }
 
 .homeImage {
@@ -11,27 +11,66 @@
   height: 100%;
   min-height: 100%;
   object-fit: cover;
-  object-position: bottom;
+  object-position: center;
   position: absolute;
 }
 
-.linkWrapper {
-  position: absolute;
+.linkAndAnniversaryWrapper {
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   gap: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   z-index: 1;
   width: 100%;
-  height: 75%;
+  /* height: 80%; */
   justify-content: space-around;
   align-items: center;
+  padding: 10px;
+}
+
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  max-width: 90%;
+}
+
+.keyIcon,
+.messageIcon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.keyIcon {
+  background-image: url('/assets/keyWhite.svg');
+}
+
+.messageIcon {
+  background-image: url('/assets/messagePrimaryHigh.svg');
+}
+.linkWrapper button:hover .keyIcon {
+  background-image: url('/assets/keyBlack.svg');
+  transition: 0.3s all ease-in-out;
+}
+
+.linkWrapper button:hover .messageIcon {
+  background-image: url('/assets/messageBlack.svg');
+  transition: 0.3s all ease-in-out;
 }
 
 @media (min-width: 768px) {
   .homeImageWrapper {
     height: auto;
+  }
+  .linkWrapper {
+    gap: 20px;
+  }
+  .linkWrapper button {
+    gap: 20px;
   }
 }

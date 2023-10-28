@@ -57,7 +57,7 @@
 }
 
 .labelMail::before {
-  background-image: url('/assets/mail.svg');
+  background-image: url('/assets/arrobase.svg');
   width: 25px;
   height: 20px;
 }
@@ -69,7 +69,7 @@
 }
 
 .labelMessage::before {
-  background-image: url('/assets/message.svg');
+  background-image: url('/assets/messagePrimary.svg');
   width: 25px;
   height: 25px;
 }

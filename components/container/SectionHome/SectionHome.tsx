@@ -20,8 +20,8 @@ const SectionHome: ForwardRefRenderFunction<HTMLElement, SectionHomeProps> = (
 
   const words = ['Carrosserie', 'Peinture'];
   const photos = [
-    '/assets/photosWebp750*500/porscheRougeAvecFondPlaqueFloutée.webp',
-    '/assets/photosWebp750*500/maserati/18.webp',
+    '/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
+    '/assets/photosWebp/18.webp',
   ];
 
   useEffect(() => {
@@ -41,17 +41,10 @@ const SectionHome: ForwardRefRenderFunction<HTMLElement, SectionHomeProps> = (
     <Section
       id={id}
       ref={ref}>
-      <SectionHeader
+      {/* <SectionHeader
         word={words[currentIndex]}
         isFading={isFading}
-      />
-      {/* <p className={styles.homeText + ' ' + 'text'}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-      voluptatibus, quos, voluptatem, quas, quod quia nesciunt voluptatum
-      officia quibusdam quae voluptas. Quisquam voluptatibus, quos,
-      voluptatem, quas, quod quia nesciunt voluptatum officia quibusdam
-      quae voluptas.
-    </p> */}
+      /> */}
       <div className={styles.homeImageAndAsideWrapper}>
         <HomeImageWrapper
           photo={photos[currentIndex]}

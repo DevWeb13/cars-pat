@@ -59,7 +59,7 @@ const SectionServices: ForwardRefRenderFunction<
             subtile ou une transformation radicale.
           </p>
           <br />
-          <p>
+          <p className='text'>
             Des questions sur nos techniques ou nos tarifs ? Contactez-nous dès
             maintenant.
           </p>

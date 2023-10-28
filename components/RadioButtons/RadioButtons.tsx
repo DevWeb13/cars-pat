@@ -20,8 +20,8 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
     },
     {
       id: 2,
-      name: 'maserati',
-      display: 'Maserati',
+      name: 'fordMustangGt',
+      display: 'Ford Mustang Gt',
     },
     {
       id: 3,

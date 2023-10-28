@@ -70,7 +70,10 @@ const NewCard = ({
           (isOpen ? styles.newCardTitleAndTextWrapperOpen : '')
         }>
         <div className={styles.newCardTitle}>
-          <h2 className={'textBold' + ' ' + (isOpen ? styles.primary : '')}>
+          <h2
+            className={
+              isOpen ? styles.primary + ' ' + 'sousTitre' : 'textBold'
+            }>
             {title}
           </h2>
           <div

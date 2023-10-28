@@ -99,7 +99,7 @@ const Navigation = () => {
     },
     {
       id: 'gallery',
-      name: 'Gallerie photos',
+      name: 'Galerie photos',
       icon: (
         <svg
           width='30px'

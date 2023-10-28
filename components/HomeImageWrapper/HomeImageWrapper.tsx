@@ -19,29 +19,37 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
 
   return (
     <div className={`${styles.homeImageWrapper}`}>
-      <div className={styles.linkWrapper}>
+      <div className={styles.linkAndAnniversaryWrapper}>
         <CompanyAnniversary />
-        <Link
-          href='/'
-          to={'services'}
-          smooth={true}
-          offset={-60}
-          duration={500}>
-          <Button text='Découvrez nos services' />
-        </Link>
+        <div className={styles.linkWrapper}>
+          <Link
+            href='/'
+            to={'services'}
+            smooth={true}
+            offset={-60}
+            duration={500}>
+            <Button
+              text='Découvrez nos services'
+              home>
+              <div className={styles.keyIcon} />
+            </Button>
+          </Link>
 
-        <Link
-          href='/'
-          to={'contact'}
-          smooth={true}
-          offset={-60}
-          duration={500}>
-          <Button
-            text='Contactez-nous'
-            color='white'
-            animate={true}
-          />
-        </Link>
+          <Link
+            href='/'
+            to={'contact'}
+            smooth={true}
+            offset={-60}
+            duration={500}>
+            <Button
+              text='Contactez-nous'
+              color='white'
+              animate={true}
+              home>
+              <div className={styles.messageIcon} />
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <Image

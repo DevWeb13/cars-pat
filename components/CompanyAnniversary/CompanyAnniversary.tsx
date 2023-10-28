@@ -15,14 +15,22 @@ const CompanyAnniversary: React.FC<CompanyAnniversaryProps> = () => {
   const yearsOpen = calculateYears();
   return (
     <div className={styles.companyAnniversary}>
-      <h2 className='sousTitre'>
-        <span className='primaryColor'>{yearsOpen}</span> ans de{' '}
-        <span className='primaryColor'>confiance</span> et d&apos;
-        <span className='primaryColor'>expertise</span> !
+      <h1 className={'titre' + ' ' + styles.title}>Carrosserie Peinture</h1>
+      <h2 className={'sousTitre' + ' ' + styles.subTitle}>
+        <span className='primaryColor'>{yearsOpen} ans</span> de
+        <span className='primaryColor'> confiance </span>
+        et d&apos;
+        <span className='primaryColor'> expertise !</span>
       </h2>
-      {/* <p>
-        Depuis le 1er avril 1997, nous mettons notre expertise en carrosserie et
-        peinture automobile à votre disposition. Merci de nous faire confiance.
+      {/* <br className={styles.text} />
+      <p className={'sousTitre' + ' ' + styles.text}>
+        Depuis le <span className='primaryColor'>1er avril 1997</span>, nous
+        mettons notre expertise en{' '}
+        <span className='primaryColor'>carrosserie</span> et en{' '}
+        <span className='primaryColor'>peinture</span> automobile à votre
+        disposition. <br />
+        <br />
+        <span className='primaryColor'>Merci</span> de nous faire confiance !
       </p> */}
     </div>
   );

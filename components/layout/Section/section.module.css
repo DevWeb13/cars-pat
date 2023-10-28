@@ -5,7 +5,7 @@
 
   min-height: calc(100svh - (var(--headerHeight) + var(--preHeaderHeight)));
 
-  max-width: 1440px;
+  max-width: 1920px;
   background: var(--tertiary-color-high);
   background: linear-gradient(
     0deg,
@@ -24,8 +24,8 @@
   min-height: calc(100svh - (var(--headerHeight)));
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .sectionHome {
     max-height: calc(100vh - (var(--headerHeight) + var(--preHeaderHeight)));
   }
-}
+} */

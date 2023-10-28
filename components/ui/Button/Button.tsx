@@ -9,6 +9,7 @@ interface ButtonProps {
   disabled?: boolean;
   animate?: boolean;
   children?: React.ReactNode;
+  home?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   animate,
   children,
+  home,
 }: ButtonProps) => {
   return (
     <button
@@ -26,11 +28,11 @@ const Button: React.FC<ButtonProps> = ({
       className={
         styles.button +
         ' ' +
-        'textBold' +
-        ' ' +
         (color ? styles.btnColor : styles.btn) +
         ' ' +
-        (animate ? styles.animate : '')
+        (animate ? styles.animate : '') +
+        ' ' +
+        (!home ? 'textBold' : 'sousTitre' + ' ' + styles.bold)
       }
       onClick={onClick}
       disabled={disabled}>

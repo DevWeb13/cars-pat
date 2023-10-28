@@ -89,7 +89,7 @@ export default function Home() {
         <Section
           id='gallery'
           ref={galleryRef}>
-          <SectionHeader text='Gallerie photos' />
+          <SectionHeader text='Galerie photos' />
           <SectionContentColumn>
             <Gallery />
 

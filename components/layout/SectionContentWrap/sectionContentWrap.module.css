@@ -69,8 +69,8 @@
     padding: 40px 80px;
     gap: 40px;
   }
-  /* .services {
-    padding-left: 0;
-    padding-right: 0;
-  } */
+  .services {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
 }
