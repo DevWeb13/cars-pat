@@ -2,6 +2,8 @@ import { FormEvent, useState, useRef } from 'react';
 import styles from './mailForm.module.css';
 import Image from 'next/image';
 import Button from '../ui/Button/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { verifyCaptcha } from '@/app/utils/verifyCaptcha';
 
 type ImageItem = {
   preview: string;
@@ -17,6 +19,7 @@ type ErrorState = {
   message?: string;
   checkbox?: string;
   files?: string;
+  captcha?: string;
 };
 
 const MailForm = () => {
@@ -38,6 +41,16 @@ const MailForm = () => {
     'image/gif',
     'image/webp',
   ];
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsverified] = useState<boolean>(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    // Server function to verify captcha
+    await verifyCaptcha(token)
+      .then(() => setIsverified(true))
+      .catch(() => setIsverified(false));
+  }
 
   const MAX_SIZE = 32 * 1024 * 1024;
 
@@ -108,6 +121,19 @@ const MailForm = () => {
       return false;
     } else {
       setErrors((prev) => ({ ...prev, checkbox: undefined }));
+      return true;
+    }
+  };
+
+  const validateCaptcha = (isVerified: boolean): boolean => {
+    if (!isVerified) {
+      setErrors((prev) => ({
+        ...prev,
+        captcha: 'Veuillez cocher la case reCAPTCHA.',
+      }));
+      return false;
+    } else {
+      setErrors((prev) => ({ ...prev, captcha: undefined }));
       return true;
     }
   };
@@ -256,13 +282,15 @@ const MailForm = () => {
     const isPhoneValid = validatePhone(phone);
     const isMessageValid = validateMessage(message);
     const isCheckboxValid = validateCheckbox(checkbox);
+    const isCaptchaValid = validateCaptcha(isVerified);
 
     if (
       !isNameValid ||
       !isEmailValid ||
       !isMessageValid ||
       !isPhoneValid ||
-      !isCheckboxValid
+      !isCheckboxValid ||
+      !isCaptchaValid
     ) {
       // Supposons que la hauteur de votre en-tête soit de 60px
       const headerHeight = 60;
@@ -299,6 +327,8 @@ const MailForm = () => {
         setStatus('success');
         setImages([]); // Réinitialise les images
         formRef.current?.reset(); // Réinitialise le formulaire
+        setIsverified(false); // Réinitialise le captcha
+        recaptchaRef.current?.reset(); // Réinitialise le captcha
       } else {
         setStatus('error');
       }
@@ -388,6 +418,8 @@ const MailForm = () => {
     }
   };
 
+  console.log(process.env.RECAPTCHA_SITE_KEY);
+
   return (
     <>
       <header className={styles.headerForm + ' ' + 'sectionContent column'}>
@@ -429,7 +461,7 @@ const MailForm = () => {
               name='surName'
               onBlur={(e) => validateName(e.target.value)}
               onChange={(e) => validateName(e.target.value)}
-              className={`${styles.input} ${
+              className={`text ${styles.input} ${
                 errors.name ? styles.errorBorder : ''
               }`}
               placeholder='Nom/Prénom'
@@ -456,7 +488,7 @@ const MailForm = () => {
               type='email'
               id='email'
               name='email'
-              className={`${styles.input} ${
+              className={`text ${styles.input} ${
                 errors.email ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validateEmail(e.target.value)}
@@ -485,7 +517,7 @@ const MailForm = () => {
               type='tel'
               id='phone'
               name='phone'
-              className={`${styles.input} ${
+              className={`text ${styles.input} ${
                 errors.phone ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validatePhone(e.target.value)}
@@ -513,12 +545,13 @@ const MailForm = () => {
             <textarea
               id='message'
               name='message'
-              className={`${styles.textArea} ${
+              className={`text ${styles.textArea} ${
                 errors.message ? styles.errorBorder : ''
               }`}
               onBlur={(e) => validateMessage(e.target.value)}
               onChange={(e) => validateMessage(e.target.value)}
               autoComplete='off'
+              placeholder='Votre message'
             />
             <p className={styles.error + ' ' + 'textFooter'}>
               {errors.message ? errors.message : ''}
@@ -640,6 +673,18 @@ const MailForm = () => {
 
         <p className={styles.error + ' ' + 'textFooter'}>
           {errors.files ? errors.files : ''}
+        </p>
+
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''}
+          ref={recaptchaRef}
+          onChange={handleCaptchaSubmission}
+          className={styles.captcha}
+          style={{ width: '100%' }}
+        />
+
+        <p className={styles.error + ' ' + 'textFooter'}>
+          {errors.captcha ? errors.captcha : ''}
         </p>
 
         <div>{errorSubmitDisplay()}</div>

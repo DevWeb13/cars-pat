@@ -87,13 +87,13 @@
   border: 1px solid var(--primary-color);
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   border-radius: 5px;
+  color: var(--secondary-color);
 }
 
 .input:focus {
   border: 2px solid var(--primary-color); /* Changez la couleur et l'épaisseur de la bordure selon vos préférences */
   outline: none; /* Supprime l'outline par défaut de certains navigateurs */
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-  color: var(--primary-color-high);
 }
 
 .textArea {
@@ -109,7 +109,6 @@
   border: 2px solid var(--primary-color); /* Changez la couleur et l'épaisseur de la bordure selon vos préférences */
   outline: none; /* Supprime l'outline par défaut de certains navigateurs */
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
-  color: var(--primary-color-high);
 }
 
 .error {
@@ -308,9 +307,6 @@
   cursor: not-allowed;
 }
 
-@media (min-width: 768px) {
-  .inputAndButtonPhotosWrapper {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.captcha * {
+  max-width: 100%;
 }

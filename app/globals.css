@@ -148,7 +148,7 @@ input[type='reset'] {
     font-size: var(--text-768px);
   }
   .textBold {
-    font-size: var(--text-768px);
+    font-size: var(--textBold-768px);
   }
   .button {
     padding: 10px 20px;
@@ -173,7 +173,7 @@ input[type='reset'] {
     font-size: var(--text-992px);
   }
   .textBold {
-    font-size: var(--text-992px);
+    font-size: var(--textBold-992px);
   }
   .textFooter {
     font-size: var(--textFooter-992px);
@@ -207,7 +207,7 @@ input[type='reset'] {
     font-size: var(--text-1200px);
   }
   .textBold {
-    font-size: var(--text-1200px);
+    font-size: var(--textBold-1200px);
   }
   .textFooter {
     font-size: var(--textFooter-1200px);

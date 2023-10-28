@@ -45,7 +45,7 @@ const InfosContacts: React.FC<InfosContactsProps> = () => {
           href='mailto:carrosse-pat@hotmail.fr'
           className='link'>
           <InfoContact
-            logo='/assets/mail.svg'
+            logo='/assets/arrobase.svg'
             alt='mail'
             title='E-MAIL'
             textLines={['carrosse-pat@hotmail.fr']}
