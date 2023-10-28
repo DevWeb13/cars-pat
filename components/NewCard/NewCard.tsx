@@ -3,7 +3,6 @@ import styles from './newCard.module.css';
 import Image from 'next/image';
 import Button from '../ui/Button/Button';
 import { Link } from 'react-scroll';
-import { animateScroll } from 'react-scroll';
 
 interface Service {
   type: string;

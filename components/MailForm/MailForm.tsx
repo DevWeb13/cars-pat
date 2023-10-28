@@ -43,13 +43,13 @@ const MailForm = () => {
   ];
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [isVerified, setIsverified] = useState<boolean>(false);
+  const [isVerified, setIsVerified] = useState<boolean>(false);
 
   async function handleCaptchaSubmission(token: string | null) {
     // Server function to verify captcha
     await verifyCaptcha(token)
-      .then(() => setIsverified(true))
-      .catch(() => setIsverified(false));
+      .then(() => setIsVerified(true))
+      .catch(() => setIsVerified(false));
   }
 
   const MAX_SIZE = 32 * 1024 * 1024;
@@ -327,7 +327,7 @@ const MailForm = () => {
         setStatus('success');
         setImages([]); // Réinitialise les images
         formRef.current?.reset(); // Réinitialise le formulaire
-        setIsverified(false); // Réinitialise le captcha
+        setIsVerified(false); // Réinitialise le captcha
         recaptchaRef.current?.reset(); // Réinitialise le captcha
       } else {
         setStatus('error');

@@ -2,7 +2,7 @@ import React, { useState, useEffect, ForwardRefRenderFunction } from 'react';
 import styles from './sectionHome.module.css';
 
 import Section from '@/components/layout/Section/Section';
-import SectionHeader from '@/components/container/SectionHeader/SectionHeader';
+
 import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
 import HomeAside from '@/components/HomeAside/HomeAside';
 

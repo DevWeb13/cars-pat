@@ -4,7 +4,6 @@ import { StrictMode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local'; // Importez localFont
-import Head from 'next/head';
 
 import { Analytics } from '@vercel/analytics/react';
 

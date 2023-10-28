@@ -17,10 +17,9 @@ const CompanyAnniversary: React.FC<CompanyAnniversaryProps> = () => {
     <div className={styles.companyAnniversary}>
       <h1 className={'titre' + ' ' + styles.title}>Carrosserie Peinture</h1>
       <h2 className={'sousTitre' + ' ' + styles.subTitle}>
-        <span className='primaryColor'>{yearsOpen} ans</span> de
-        <span className='primaryColor'> confiance </span>
-        et d&apos;
-        <span className='primaryColor'> expertise !</span>
+        <span className='primaryColor'>{yearsOpen} ans</span> de{' '}
+        <span className='primaryColor'>confiance</span> et d&apos;{' '}
+        <span className='primaryColor'>expertise !</span>
       </h2>
       {/* <br className={styles.text} />
       <p className={'sousTitre' + ' ' + styles.text}>

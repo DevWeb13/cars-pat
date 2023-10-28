@@ -306,7 +306,3 @@
 .disabled {
   cursor: not-allowed;
 }
-
-.captcha * {
-  max-width: 100%;
-}
