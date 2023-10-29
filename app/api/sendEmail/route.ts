@@ -45,7 +45,8 @@ export async function POST(request: any): Promise<NextResponse> {
         (url: string) => `
       <div style="display: inline-block; margin: 10px; border: 1px solid #ddd; padding: 10px; text-align: center;">
         <a href="${url}" download>
-          <img src="${url}" alt="${url}" style="width: 100px; height: 100px; display: block; margin-bottom: 5px;">
+        <img src="${url}" alt="${url}" style="width: 100px; height: 100px; display: block; margin-bottom: 5px;">
+        ${url}
         </a>
       </div>`
       )
