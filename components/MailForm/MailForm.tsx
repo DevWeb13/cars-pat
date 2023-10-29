@@ -574,7 +574,7 @@ const MailForm = () => {
                 ' ' +
                 'primaryColor textBold'
               }>
-              Pieces jointes
+              Photos
             </p>
             <label
               htmlFor='photos'

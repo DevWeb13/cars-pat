@@ -42,11 +42,15 @@ export async function POST(request: any): Promise<NextResponse> {
     // Créer une liste de liens pour les photos
     const photoLinks = photoUrls
       .map(
-        (url: string) => `<a href="${url}">${url}
-      <img src="${url}" alt="${url}" style="width: 100px; height: 100px;">
-      </a>`
+        (url: string) => `
+      <div style="display: inline-block; margin: 10px; border: 1px solid #ddd; padding: 10px; text-align: center;">
+        <a href="${url}" download>
+          <img src="${url}" alt="${url}" style="width: 100px; height: 100px; display: block; margin-bottom: 5px;">
+          Télécharger
+        </a>
+      </div>`
       )
-      .join('<br>');
+      .join('');
 
     const mailOption: SendMailOptions = {
       from: `${email} <${process.env.EMAIL}>`,
