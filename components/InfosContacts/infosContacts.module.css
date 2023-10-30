@@ -25,18 +25,21 @@
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   border: 1px solid var(--primary-color);
-  height: 326px;
+  height: 385px;
 }
 
 @media (min-width: 576px) {
   .container {
     padding: 25px;
   }
+  .map {
+    height: 404px;
+  }
 }
 
 @media (min-width: 768px) {
   .map {
-    height: 357px;
+    height: 413px;
   }
 }
 
@@ -46,6 +49,6 @@
   }
 
   .map {
-    height: 374px;
+    height: 441px;
   }
 }

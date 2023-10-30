@@ -37,7 +37,6 @@
 .footer {
   background: var(--secondary-color);
   justify-content: space-between;
-  max-width: 1440px;
 }
 
 @media (min-width: 576px) {
@@ -63,6 +62,7 @@
 @media (min-width: 1066px) {
   .contact {
     height: 1550px;
+    justify-content: space-between;
   }
 }
 
@@ -74,5 +74,8 @@
   .services {
     padding-left: 150px;
     padding-right: 150px;
+  }
+  .contact {
+    height: 1600px;
   }
 }

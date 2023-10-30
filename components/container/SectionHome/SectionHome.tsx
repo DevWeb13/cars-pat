@@ -20,8 +20,14 @@ const SectionHome: ForwardRefRenderFunction<HTMLElement, SectionHomeProps> = (
 
   const words = ['Carrosserie', 'Peinture'];
   const photos = [
-    '/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
-    '/assets/photosWebp/18.webp',
+    {
+      url: '/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
+      alt: 'Porsche rouge',
+    },
+    {
+      url: '/assets/photosWebp/18.webp',
+      alt: 'Mustang GT bleue',
+    },
   ];
 
   useEffect(() => {

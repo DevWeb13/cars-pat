@@ -7,7 +7,10 @@ import Button from '../ui/Button/Button';
 import CompanyAnniversary from '../CompanyAnniversary/CompanyAnniversary';
 
 interface HomeImageWrapperProps {
-  photo: string;
+  photo: {
+    url: string;
+    alt: string;
+  };
   isFading: boolean;
 }
 
@@ -53,8 +56,8 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
       </div>
 
       <Image
-        src={photo}
-        alt='home'
+        src={photo.url}
+        alt={photo.alt}
         width={967}
         height={694}
         className={`${styles.homeImage} ${animationClass}`}

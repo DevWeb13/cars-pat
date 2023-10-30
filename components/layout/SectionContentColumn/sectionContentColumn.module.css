@@ -44,19 +44,20 @@
     padding: 20px 40px;
     gap: 20px;
   }
-
-  .contact {
-    max-width: 45%;
-    height: 100%;
-
-    flex-grow: 1;
-  }
 }
 
 @media (min-width: 992px) {
   .container {
     padding: 30px 60px;
     gap: 30px;
+  }
+}
+@media (min-width: 1068px) {
+  .contact {
+    max-width: 48%;
+    height: 100%;
+
+    flex-grow: 1;
   }
 }
 

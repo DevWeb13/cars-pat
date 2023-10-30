@@ -594,7 +594,7 @@ const MailForm = () => {
                 <div className={styles.labelPhotosTextWrapper}>
                   <p>Cliquez ou glissez-déposez vos photos ici</p>
                   <p>Types de fichiers autorisé:</p>
-                  <p>JPG PNG GIF WEBP</p>
+                  <p>JPG JPEG PNG GIF WEBP</p>
                   <p>Taille maximale d&apos;une fichier: 32MB</p>
                   <p>Nombre de fichiers autorisé: 9</p>
                 </div>
