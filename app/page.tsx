@@ -14,7 +14,6 @@ import Section from '@/components/layout/Section/Section';
 import SectionContentColumn from '@/components/layout/SectionContentColumn/SectionContentColumn';
 import SectionHeader from '@/components/container/SectionHeader/SectionHeader';
 
-import Gallery from '@/components/Gallery/Gallery';
 import GalleryFooter from '@/components/GalleryFooter/GalleryFooter';
 import Reviews from '@/components/Reviews/Reviews';
 
@@ -22,6 +21,12 @@ import SectionContact from '@/components/container/SectionContact/SectionContact
 import PreHeader from '@/components/PreHeader/PreHeader';
 import Footer from '@/components/container/Footer/Footer';
 import SectionServices from '@/components/container/SectionServices/SectionServices';
+
+import dynamic from 'next/dynamic';
+
+const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
+  ssr: false,
+});
 
 const queryClient = new QueryClient();
 
