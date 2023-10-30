@@ -63,7 +63,7 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
         width={967}
         height={694}
         className={`${styles.homeImage} ${animationClass}`}
-        priority
+        // priority
       />
     </div>
   );
