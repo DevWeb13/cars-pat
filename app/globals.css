@@ -71,10 +71,6 @@ input[type='reset'] {
   --headerHeight: 3.75rem;
 }
 
-/* body {
-  font-family: var(--inter-font), sans-serif;
-} */
-
 .primaryColor {
   color: var(--primary-color);
 }

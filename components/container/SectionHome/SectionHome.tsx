@@ -5,6 +5,8 @@ import Section from '@/components/layout/Section/Section';
 
 import HomeImageWrapper from '@/components/HomeImageWrapper/HomeImageWrapper';
 import HomeAside from '@/components/HomeAside/HomeAside';
+import porscheRouge from '@/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp';
+import mustangBleue from '@/public/assets/photosWebp/18.webp';
 
 interface SectionHomeProps {
   id: string;
@@ -21,11 +23,11 @@ const SectionHome: ForwardRefRenderFunction<HTMLElement, SectionHomeProps> = (
   const words = ['Carrosserie', 'Peinture'];
   const photos = [
     {
-      url: '/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
+      src: porscheRouge,
       alt: 'Porsche rouge',
     },
     {
-      url: '/assets/photosWebp/18.webp',
+      src: mustangBleue,
       alt: 'Mustang GT bleue',
     },
   ];
