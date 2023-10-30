@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './homeImageWrapper.module.css';
 import { Link } from 'react-scroll';
 
 import Button from '../ui/Button/Button';
 import CompanyAnniversary from '../CompanyAnniversary/CompanyAnniversary';
+import porscheRouge from '@/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp';
+import mustangBleue from '@/public/assets/photosWebp/18.webp';
 
 import { StaticImageData } from 'next/image';
 
-interface HomeImageWrapperProps {
-  photo: {
-    src: StaticImageData;
-    alt: string;
-  };
-  isFading: boolean;
-}
+interface HomeImageWrapperProps {}
 
-const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
-  photo,
-  isFading,
-}) => {
+const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({}) => {
+  const photos = [
+    {
+      src: porscheRouge,
+      alt: 'Porsche rouge',
+    },
+    {
+      src: mustangBleue,
+      alt: 'Mustang GT bleue',
+    },
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0); // Pour suivre l'index actuel
+  const [isFading, setIsFading] = useState(false); // Pour suivre l'état de l'animation
+
   const animationClass = isFading ? 'fadeOut' : 'fadeIn';
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFading(true);
+
+      setTimeout(() => {
+        setCurrentIndex((prevIndex: number) => (prevIndex + 1) % photos.length);
+        setIsFading(false);
+      }, 1000); // Assumons que l'animation fadeOut dure 1 seconde
+    }, 5000); // Changer toutes les 5 secondes
+
+    return () => clearInterval(interval);
+  }, [photos.length]);
 
   return (
     <div className={`${styles.homeImageWrapper}`}>
@@ -58,11 +76,23 @@ const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({
       </div>
 
       <Image
-        src={photo.src}
-        alt={photo.alt}
-        // width={967}
-        // height={694}
-        className={`${styles.homeImage} ${animationClass}`}
+        src={photos[0].src}
+        alt={photos[0].alt}
+        width={967}
+        height={694}
+        className={`${styles.homeImage} ${animationClass} ${
+          currentIndex === 1 ? styles.none : ''
+        }`}
+        priority
+      />
+      <Image
+        src={photos[1].src}
+        alt={photos[1].alt}
+        width={967}
+        height={694}
+        className={`${styles.homeImage} ${animationClass} ${
+          currentIndex === 0 ? styles.none : ''
+        }`}
         priority
       />
     </div>
