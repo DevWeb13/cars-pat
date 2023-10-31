@@ -21,7 +21,7 @@ const local = localFont({
 export const metadata: Metadata = {
   title: 'Cars Pat',
   description:
-    "Découvrez Cars Pat, votre carrosserie-peinture de confiance à Marseille Mazargues 13009. Une entreprise familiale dédiée à redonner éclat et sécurité à votre véhicule. Prenez rendez-vous dès aujourd'hui !",
+    'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
 };
 
 interface Props {

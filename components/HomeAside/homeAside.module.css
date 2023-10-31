@@ -6,10 +6,17 @@
   text-align: center;
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--primary-color);
+  /* border: 1px solid var(--primary-color); */
   gap: 10px;
   text-wrap: nowrap;
   flex-grow: 1;
+  background: var(--tertiary-color-high);
+  background: linear-gradient(
+    0deg,
+    var(--tertiary-color-high) 0%,
+    var(--tertiary-color) 25%,
+    var(--tertiary-color-light) 100%
+  );
 }
 
 .homeAsideTitleWrapper {
