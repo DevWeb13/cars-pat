@@ -53,7 +53,7 @@ export async function POST(request: any): Promise<NextResponse> {
       .join('');
 
     const mailOption: SendMailOptions = {
-      from: `${email} <${process.env.EMAIL}>`,
+      from: `${email} - ${phone} - <${process.env.EMAIL}>`,
       to: process.env.EMAIL, //Changer pour carrosse-pat@hotmail.fr au moment de la mise en ligne.
       replyTo: email,
       subject: `Message from ${name} - ${phone} - ${email}`,
