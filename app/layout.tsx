@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: 'Cars Pat',
   description:
     'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
+  metadataBase: new URL('https://www.cars-pat.fr'),
+  alternates: {
+    canonical: '/',
+  },
 };
 
 interface Props {
