@@ -111,10 +111,6 @@ input[type='reset'] {
   gap: 10px;
 }
 
-/* .sectionContent img {
-  max-width: 950px;
-} */
-
 .card {
   display: flex;
   flex-direction: column;
@@ -246,10 +242,6 @@ input[type='reset'] {
   right: 0;
   transition: all 0.3s ease-in-out;
 }
-
-/* #main {
-  background: var(--tertiary-color);
-} */
 
 @media (min-width: 992px) {
   .ReactModal__Overlay {
