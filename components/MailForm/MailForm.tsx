@@ -418,8 +418,6 @@ const MailForm = () => {
     }
   };
 
-  console.log(process.env.RECAPTCHA_SITE_KEY);
-
   return (
     <>
       <header className={styles.headerForm + ' ' + 'sectionContent column'}>
