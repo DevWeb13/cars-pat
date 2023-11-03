@@ -8,11 +8,7 @@ import CompanyAnniversary from '../CompanyAnniversary/CompanyAnniversary';
 import porscheRouge from '@/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp';
 import mustangBleue from '@/public/assets/photosWebp/18.webp';
 
-import { StaticImageData } from 'next/image';
-
-interface HomeImageWrapperProps {}
-
-const HomeImageWrapper: React.FC<HomeImageWrapperProps> = ({}) => {
+const HomeImageWrapper: React.FC = () => {
   const photos = [
     {
       src: porscheRouge,
