@@ -61,7 +61,6 @@
   height: 4px;
   width: 100%;
   border-radius: 5px;
-  /* filter: drop-shadow(1px 1px 0px #fdfdfd); */
   opacity: 1;
   transition: all 0.3s ease-in-out;
 }
@@ -108,7 +107,6 @@
   .activeLink {
     color: var(--primary-color);
     font-weight: 900;
-    /* text-shadow: 2px 0px var(--secondary-color); */
   }
 
   .activeLink:hover {

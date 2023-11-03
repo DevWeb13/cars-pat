@@ -3,9 +3,6 @@
   display: flex;
   padding-top: 15px;
 }
-/* .sectionHeaderHome {
-  display: none;
-} */
 
 .leftWideBand {
   -webkit-clip-path: polygon(0 15%, 100% 100%, 30% 100%, 0 50%);
@@ -102,10 +99,3 @@
     height: 140px;
   }
 }
-
-/* 
-@media (max-height: 550px) {
-  .sectionTitle {
-    display: none;
-  }
-} */

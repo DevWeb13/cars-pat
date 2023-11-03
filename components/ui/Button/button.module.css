@@ -1,19 +1,14 @@
 .button {
   display: flex;
   align-items: center;
-
   border-radius: 5px;
   padding: 10px 25px;
   gap: 10px;
-
-  /* background: transparent; */
   cursor: pointer;
   transition: all 0.2s ease-in;
   position: relative;
-
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   outline: none;
-
   border: none;
   overflow: hidden;
 }
@@ -132,7 +127,6 @@
 }
 .bold {
   font-weight: bold;
-  /* font-size: 1rem; */
 }
 
 @media (max-width: 768px) {

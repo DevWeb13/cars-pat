@@ -119,18 +119,10 @@
 .visuallyHidden {
   display: none;
 }
-/* 
-.customFileUpload {
-  padding: 10px;
-  border: 1px solid #ccc;
-  display: inline-block;
-  cursor: pointer;
-} */
 
 .imagesPreviewsWrapper {
   display: flex;
   max-width: 100%;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
@@ -143,7 +135,6 @@
   display: flex;
   border: 1px solid var(--primary-color);
   padding: 10px;
-  /* width: 100%; */
   width: fit-content;
   max-width: 100%;
   overflow: hidden;
@@ -175,7 +166,6 @@
 .buttonDeleteWrapper {
   display: flex;
   align-items: center;
-  /* padding-top: 10px; */
   gap: 5px;
   color: var(--primary-color);
   transition: all 0.3s ease-in-out;
@@ -274,9 +264,6 @@
 }
 
 .consentCheckbox {
-  /* width: 20px;
-  height: 20px; */
-
   border-radius: 5px;
   padding: 5px;
   transition: all 0.3s ease-in-out;

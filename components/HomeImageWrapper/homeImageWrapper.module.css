@@ -16,14 +16,13 @@
 }
 
 .linkAndAnniversaryWrapper {
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   z-index: 1;
   width: 100%;
-  /* height: 80%; */
+
   justify-content: space-around;
   align-items: center;
   padding: 10px;

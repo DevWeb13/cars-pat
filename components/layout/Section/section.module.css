@@ -23,9 +23,3 @@
 .sectionServices {
   min-height: calc(100svh - (var(--headerHeight)));
 }
-
-/* @media (min-width: 992px) {
-  .sectionHome {
-    max-height: calc(100vh - (var(--headerHeight) + var(--preHeaderHeight)));
-  }
-} */
