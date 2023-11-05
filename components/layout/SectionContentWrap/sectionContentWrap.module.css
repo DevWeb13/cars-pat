@@ -17,6 +17,7 @@
     var(--tertiary-color-high) 100%
   );
   border-radius: 5px;
+  max-width: 1400px;
 }
 
 .contact {
