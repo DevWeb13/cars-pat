@@ -75,6 +75,7 @@
   .services {
     padding-left: 150px;
     padding-right: 150px;
+    max-width: 1535px;
   }
   .contact {
     height: 1600px;
