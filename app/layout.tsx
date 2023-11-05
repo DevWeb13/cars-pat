@@ -19,7 +19,7 @@ const local = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Cars Pat',
+  title: 'Cars Pat Marseille Mazargues Carrosserie Peinture Pare-brise',
   description:
     'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
   metadataBase: new URL('https://www.cars-pat.fr'),
