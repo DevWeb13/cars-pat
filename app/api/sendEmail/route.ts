@@ -54,7 +54,7 @@ export async function POST(request: any): Promise<NextResponse> {
 
     const mailOption: SendMailOptions = {
       from: `${email} - ${phone} - <${process.env.EMAIL}>`,
-      to: process.env.EMAIL, //Changer pour carrosse-pat@hotmail.fr au moment de la mise en ligne.
+      to: 'carrosse-pat@hotmail.fr', //Changer pour carrosse-pat@hotmail.fr au moment de la mise en ligne.
       replyTo: email,
       subject: `Message from ${name} - ${phone} - ${email}`,
       html: `<p>${message}</p><br><p>Photos:</p><br>${photoLinks}`,
