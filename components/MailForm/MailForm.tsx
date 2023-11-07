@@ -16,6 +16,7 @@ type ErrorState = {
   name?: string;
   email?: string;
   phone?: string;
+  matriculation?: string;
   message?: string;
   checkbox?: string;
   files?: string;
@@ -95,6 +96,27 @@ const MailForm = () => {
       return false;
     } else {
       setErrors((prev) => ({ ...prev, phone: undefined }));
+      return true;
+    }
+  };
+
+  const validateMatriculation = (matriculation: string): boolean => {
+    if (!matriculation.trim()) {
+      setErrors((prev) => ({
+        ...prev,
+        matriculation: 'La plaque d’immatriculation est obligatoire.',
+      }));
+      return false;
+    }
+    const matriculationRegex = /^[A-Z0-9]+$/i; // Accepte une ou plusieurs lettres et chiffres
+    if (matriculation && !matriculationRegex.test(matriculation)) {
+      setErrors((prev) => ({
+        ...prev,
+        matriculation: 'La plaque d’immatriculation n’est pas valide.',
+      }));
+      return false;
+    } else {
+      setErrors((prev) => ({ ...prev, matriculation: undefined }));
       return true;
     }
   };
@@ -274,12 +296,14 @@ const MailForm = () => {
     const name = event.currentTarget.surName.value;
     const email = event.currentTarget.email.value;
     const phone = event.currentTarget.phone.value;
+    const matriculation = event.currentTarget.matriculation.value;
     const message = event.currentTarget.message.value;
     const checkbox = event.currentTarget.consentCheckbox.checked;
 
     const isNameValid = validateName(name);
     const isEmailValid = validateEmail(email);
     const isPhoneValid = validatePhone(phone);
+    const isMatriculationValid = validateMatriculation(matriculation);
     const isMessageValid = validateMessage(message);
     const isCheckboxValid = validateCheckbox(checkbox);
     const isCaptchaValid = validateCaptcha(isVerified);
@@ -288,6 +312,7 @@ const MailForm = () => {
       !isNameValid ||
       !isEmailValid ||
       !isMessageValid ||
+      !isMatriculationValid ||
       !isPhoneValid ||
       !isCheckboxValid ||
       !isCaptchaValid
@@ -316,6 +341,7 @@ const MailForm = () => {
       formData.append('name', name);
       formData.append('email', email);
       formData.append('phone', phone);
+      formData.append('matriculation', matriculation);
       formData.append('message', message);
 
       const response = await fetch('/api/sendEmail', {
@@ -528,6 +554,36 @@ const MailForm = () => {
               {errors.phone ? errors.phone : ''}
             </p>
           </div>
+
+          <div className={`${styles.formGroup} sectionContent column`}>
+            <label
+              htmlFor='matriculation'
+              className={`${styles.label} ${styles.labelMatriculation} primaryColor textBold`}>
+              Immatriculation*
+            </label>
+            <input
+              type='text'
+              id='matriculation'
+              name='matriculation'
+              className={`text ${styles.input} ${
+                errors.matriculation ? styles.errorBorder : ''
+              }`}
+              onBlur={(e) => validateMatriculation(e.target.value)}
+              onChange={(e) => {
+                const upperCaseValue = e.target.value.toUpperCase();
+                e.target.value = upperCaseValue; // Change la valeur de l'input en majuscules
+                validateMatriculation(upperCaseValue); // Passe la valeur transformée à la fonction de validation
+              }}
+              placeholder='Plaque d’immatriculation'
+              autoComplete='off'
+              style={{ textTransform: 'uppercase' }} // Assure que le texte apparaît en majuscules
+            />
+
+            <p className={`${styles.error} textFooter`}>
+              {errors.matriculation ? errors.matriculation : ''}
+            </p>
+          </div>
+
           <div className={styles.formGroup + ' ' + 'sectionContent column'}>
             <label
               htmlFor='message'

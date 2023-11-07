@@ -17,6 +17,7 @@ export async function POST(request: any): Promise<NextResponse> {
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
+    const matriculation = formData.get('matriculation') as string;
     const message = formData.get('message') as string;
     const photoUrls = formData.getAll('photos'); // Récupère toutes les URL des photos
 
@@ -24,6 +25,7 @@ export async function POST(request: any): Promise<NextResponse> {
       name,
       email,
       phone,
+      matriculation,
       message,
       photoUrls,
     });
@@ -56,7 +58,7 @@ export async function POST(request: any): Promise<NextResponse> {
       from: `${email} - ${phone} - <${process.env.EMAIL}>`,
       to: 'carrosse-pat@hotmail.fr', //Changer pour carrosse-pat@hotmail.fr au moment de la mise en ligne.
       replyTo: email,
-      subject: `Message from ${name} - ${phone} - ${email}`,
+      subject: `Message from ${name} - ${phone} - ${email} - ${matriculation}}`,
       html: `<p>${message}</p><br><p>Photos:</p><br>${photoLinks}`,
     };
 

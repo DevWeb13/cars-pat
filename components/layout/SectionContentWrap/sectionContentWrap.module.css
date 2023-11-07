@@ -62,7 +62,7 @@
 
 @media (min-width: 1066px) {
   .contact {
-    height: 1550px;
+    height: 1630px;
     justify-content: space-between;
   }
 }
@@ -78,6 +78,6 @@
     max-width: 1535px;
   }
   .contact {
-    height: 1600px;
+    height: 1690px;
   }
 }

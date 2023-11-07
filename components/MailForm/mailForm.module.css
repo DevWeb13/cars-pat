@@ -68,6 +68,12 @@
   height: 25px;
 }
 
+.labelMatriculation::before {
+  background-image: url('/assets/matriculation.svg');
+  width: 25px;
+  height: 20px;
+}
+
 .labelMessage::before {
   background-image: url('/assets/messagePrimary.svg');
   width: 25px;

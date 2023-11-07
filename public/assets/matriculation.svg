@@ -1,0 +1,9 @@
+<svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="24" 
+      height="24" 
+      fill="#e67f2a" 
+      className="bi bi-license" 
+      viewBox="0 0 16 16">
+      <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V3zm15 2H1v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5zm-1 7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6h12v6zM4 7v4a1 1 0 0 0 1 1V7H4zm3 0v4a1 1 0 0 0 1 1V7H7zm3 0v4a1 1 0 0 0 1 1V7h-1z"/>
+    </svg>
