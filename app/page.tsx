@@ -45,20 +45,30 @@ export default function Home() {
   });
 
   useEffect(() => {
+    const updateURL = (sectionId) => {
+      const currentURL = window.location.pathname;
+      const newURL = `${currentURL}#${sectionId}`;
+      window.history.pushState({}, '', newURL);
+    };
     if (homeInView) {
       setActiveLink('home');
+      updateURL('accueil'); // Change l'URL pour la section home
     }
     if (servicesInView) {
       setActiveLink('services');
+      updateURL('services');
     }
     if (galleryInView) {
       setActiveLink('gallery');
+      updateURL('gallery');
     }
     if (avisInView) {
       setActiveLink('avis');
+      updateURL('avis');
     }
     if (contactInView) {
       setActiveLink('contact');
+      updateURL('contact');
     }
   }, [
     homeInView,
@@ -69,9 +79,9 @@ export default function Home() {
     setActiveLink,
   ]);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
