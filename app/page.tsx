@@ -45,7 +45,8 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const updateURL = (sectionId) => {
+    const currentURL = window.location.pathname;
+    const updateURL = (sectionId: string) => {
       const currentURL = window.location.pathname;
       const newURL = `${currentURL}#${sectionId}`;
       window.history.pushState({}, '', newURL);
