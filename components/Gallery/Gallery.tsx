@@ -15,7 +15,7 @@ interface ExtendedReactImageGallery extends ImageGallery {
 }
 
 const Gallery = () => {
-  const [vehicleActive, setVehicleActive] = useState('divers');
+  const [vehicleActive, setVehicleActive] = useState('mercedes');
   const [galleryWrapperHeight, setGalleryWrapperHeight] = useState(0);
 
   const galleryWrapperRef = useRef<ExtendedReactImageGallery>(null);

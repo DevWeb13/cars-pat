@@ -15,8 +15,8 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
   const vehicles = [
     {
       id: 1,
-      name: 'divers',
-      display: 'Divers',
+      name: 'mercedes',
+      display: 'Mercedes',
     },
     {
       id: 2,
@@ -25,13 +25,18 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
     },
     {
       id: 3,
-      name: 'mercedes',
-      display: 'Mercedes',
+      name: 'peugeot504',
+      display: 'Peugeot 504',
     },
     {
       id: 4,
-      name: 'peugeot504',
-      display: 'Peugeot 504',
+      name: 'pret',
+      display: 'Vehicules de pret',
+    },
+    {
+      id: 5,
+      name: 'divers',
+      display: 'Divers',
     },
   ];
 
