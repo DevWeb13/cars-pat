@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
     creator: '@LaReponseDev',
     images: [
-      '@/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
+      '/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
     ],
   },
 };
