@@ -26,6 +26,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cars Pat Marseille Mazargues Carrosserie Peinture Pare-brise',
+    description:
+      'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
+    creator: '@LaReponseDev',
+    images: [
+      '@/public/assets/photosWebp/porscheRougeAvecFondPlaqueFloutée.webp',
+    ],
+  },
 };
 
 interface Props {
