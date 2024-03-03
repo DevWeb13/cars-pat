@@ -19,18 +19,18 @@ const local = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Cars Pat Marseille Mazargues Carrosserie Peinture Pare-brise',
+  title: 'Garage Cars Pat : Carrosserie et Atelier de Réparation - Mazargues',
   description:
-    'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
+    'Votre garage Cars Pat à Mazargues, Marseille, offre des services de carrosserie, peinture et atelier de réparation de confiance. Redonnez éclat à votre véhicule.',
   metadataBase: new URL('https://www.cars-pat.fr'),
   alternates: {
     canonical: '/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cars Pat Marseille Mazargues Carrosserie Peinture Pare-brise',
+    title: 'Garage Cars Pat : Carrosserie et Atelier de Réparation - Mazargues',
     description:
-      'Cars Pat à Mazargues, Marseille 13009 : carrosserie-peinture de confiance. Redonnez éclat à votre véhicule. Rendez-vous maintenant !',
+      'Votre garage Cars Pat à Mazargues, Marseille, offre des services de carrosserie, peinture et atelier de réparation de confiance. Redonnez éclat à votre véhicule.',
     creator: '@LaReponseDev',
     images: ['/twitter-image.jpg'],
   },
