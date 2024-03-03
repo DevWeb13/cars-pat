@@ -7,9 +7,23 @@ interface CompanyAnniversaryProps {
 
 const CompanyAnniversary: React.FC<CompanyAnniversaryProps> = () => {
   const calculateYears = () => {
-    const startDate = new Date(1997, 3, 1); // months are 0-indexed
+    const startDate = new Date(1997, 3, 1); // Avril 1, 1997 - rappel: les mois sont indexés à partir de 0
     const currentDate = new Date();
-    return currentDate.getFullYear() - startDate.getFullYear();
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+
+    // Crée une nouvelle date représentant l'anniversaire de l'entreprise pour l'année en cours
+    const currentYearAnniversary = new Date(
+      currentDate.getFullYear(),
+      startDate.getMonth(),
+      startDate.getDate()
+    );
+
+    // Si la date actuelle est avant l'anniversaire de l'année en cours, soustrait un an
+    if (currentDate < currentYearAnniversary) {
+      years--;
+    }
+
+    return years;
   };
 
   const yearsOpen = calculateYears();
