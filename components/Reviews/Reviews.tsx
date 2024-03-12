@@ -43,6 +43,8 @@ export default function ReviewsPage() {
 
   const { data, status } = useQuery(['reviews'], () => fetchReviews());
 
+  console.log({ data, status });
+
   const renderContent = () => {
     switch (status) {
       case 'error':

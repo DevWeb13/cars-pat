@@ -8,6 +8,8 @@ export async function GET(request: Request) {
     const response = await fetch(url);
     const data = await response.json();
 
+    console.log(data);
+
     if (data.status === 'OK') {
       const reviews = data.result.reviews;
       const averageRating = data.result.rating;
