@@ -3,7 +3,6 @@
 import axios from 'axios';
 
 export async function verifyCaptcha(token: string | null) {
-  console.log('token', token);
   const res = await axios.post(
     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`
   );
