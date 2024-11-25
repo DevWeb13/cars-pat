@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
-import nodemailer, { SendMailOptions } from 'nodemailer';
+import { Resend } from 'resend';
+
+// Instancier Resend avec la clé API
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: any): Promise<NextResponse> {
   try {
@@ -30,45 +33,44 @@ export async function POST(request: any): Promise<NextResponse> {
       photoUrls,
     });
 
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com', // Serveur SMTP d'Outlook
-      port: 587, // Port standard pour le SMTP avec STARTTLS
-      secure: false, // Pour STARTTLS, secure doit être défini sur false
-      requireTLS: true, // Oblige nodemailer à utiliser STARTTLS
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-      },
-    });
-
     // Créer une liste de liens pour les photos
     const photoLinks = photoUrls
       .map(
         (url: string) => `
-      <div style="display: inline-block; margin: 10px; border: 1px solid #ddd; padding: 10px; text-align: center;">
-        <a href="${url}" download>
-        <img src="${url}" alt="${url}" style="width: 100px; height: 100px; display: block; margin-bottom: 5px;">
-        ${url}
-        </a>
-      </div>`
+        <div style="display: inline-block; margin: 10px; border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <a href="${url}" download>
+          <img src="${url}" alt="${url}" style="width: 100px; height: 100px; display: block; margin-bottom: 5px;">
+          ${url}
+          </a>
+        </div>`
       )
       .join('');
 
-    const mailOption: SendMailOptions = {
-      from: `${email} - ${phone} - <${process.env.EMAIL}>`,
-      to: 'carrosse-pat@hotmail.fr', //Changer pour carrosse-pat@hotmail.fr au moment de la mise en ligne.
+    // Préparer l'email
+    const emailOptions = {
+      from: 'Cars Pat Contact Site Web <no-reply@cars-pat.fr>', // Utiliser un domaine vérifié avec Resend
+      to: 'carrosse-pat@hotmail.fr', // Adresse de destination
       replyTo: email,
-      subject: `Message from ${name} - ${phone} - ${email} - ${matriculation}}`,
-      html: `<p>${message}</p><br><p>Photos:</p><br>${photoLinks}`,
+      subject: `Message de ${name} - ${phone} - ${email} - ${matriculation}`,
+      html: `
+        <h1>Message de ${name}</h1>
+        <h2>Téléphone: ${phone}</h2>
+        <h2>Email: <a href="mailto:${email}">${email}</a></h2>
+        <h2>Immatriculation: ${matriculation}</h2>
+        <h3>Message:</h3>
+        <p>${message}</p>
+        <h3>Photos:</h3>
+        ${photoLinks}
+      `,
     };
 
-    // Utilisez await ici pour attendre que l'e-mail soit envoyé
-    const info = await transporter.sendMail(mailOption);
-    console.log('Email sent:', info);
+    // Envoyer l'email via Resend
+    const response = await resend.emails.send(emailOptions);
+
+    console.log('Email sent:', response);
 
     return NextResponse.json({ message: 'Email sent' }, { status: 200 });
   } catch (error) {
-    console.error(error);
     console.error('Error sending email:', error);
     return NextResponse.json({ message: 'Email not sent' }, { status: 500 });
   }

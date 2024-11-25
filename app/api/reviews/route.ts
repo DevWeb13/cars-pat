@@ -1,3 +1,5 @@
+// app/api/reviews/route.ts
+
 export async function GET(request: Request) {
   const placeId = 'ChIJ1Qkd9IS4yRIRwxROw9Mle5Y'; // Votre Place ID
   const apiKey = process.env.GOOGLE_API_KEY; // Votre clé API
