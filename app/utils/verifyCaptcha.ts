@@ -1,14 +1,21 @@
-'use server';
+"use server";
 
-import axios from 'axios';
+import axios from "axios";
 
 export async function verifyCaptcha(token: string | null) {
   const res = await axios.post(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    `secret=${process.env.TURNSTILE_SECRET_KEY}&response=${token}`,
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
   );
+
   if (res.data.success) {
-    return 'success!';
+    return "success!";
   } else {
-    throw new Error('Failed Captcha');
+    throw new Error("Failed Captcha");
   }
 }

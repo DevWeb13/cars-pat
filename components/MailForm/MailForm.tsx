@@ -1,9 +1,9 @@
-import { FormEvent, useState, useRef } from 'react';
-import styles from './mailForm.module.css';
-import Image from 'next/image';
-import Button from '../ui/Button/Button';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { verifyCaptcha } from '@/app/utils/verifyCaptcha';
+import { verifyCaptcha } from "@/app/utils/verifyCaptcha";
+import { Turnstile } from "@marsidev/react-turnstile";
+import Image from "next/image";
+import { FormEvent, useRef, useState } from "react";
+import Button from "../ui/Button/Button";
+import styles from "./mailForm.module.css";
 
 type ImageItem = {
   preview: string;
@@ -28,7 +28,7 @@ const MailForm = () => {
   const [totalFileSize, setTotalFileSize] = useState<number>(0);
 
   const [errors, setErrors] = useState<ErrorState>({});
-  const [status, setStatus] = useState<'loading' | 'success' | 'error' | null>(
+  const [status, setStatus] = useState<"loading" | "success" | "error" | null>(
     null
   );
 
@@ -36,14 +36,13 @@ const MailForm = () => {
   const fileLabelRef = useRef<HTMLLabelElement>(null);
 
   const allowedFileTypes = [
-    'image/jpg',
-    'image/jpeg',
-    'image/png',
-    'image/gif',
-    'image/webp',
+    "image/jpg",
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "image/webp",
   ];
 
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState<boolean>(false);
 
   async function handleCaptchaSubmission(token: string | null) {
@@ -57,12 +56,12 @@ const MailForm = () => {
 
   const validateName = (name: string): boolean => {
     if (!name.trim()) {
-      setErrors((prev) => ({ ...prev, name: 'Le nom est obligatoire.' }));
+      setErrors((prev) => ({ ...prev, name: "Le nom est obligatoire." }));
       return false;
     } else if (name.length < 3) {
       setErrors((prev) => ({
         ...prev,
-        name: 'Le nom doit comporter au moins 3 caractères.',
+        name: "Le nom doit comporter au moins 3 caractères.",
       }));
       return false;
     } else {
@@ -86,7 +85,7 @@ const MailForm = () => {
     if (!phone.trim()) {
       setErrors((prev) => ({
         ...prev,
-        phone: 'Le numéro de téléphone est obligatoire.',
+        phone: "Le numéro de téléphone est obligatoire.",
       }));
       return false;
     }
@@ -104,7 +103,7 @@ const MailForm = () => {
     if (!matriculation.trim()) {
       setErrors((prev) => ({
         ...prev,
-        matriculation: 'La plaque d’immatriculation est obligatoire.',
+        matriculation: "La plaque d’immatriculation est obligatoire.",
       }));
       return false;
     }
@@ -112,7 +111,7 @@ const MailForm = () => {
     if (matriculation && !matriculationRegex.test(matriculation)) {
       setErrors((prev) => ({
         ...prev,
-        matriculation: 'La plaque d’immatriculation n’est pas valide.',
+        matriculation: "La plaque d’immatriculation n’est pas valide.",
       }));
       return false;
     } else {
@@ -125,7 +124,7 @@ const MailForm = () => {
     if (!message.trim()) {
       setErrors((prev) => ({
         ...prev,
-        message: 'Le message est obligatoire.',
+        message: "Le message est obligatoire.",
       }));
       return false;
     } else {
@@ -138,7 +137,7 @@ const MailForm = () => {
     if (!isChecked) {
       setErrors((prev) => ({
         ...prev,
-        checkbox: 'Vous devez accepter les conditions.',
+        checkbox: "Vous devez accepter les conditions.",
       }));
       return false;
     } else {
@@ -151,7 +150,7 @@ const MailForm = () => {
     if (!isVerified) {
       setErrors((prev) => ({
         ...prev,
-        captcha: 'Veuillez cocher la case reCAPTCHA.',
+        captcha: "Veuillez cocher la case reCAPTCHA.",
       }));
       return false;
     } else {
@@ -172,7 +171,7 @@ const MailForm = () => {
         if (file.size > MAX_SIZE) {
           setErrors((prev) => ({
             ...prev,
-            files: 'Un fichier dépasse la limite de 32MB.',
+            files: "Un fichier dépasse la limite de 32MB.",
           }));
           setTimeout(() => {
             setErrors((prev) => ({ ...prev, files: undefined }));
@@ -189,7 +188,7 @@ const MailForm = () => {
       if (invalidFileType) {
         setErrors((prev) => ({
           ...prev,
-          files: 'Ce type de fichier n’est pas autorisé.',
+          files: "Ce type de fichier n’est pas autorisé.",
         }));
         setTimeout(() => {
           setErrors((prev) => ({ ...prev, files: undefined }));
@@ -203,7 +202,7 @@ const MailForm = () => {
       if (totalImages > 9) {
         setErrors((prev) => ({
           ...prev,
-          files: 'Vous ne pouvez télécharger que 9 photos au maximum.',
+          files: "Vous ne pouvez télécharger que 9 photos au maximum.",
         }));
         setTimeout(() => {
           setErrors((prev) => ({ ...prev, files: undefined }));
@@ -232,20 +231,20 @@ const MailForm = () => {
 
   async function uploadToImgBB(base64String: string) {
     const formData = new FormData();
-    formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY ?? ''); // Remplacez par votre clé API
+    formData.append("key", process.env.NEXT_PUBLIC_IMGBB_API_KEY ?? ""); // Remplacez par votre clé API
     if (base64String) {
-      formData.append('image', base64String);
+      formData.append("image", base64String);
     }
 
-    const response = await fetch('https://api.imgbb.com/1/upload', {
-      method: 'POST',
+    const response = await fetch("https://api.imgbb.com/1/upload", {
+      method: "POST",
       body: formData,
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || 'Failed to upload image to ImgBB');
+      throw new Error(data.message || "Failed to upload image to ImgBB");
     }
 
     return data.data.url; // Retourne l'URL de l'image téléchargée
@@ -273,7 +272,7 @@ const MailForm = () => {
       const promise = new Promise<string>((resolve, reject) => {
         reader.onloadend = async () => {
           try {
-            const base64String = (reader.result as string).split(',')[1];
+            const base64String = (reader.result as string).split(",")[1];
             const imageUrl = await uploadToImgBB(base64String);
             resolve(imageUrl);
           } catch (error) {
@@ -292,7 +291,7 @@ const MailForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setStatus('loading');
+    setStatus("loading");
     const name = event.currentTarget.surName.value;
     const email = event.currentTarget.email.value;
     const phone = event.currentTarget.phone.value;
@@ -322,7 +321,7 @@ const MailForm = () => {
 
       if (formRef.current) {
         const yOffset = formRef.current.offsetTop - headerHeight;
-        window.scrollTo({ top: yOffset, behavior: 'smooth' });
+        window.scrollTo({ top: yOffset, behavior: "smooth" });
       }
 
       setStatus(null);
@@ -336,31 +335,30 @@ const MailForm = () => {
       // Étape 2: Envoyez ces URL de fichier à votre endpoint @/api/sendEmail
       const formData = new FormData();
       fileUrls.forEach((url) => {
-        formData.append('photos', url); // Nous envoyons des URL au lieu de fichiers
+        formData.append("photos", url); // Nous envoyons des URL au lieu de fichiers
       });
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('matriculation', matriculation);
-      formData.append('message', message);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("matriculation", matriculation);
+      formData.append("message", message);
 
-      const response = await fetch('/api/sendEmail', {
-        method: 'POST',
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        setStatus('success');
+        setStatus("success");
         setImages([]); // Réinitialise les images
         formRef.current?.reset(); // Réinitialise le formulaire
         setIsVerified(false); // Réinitialise le captcha
-        recaptchaRef.current?.reset(); // Réinitialise le captcha
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setStatus('error');
+      console.error("Error:", error);
+      setStatus("error");
     }
 
     setTimeout(() => {
@@ -388,7 +386,7 @@ const MailForm = () => {
       if (invalidFileType) {
         setErrors((prev) => ({
           ...prev,
-          files: 'Ce type de fichier n’est pas autorisé.',
+          files: "Ce type de fichier n’est pas autorisé.",
         }));
         setTimeout(() => {
           setErrors((prev) => ({ ...prev, files: undefined }));
@@ -420,24 +418,24 @@ const MailForm = () => {
   const handleMouseEnter = () => {
     // Ajoutez une classe pour désactiver l'effet de survol du label
     if (fileLabelRef.current) {
-      fileLabelRef.current.classList.add(styles['no-hover']);
+      fileLabelRef.current.classList.add(styles["no-hover"]);
     }
   };
 
   const handleMouseLeave = () => {
     // Retirez la classe pour réactiver l'effet de survol du label
     if (fileLabelRef.current) {
-      fileLabelRef.current.classList.remove(styles['no-hover']);
+      fileLabelRef.current.classList.remove(styles["no-hover"]);
     }
   };
 
   const errorSubmitDisplay = () => {
     switch (status) {
-      case 'loading':
+      case "loading":
         return <p>Envoi en cours...</p>;
-      case 'success':
+      case "success":
         return <p>Email envoyé avec succès!</p>;
-      case 'error':
+      case "error":
         return <p>Erreur lors de l&apos;envoi de l&apos;email.</p>;
       default:
         return <p className={styles.opacityNull}>OpacityNull</p>;
@@ -446,11 +444,11 @@ const MailForm = () => {
 
   return (
     <>
-      <header className={styles.headerForm + ' ' + 'sectionContent column'}>
-        <h2 className='primaryColor textBold'>
+      <header className={styles.headerForm + " " + "sectionContent column"}>
+        <h2 className="primaryColor textBold">
           Envoyez-nous vos photos pour une estimation de devis plus précise!
         </h2>
-        <p className='text'>
+        <p className="text">
           Vous pouvez nous envoyer des photos directement via ce formulaire.
           Cela nous permettra de mieux évaluer vos besoins en matière de
           carrosserie automobile et de vous fournir une estimation de devis plus
@@ -461,112 +459,117 @@ const MailForm = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        encType='multipart/form-data'
-        className={styles.contactForm + ' ' + 'sectionContent column'}
-        name='contactForm'
-        id='contactForm'
-        autoComplete='on'>
+        encType="multipart/form-data"
+        className={styles.contactForm + " " + "sectionContent column"}
+        name="contactForm"
+        id="contactForm"
+        autoComplete="on"
+      >
         <div className={styles.inputWrapper}>
-          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+          <div className={styles.formGroup + " " + "sectionContent column"}>
             <label
-              htmlFor='surName'
+              htmlFor="surName"
               className={
                 styles.label +
-                ' ' +
+                " " +
                 styles.labelName +
-                ' ' +
-                'primaryColor textBold'
-              }>
+                " " +
+                "primaryColor textBold"
+              }
+            >
               Nom/Prénom*
             </label>
             <input
-              type='text'
-              id='surName'
-              name='surName'
+              type="text"
+              id="surName"
+              name="surName"
               onBlur={(e) => validateName(e.target.value)}
               onChange={(e) => validateName(e.target.value)}
               className={`text ${styles.input} ${
-                errors.name ? styles.errorBorder : ''
+                errors.name ? styles.errorBorder : ""
               }`}
-              placeholder='Nom/Prénom'
-              autoComplete='name'
+              placeholder="Nom/Prénom"
+              autoComplete="name"
             />
 
-            <p className={styles.error + ' ' + 'textFooter'}>
-              {errors.name ? errors.name : ''}
+            <p className={styles.error + " " + "textFooter"}>
+              {errors.name ? errors.name : ""}
             </p>
           </div>
-          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+          <div className={styles.formGroup + " " + "sectionContent column"}>
             <label
-              htmlFor='email'
+              htmlFor="email"
               className={
                 styles.label +
-                ' ' +
+                " " +
                 styles.labelMail +
-                ' ' +
-                'primaryColor textBold'
-              }>
+                " " +
+                "primaryColor textBold"
+              }
+            >
               Email*
             </label>
             <input
-              type='email'
-              id='email'
-              name='email'
+              type="email"
+              id="email"
+              name="email"
               className={`text ${styles.input} ${
-                errors.email ? styles.errorBorder : ''
+                errors.email ? styles.errorBorder : ""
               }`}
               onBlur={(e) => validateEmail(e.target.value)}
               onChange={(e) => validateEmail(e.target.value)}
-              placeholder='E-mail'
-              autoComplete='email'
+              placeholder="E-mail"
+              autoComplete="email"
             />
 
-            <p className={styles.error + ' ' + 'textFooter'}>
-              {errors.email ? errors.email : ''}
+            <p className={styles.error + " " + "textFooter"}>
+              {errors.email ? errors.email : ""}
             </p>
           </div>
-          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+          <div className={styles.formGroup + " " + "sectionContent column"}>
             <label
-              htmlFor='phone'
+              htmlFor="phone"
               className={
                 styles.label +
-                ' ' +
+                " " +
                 styles.labelPhone +
-                ' ' +
-                'primaryColor textBold'
-              }>
+                " " +
+                "primaryColor textBold"
+              }
+            >
               Téléphone*
             </label>
             <input
-              type='tel'
-              id='phone'
-              name='phone'
+              type="tel"
+              id="phone"
+              name="phone"
               className={`text ${styles.input} ${
-                errors.phone ? styles.errorBorder : ''
+                errors.phone ? styles.errorBorder : ""
               }`}
               onBlur={(e) => validatePhone(e.target.value)}
               onChange={(e) => validatePhone(e.target.value)}
-              placeholder='Téléphone'
-              autoComplete='tel'
+              placeholder="Téléphone"
+              autoComplete="tel"
             />
 
-            <p className={styles.error + ' ' + 'textFooter'}>
-              {errors.phone ? errors.phone : ''}
+            <p className={styles.error + " " + "textFooter"}>
+              {errors.phone ? errors.phone : ""}
             </p>
           </div>
 
           <div className={`${styles.formGroup} sectionContent column`}>
             <label
-              htmlFor='matriculation'
-              className={`${styles.label} ${styles.labelMatriculation} primaryColor textBold`}>
+              htmlFor="matriculation"
+              className={`${styles.label} ${styles.labelMatriculation} primaryColor textBold`}
+            >
               Immatriculation*
             </label>
             <input
-              type='text'
-              id='matriculation'
-              name='matriculation'
+              type="text"
+              id="matriculation"
+              name="matriculation"
               className={`text ${styles.input} ${
-                errors.matriculation ? styles.errorBorder : ''
+                errors.matriculation ? styles.errorBorder : ""
               }`}
               onBlur={(e) => validateMatriculation(e.target.value)}
               onChange={(e) => {
@@ -574,76 +577,80 @@ const MailForm = () => {
                 e.target.value = upperCaseValue; // Change la valeur de l'input en majuscules
                 validateMatriculation(upperCaseValue); // Passe la valeur transformée à la fonction de validation
               }}
-              placeholder='Plaque d’immatriculation'
-              autoComplete='off'
-              style={{ textTransform: 'uppercase' }} // Assure que le texte apparaît en majuscules
+              placeholder="Plaque d’immatriculation"
+              autoComplete="off"
+              style={{ textTransform: "uppercase" }} // Assure que le texte apparaît en majuscules
             />
 
             <p className={`${styles.error} textFooter`}>
-              {errors.matriculation ? errors.matriculation : ''}
+              {errors.matriculation ? errors.matriculation : ""}
             </p>
           </div>
 
-          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
+          <div className={styles.formGroup + " " + "sectionContent column"}>
             <label
-              htmlFor='message'
+              htmlFor="message"
               className={
                 styles.label +
-                ' ' +
+                " " +
                 styles.labelMessage +
-                ' ' +
-                'primaryColor textBold'
-              }>
+                " " +
+                "primaryColor textBold"
+              }
+            >
               Message*
             </label>
             <textarea
-              id='message'
-              name='message'
+              id="message"
+              name="message"
               className={`text ${styles.textArea} ${
-                errors.message ? styles.errorBorder : ''
+                errors.message ? styles.errorBorder : ""
               }`}
               onBlur={(e) => validateMessage(e.target.value)}
               onChange={(e) => validateMessage(e.target.value)}
-              autoComplete='off'
-              placeholder='Votre message'
+              autoComplete="off"
+              placeholder="Votre message"
             />
-            <p className={styles.error + ' ' + 'textFooter'}>
-              {errors.message ? errors.message : ''}
+            <p className={styles.error + " " + "textFooter"}>
+              {errors.message ? errors.message : ""}
             </p>
           </div>
 
           <div
             className={
               styles.formGroup +
-              ' ' +
+              " " +
               styles.buttonPhotosWrapper +
-              ' ' +
-              'sectionContent column'
-            }>
+              " " +
+              "sectionContent column"
+            }
+          >
             <p
               className={
                 styles.label +
-                ' ' +
+                " " +
                 styles.labelPhotos +
-                ' ' +
-                'primaryColor textBold'
-              }>
+                " " +
+                "primaryColor textBold"
+              }
+            >
               Photos
             </p>
             <label
-              htmlFor='photos'
+              htmlFor="photos"
               className={
                 styles.buttonPhotos +
-                ' ' +
-                'textFooter' +
-                ' ' +
-                (images.length > 0 ? styles.justifyContentNone : '') +
-                ' ' +
-                (images.length >= 9 ? styles.disabled : '')
+                " " +
+                "textFooter" +
+                " " +
+                (images.length > 0 ? styles.justifyContentNone : "") +
+                " " +
+                (images.length >= 9 ? styles.disabled : "")
               }
               onDragOver={handleDragOver}
               onDrop={handleDrop}
-              ref={fileLabelRef}>
+              ref={fileLabelRef}
+            >
               {images.length === 0 ? (
                 <div className={styles.labelPhotosTextWrapper}>
                   <p>Cliquez ou glissez-déposez vos photos ici</p>
@@ -658,25 +665,27 @@ const MailForm = () => {
                     <button
                       key={image.file.name}
                       className={styles.buttonDeleteWrapper}
-                      onClick={(event) => handleRemoveImage(event, index)}>
+                      onClick={(event) => handleRemoveImage(event, index)}
+                    >
                       <div
                         className={styles.imagePreviewCard}
                         onMouseEnter={() => handleMouseEnter()}
-                        onMouseLeave={() => handleMouseLeave()}>
+                        onMouseLeave={() => handleMouseLeave()}
+                      >
                         <div className={styles.imagePreviewContent}>
                           <p className={styles.imagePreviewName}>
                             {image.file.name}
                           </p>
                           <Image
                             src={image.preview}
-                            alt='Preview'
+                            alt="Preview"
                             width={25}
                             height={25}
                             className={styles.imagePreview}
                           />
                           <Image
-                            src='/assets/delete.svg'
-                            alt='Supprimer'
+                            src="/assets/delete.svg"
+                            alt="Supprimer"
                             width={20}
                             height={20}
                           />
@@ -692,61 +701,59 @@ const MailForm = () => {
               )}
             </label>
             <input
-              type='file'
-              id='photos'
-              name='photos'
+              type="file"
+              id="photos"
+              name="photos"
               multiple
               className={styles.visuallyHidden}
               onChange={handleFileChange}
-              accept='.png, .jpg, .jpeg, .gif, .webp'
+              accept=".png, .jpg, .jpeg, .gif, .webp"
               disabled={images.length >= 9} // Cette ligne a été ajoutée
             />
-            <p className={styles.error + ' ' + 'textFooter'} />
+            <p className={styles.error + " " + "textFooter"} />
           </div>
-          <div className={styles.formGroup + ' ' + 'sectionContent column'}>
-            <div className={styles.checkbox + ' ' + 'textFooter'}>
+          <div className={styles.formGroup + " " + "sectionContent column"}>
+            <div className={styles.checkbox + " " + "textFooter"}>
               <input
-                type='checkbox'
+                type="checkbox"
                 className={styles.consentCheckbox}
-                id='consentCheckbox'
+                id="consentCheckbox"
                 onChange={(e) => validateCheckbox(e.target.checked)}
               />
               <label
-                htmlFor='consentCheckbox'
-                className={errors.checkbox ? styles.errorText : ''}>
+                htmlFor="consentCheckbox"
+                className={errors.checkbox ? styles.errorText : ""}
+              >
                 En soumettant ce formulaire, j&apos;accepte que les informations
                 saisies soient exploitées dans le cadre de la demande de contact
                 et de la relation commerciale qui peut en découler.
               </label>
             </div>
-            <p className={styles.error + ' ' + 'textFooter'}>
-              {errors.checkbox ? errors.checkbox : ''}
+            <p className={styles.error + " " + "textFooter"}>
+              {errors.checkbox ? errors.checkbox : ""}
             </p>
           </div>
         </div>
 
-        <p className={styles.error + ' ' + 'textFooter'}>
-          {errors.files ? errors.files : ''}
+        <p className={styles.error + " " + "textFooter"}>
+          {errors.files ? errors.files : ""}
         </p>
 
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''}
-          ref={recaptchaRef}
-          onChange={handleCaptchaSubmission}
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+          onSuccess={(token) => handleCaptchaSubmission(token)}
+          onExpire={() => setIsVerified(false)}
+          onError={() => setIsVerified(false)}
           className={styles.captcha}
-          style={{ width: '100%' }}
+          options={{ theme: "light" }}
         />
 
-        <p className={styles.error + ' ' + 'textFooter'}>
-          {errors.captcha ? errors.captcha : ''}
+        <p className={styles.error + " " + "textFooter"}>
+          {errors.captcha ? errors.captcha : ""}
         </p>
 
         <div>{errorSubmitDisplay()}</div>
-        <Button
-          text='Envoyer'
-          type='submit'
-          disabled={status === 'loading'}
-        />
+        <Button text="Envoyer" type="submit" disabled={status === "loading"} />
       </form>
     </>
   );

@@ -12,6 +12,7 @@
     "resizeImages:750*500": "node ./script/resizeImages.js"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.3.0",
     "@tanstack/react-query": "^4.35.3",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
@@ -23,7 +24,6 @@
     "next": "^13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-google-recaptcha": "^3.1.0",
     "react-image-gallery": "^1.3.0",
     "react-intersection-observer": "^9.5.2",
     "react-modal": "^3.16.1",
